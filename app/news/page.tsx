@@ -1,62 +1,35 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
 import { Calendar } from "lucide-react"
 
-const newsItems = [
-  {
-    date: "2026.03.28",
-    category: "お知らせ",
-    title: "Webサイトをリニューアルしました",
-    content:
-      "Play+のWebサイトをリニューアルしました。サービス内容や実績をより分かりやすくお伝えできるよう、デザインと構成を一新しています。",
-  },
-  {
-    date: "2026.03.15",
-    category: "実績",
-    title: "企業対抗eスポーツ大会を開催しました",
-    content:
-      "名古屋市内にて8社参加の企業対抗eスポーツ大会をプロデュースしました。企画から当日の運営・配信まで一貫して対応いたしました。",
-  },
-  {
-    date: "2026.02.20",
-    category: "サービス",
-    title: "デザイン制作の料金プランを更新しました",
-    content:
-      "ロゴ制作、ポスター制作、配信オーバーレイ制作の料金プランを見直しました。より手軽にご利用いただけるプランを追加しています。",
-  },
-  {
-    date: "2026.02.01",
-    category: "お知らせ",
-    title: "学校対抗eスポーツリーグの参加校を募集中",
-    content:
-      "2026年度の学校対抗eスポーツリーグの参加校を募集しています。高校生を対象としたリーグ戦で、予選から決勝まで3ヶ月にわたって開催予定です。",
-  },
-  {
-    date: "2026.01.10",
-    category: "実績",
-    title: "128名規模のオフライン大会を運営しました",
-    content:
-      "東京都内のイベントホールにて、128名規模の大型オフライン大会を運営しました。会場設営から配信環境の構築まで、トータルでサポートいたしました。",
-  },
-  {
-    date: "2025.12.15",
-    category: "お知らせ",
-    title: "年末年始の営業のお知らせ",
-    content:
-      "年末年始の営業日についてお知らせします。12月28日〜1月5日までお休みをいただきます。お問い合わせへのご返信は1月6日以降となります。",
-  },
-]
+type NewsItem = {
+  id: string
+  date: string
+  category: string
+  title: string
+  content: string
+}
 
 const categoryColors: Record<string, string> = {
   "お知らせ": "bg-accent/10 text-accent",
-  "実績": "bg-green-500/10 text-green-400",
-  "サービス": "bg-amber-500/10 text-amber-400",
+  "イベント": "bg-green-500/10 text-green-400",
+  "メディア": "bg-amber-500/10 text-amber-400",
+  "実績": "bg-blue-500/10 text-blue-400",
 }
 
 export default function NewsPage() {
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([])
+
+  useEffect(() => {
+    fetch("/api/news")
+      .then((res) => res.json())
+      .then((data) => setNewsItems(data))
+  }, [])
+
   return (
     <main className="min-h-screen bg-background">
       <Header />
@@ -76,8 +49,8 @@ export default function NewsPage() {
           </ScrollAnimate>
 
           <StaggerContainer className="space-y-6">
-            {newsItems.map((item, index) => (
-              <StaggerItem key={index}>
+            {newsItems.map((item) => (
+              <StaggerItem key={item.id}>
                 <article className="group rounded-xl border border-border bg-card p-6 hover:border-accent/50 transition-colors">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="flex items-center gap-1.5 text-sm text-muted-foreground">

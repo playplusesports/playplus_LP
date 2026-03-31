@@ -1,33 +1,32 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
 import { Calendar } from "lucide-react"
 
-const latestNews = [
-  {
-    date: "2026.03.28",
-    category: "お知らせ",
-    title: "Webサイトをリニューアルしました",
-  },
-  {
-    date: "2026.03.15",
-    category: "実績",
-    title: "企業対抗eスポーツ大会を開催しました",
-  },
-  {
-    date: "2026.02.20",
-    category: "サービス",
-    title: "デザイン制作の料金プランを更新しました",
-  },
-]
+type NewsItem = {
+  id: string
+  date: string
+  category: string
+  title: string
+}
 
 const categoryColors: Record<string, string> = {
   "お知らせ": "bg-accent/10 text-accent",
-  "実績": "bg-green-500/10 text-green-400",
-  "サービス": "bg-amber-500/10 text-amber-400",
+  "イベント": "bg-green-500/10 text-green-400",
+  "メディア": "bg-amber-500/10 text-amber-400",
+  "実績": "bg-blue-500/10 text-blue-400",
 }
 
 export function NewsSection() {
+  const [latestNews, setLatestNews] = useState<NewsItem[]>([])
+
+  useEffect(() => {
+    fetch("/api/news")
+      .then((res) => res.json())
+      .then((data) => setLatestNews(data.slice(0, 3)))
+  }, [])
+
   return (
     <section id="news" className="py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -41,8 +40,8 @@ export function NewsSection() {
         </ScrollAnimate>
 
         <StaggerContainer className="space-y-4">
-          {latestNews.map((item, index) => (
-            <StaggerItem key={index}>
+          {latestNews.map((item) => (
+            <StaggerItem key={item.id}>
               <a
                 href="/news"
                 className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 rounded-xl border border-border bg-card hover:border-accent/50 transition-colors"
