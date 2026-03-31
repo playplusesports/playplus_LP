@@ -54,8 +54,7 @@ export function Footer() {
             <nav className="flex flex-col gap-2">
               <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">サービス</a>
               <a href="/#benefits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">選ばれる理由</a>
-              <a href="/portfolio" className="text-sm text-muted-foreground hover:text-foreground transition-colors">実績</a>
-              <a href="/gallery" className="text-sm text-muted-foreground hover:text-foreground transition-colors">ギャラリー</a>
+              <a href="/works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">実績</a>
               <a href="/news" className="text-sm text-muted-foreground hover:text-foreground transition-colors">ニュース</a>
             </nav>
           </div>

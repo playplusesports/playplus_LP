@@ -64,7 +64,7 @@ export function WorksSection() {
         <ScrollAnimate delay={0.2}>
           <div className="text-center mt-12">
             <a
-              href="/portfolio"
+              href="/works"
               className="inline-flex items-center text-sm text-accent hover:underline font-medium"
             >
               すべての実績を見る →

@@ -8,8 +8,7 @@ import { Menu, X, Sun, Moon } from "lucide-react"
 const navItems = [
   { label: "サービス", href: "/#services" },
   { label: "選ばれる理由", href: "/#benefits" },
-  { label: "実績", href: "/portfolio" },
-  { label: "ギャラリー", href: "/gallery" },
+  { label: "実績", href: "/works" },
   { label: "ニュース", href: "/news" },
   { label: "料金", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
