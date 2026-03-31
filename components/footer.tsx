@@ -53,10 +53,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border text-center">
+        <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Play+. All rights reserved.
           </p>
+          <a href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            プライバシーポリシー
+          </a>
         </div>
       </div>
     </footer>
