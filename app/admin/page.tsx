@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Pencil, Trash2, Plus, LogOut } from "lucide-react"
+import { Pencil, Trash2, Plus, LogOut, Eye, EyeOff } from "lucide-react"
 
 type NewsItem = {
   id: string
@@ -22,6 +22,7 @@ export default function AdminPage() {
   const [editing, setEditing] = useState<NewsItem | null>(null)
   const [isCreating, setIsCreating] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   // Check auth on mount
   useEffect(() => {
@@ -110,14 +111,24 @@ export default function AdminPage() {
             <p className="text-sm text-muted-foreground mt-1">パスワードを入力してください</p>
           </div>
           <div className="space-y-4">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-              placeholder="パスワード"
-              className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+                placeholder="パスワード"
+                className="w-full px-4 py-3 pr-12 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={showPassword ? "パスワードを隠す" : "パスワードを表示"}
+              >
+                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              </button>
+            </div>
             {loginError && <p className="text-sm text-red-500">{loginError}</p>}
             <Button onClick={handleLogin} className="w-full">ログイン</Button>
           </div>
