@@ -177,11 +177,11 @@ export default function WorksPage() {
           </ScrollAnimate>
 
           {/* Works Grid */}
-          <StaggerContainer className="grid md:grid-cols-2 gap-8">
+          <StaggerContainer key={activeCategory} className="grid md:grid-cols-2 gap-8">
             {filtered.map((item, index) => {
               const Icon = item.icon
               return (
-                <StaggerItem key={`${item.title}-${activeCategory}`}>
+                <StaggerItem key={item.title}>
                   <div className="group relative overflow-hidden rounded-xl border border-border bg-card hover:border-accent/50 transition-colors">
                     {/* Image Area */}
                     <button
