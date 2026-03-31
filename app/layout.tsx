@@ -7,10 +7,38 @@ import './globals.css'
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
+const siteUrl = 'https://playplus.jp'
+
 export const metadata: Metadata = {
-  title: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
+  title: {
+    default: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
+    template: '%s | Play+',
+  },
   description: 'Play+（PlayPlus）- eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。企業・団体のための制作支援サービス。',
-  generator: 'v0.app',
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    title: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
+    description: 'eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。',
+    url: siteUrl,
+    siteName: 'Play+',
+    locale: 'ja_JP',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Play+ - eスポーツ大会プロデュース・Web制作・デザイン支援',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
+    description: 'eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。',
+    site: '@PlayPlus_E',
+    images: ['/og-image.png'],
+  },
   icons: {
     icon: [
       {

@@ -1,5 +1,11 @@
+import type { Metadata } from 'next'
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+
+export const metadata: Metadata = {
+  title: 'プライバシーポリシー',
+  description: 'Play+のプライバシーポリシー。個人情報の取り扱いについて。',
+}
 
 export default function PrivacyPage() {
   return (
