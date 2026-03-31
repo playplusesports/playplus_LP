@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
+import { ScrollAnimate } from "@/components/scroll-animate"
+import { motion, AnimatePresence } from "framer-motion"
 import { Trophy, Monitor, Palette, Users, Calendar, MapPin, ExternalLink, X } from "lucide-react"
 
 const categories = ["すべて", "大会運営", "イベント運営", "Web制作", "デザイン"] as const
@@ -177,11 +178,19 @@ export default function WorksPage() {
           </ScrollAnimate>
 
           {/* Works Grid */}
-          <StaggerContainer key={activeCategory} className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <AnimatePresence mode="popLayout">
             {filtered.map((item, index) => {
               const Icon = item.icon
               return (
-                <StaggerItem key={item.title}>
+                <motion.div
+                  key={item.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="group relative overflow-hidden rounded-xl border border-border bg-card hover:border-accent/50 transition-colors">
                     {/* Image Area */}
                     <button
@@ -244,10 +253,11 @@ export default function WorksPage() {
                       </div>
                     </div>
                   </div>
-                </StaggerItem>
+                </motion.div>
               )
             })}
-          </StaggerContainer>
+            </AnimatePresence>
+          </div>
 
           {/* CTA */}
           <ScrollAnimate delay={0.2}>
