@@ -37,32 +37,34 @@ export default async function NewsPage() {
           <StaggerContainer className="space-y-6">
             {newsItems.map((item) => (
               <StaggerItem key={item.id}>
-                <article className="group rounded-xl border border-border bg-card p-6 hover:border-accent/50 transition-colors">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                      <Calendar className="h-3.5 w-3.5" />
-                      {item.date}
-                    </span>
-                    <span
-                      className={`px-3 py-1 text-xs font-medium rounded-full ${categoryColors[item.category] ?? "bg-secondary text-muted-foreground"}`}
-                    >
-                      {item.category}
-                    </span>
-                  </div>
-                  <h2 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
-                    {item.title}
-                  </h2>
-                  {item.imageUrl && (
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className="w-full max-h-80 object-cover rounded-lg mb-3"
-                    />
-                  )}
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.content}
-                  </p>
-                </article>
+                <a href={`/news/${item.id}`} className="block">
+                  <article className="group rounded-xl border border-border bg-card p-6 hover:border-accent/50 transition-colors cursor-pointer">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {item.date}
+                      </span>
+                      <span
+                        className={`px-3 py-1 text-xs font-medium rounded-full ${categoryColors[item.category] ?? "bg-secondary text-muted-foreground"}`}
+                      >
+                        {item.category}
+                      </span>
+                    </div>
+                    <h2 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h2>
+                    {item.imageUrl && (
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        className="w-full max-h-60 object-cover rounded-lg mb-3"
+                      />
+                    )}
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                      {item.content}
+                    </p>
+                  </article>
+                </a>
               </StaggerItem>
             ))}
           </StaggerContainer>

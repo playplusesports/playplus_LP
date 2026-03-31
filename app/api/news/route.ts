@@ -2,9 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { isAuthenticated } from '@/lib/auth'
 import { getNews, saveNews, type NewsItem } from '@/lib/news'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const news = await getNews()
-  return NextResponse.json(news)
+  return NextResponse.json(news, {
+    headers: { 'Cache-Control': 'no-store, max-age=0' },
+  })
 }
 
 export async function POST(req: NextRequest) {
@@ -21,6 +25,7 @@ export async function POST(req: NextRequest) {
     category: body.category,
     title: body.title,
     content: body.content,
+    ...(body.imageUrl ? { imageUrl: body.imageUrl } : {}),
   }
 
   news.unshift(newItem)
