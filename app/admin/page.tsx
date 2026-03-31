@@ -60,7 +60,7 @@ export default function AdminPage() {
   }
 
   async function fetchNews() {
-    const res = await fetch("/api/news")
+    const res = await fetch("/api/news", { cache: "no-store" })
     if (res.ok) {
       const data = await res.json()
       setNews(data)
