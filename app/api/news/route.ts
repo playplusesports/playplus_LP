@@ -62,10 +62,7 @@ export async function DELETE(req: NextRequest) {
   const news = await getNews()
   const filtered = news.filter((n) => n.id !== id)
 
-  if (filtered.length === news.length) {
-    return NextResponse.json({ error: '記事が見つかりません' }, { status: 404 })
-  }
-
+  // Save even if item wasn't found (may have been deleted by another request)
   await saveNews(filtered)
   return NextResponse.json({ success: true })
 }

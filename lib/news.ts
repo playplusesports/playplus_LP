@@ -9,40 +9,45 @@ export type NewsItem = {
   imageUrl?: string
 }
 
-const BLOB_KEY = 'news.json'
+const BLOB_PREFIX = 'news-data-'
 
 export async function getNews(): Promise<NewsItem[]> {
   try {
-    const { blobs } = await list({ prefix: BLOB_KEY })
+    const { blobs } = await list({ prefix: BLOB_PREFIX })
     if (blobs.length === 0) return getDefaultNews()
 
-    // Get the most recent blob
+    // Always use the most recently uploaded blob
     const sorted = blobs.sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
     const response = await fetch(sorted[0].url, { cache: 'no-store' })
-    return await response.json()
+    const data = await response.json()
+
+    // Clean up old blobs in the background (keep only the latest)
+    if (sorted.length > 1) {
+      for (let i = 1; i < sorted.length; i++) {
+        del(sorted[i].url).catch(() => {})
+      }
+    }
+
+    return data
   } catch {
     return getDefaultNews()
   }
 }
 
 export async function saveNews(news: NewsItem[]): Promise<void> {
-  // Get existing blobs before writing
-  const { blobs: oldBlobs } = await list({ prefix: BLOB_KEY })
-
-  // Write new data first (atomic: new data is available before old is deleted)
-  await put(BLOB_KEY, JSON.stringify(news), {
+  // Write new blob with unique name (timestamp ensures uniqueness)
+  const newKey = `${BLOB_PREFIX}${Date.now()}.json`
+  await put(newKey, JSON.stringify(news), {
     access: 'public',
     contentType: 'application/json',
     addRandomSuffix: false,
   })
 
-  // Clean up old blobs that have a different URL than the new one
-  const { blobs: newBlobs } = await list({ prefix: BLOB_KEY })
-  const newUrls = new Set(newBlobs.map((b) => b.url))
+  // Delete all old blobs
+  const { blobs } = await list({ prefix: BLOB_PREFIX })
+  const oldBlobs = blobs.filter((b) => !b.pathname.includes(newKey))
   for (const blob of oldBlobs) {
-    if (!newUrls.has(blob.url)) {
-      await del(blob.url)
-    }
+    await del(blob.url)
   }
 }
 
