@@ -123,3 +123,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.form-input {
+  @apply w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-accent;
+}

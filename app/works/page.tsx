@@ -7,141 +7,29 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { ScrollAnimate } from "@/components/scroll-animate"
 import { motion, AnimatePresence } from "framer-motion"
-import { Trophy, Monitor, Palette, Users, Calendar, MapPin, ExternalLink, X } from "lucide-react"
+import { Calendar, MapPin, Users, ExternalLink, X } from "lucide-react"
 
-const categories = ["すべて", "大会運営", "イベント運営", "Web制作", "デザイン"] as const
-type Category = (typeof categories)[number]
+type WorkItem = {
+  id: string
+  title: string
+  category: string
+  description: string
+  period: string
+  location: string
+  scale: string
+  tags: string[]
+  imageUrl?: string
+}
 
-const worksItems = [
-  {
-    id: "offline-128",
-    title: "128名規模オフライン大会",
-    category: "大会運営" as const,
-    description:
-      "大手ゲームタイトルの公式大会を企画から運営まで一貫してサポート。128名のトーナメント管理、会場設営、配信環境の構築を担当しました。",
-    details: {
-      period: "2025年8月",
-      location: "東京都内イベントホール",
-      scale: "参加者128名 / 来場者300名",
-    },
-    tags: ["企画", "運営", "配信", "会場設営"],
-    icon: Trophy,
-    placeholder: "bg-gradient-to-br from-purple-900 to-blue-900",
-    label: "TOURNAMENT VENUE",
-  },
-  {
-    id: "facility-event",
-    title: "施設主催eスポーツイベント",
-    category: "イベント運営" as const,
-    description:
-      "商業施設でのeスポーツ体験イベントの運営をサポート。親子向けの体験ブース設計から当日の進行管理まで対応しました。",
-    details: {
-      period: "2025年5月",
-      location: "大阪市内商業施設",
-      scale: "来場者500名以上",
-    },
-    tags: ["イベント企画", "体験ブース", "進行管理"],
-    icon: Users,
-    placeholder: "bg-gradient-to-br from-amber-900 to-yellow-900",
-    label: "FACILITY EVENT",
-  },
-  {
-    id: "tournament-website",
-    title: "eスポーツ大会公式Webサイト",
-    category: "Web制作" as const,
-    description:
-      "大会の告知・エントリー受付用のランディングページを制作。レスポンシブ対応、エントリーフォーム、大会ルール掲載ページを含む構成です。",
-    details: {
-      period: "2025年7月",
-      location: "オンライン",
-      scale: "LP + 5ページ構成",
-    },
-    tags: ["LP制作", "フォーム", "レスポンシブ"],
-    icon: Monitor,
-    placeholder: "bg-gradient-to-br from-emerald-900 to-teal-900",
-    label: "OFFICIAL WEBSITE",
-  },
-  {
-    id: "branding-design",
-    title: "大会専用ブランディングデザイン",
-    category: "デザイン" as const,
-    description:
-      "大会ロゴ、ポスター、SNS用バナー、配信オーバーレイを統一デザインで制作。ブランドイメージの一貫性を重視しました。",
-    details: {
-      period: "2025年6月",
-      location: "-",
-      scale: "ロゴ + ポスター + バナー5点 + オーバーレイ",
-    },
-    tags: ["ロゴ", "ポスター", "バナー", "オーバーレイ"],
-    icon: Palette,
-    placeholder: "bg-gradient-to-br from-orange-900 to-red-900",
-    label: "BRANDING DESIGN",
-  },
-  {
-    id: "corporate-tournament",
-    title: "企業対抗eスポーツ大会",
-    category: "大会運営" as const,
-    description:
-      "企業間交流を目的としたeスポーツ大会をプロデュース。8社参加のチーム戦トーナメントの企画・運営・配信を一括で担当しました。",
-    details: {
-      period: "2025年10月",
-      location: "名古屋市内貸切スペース",
-      scale: "8チーム / 40名参加",
-    },
-    tags: ["企業向け", "チーム戦", "企画", "配信"],
-    icon: Trophy,
-    placeholder: "bg-gradient-to-br from-blue-900 to-cyan-900",
-    label: "CORPORATE TOURNAMENT",
-  },
-  {
-    id: "corporate-site",
-    title: "コーポレートサイトリニューアル",
-    category: "Web制作" as const,
-    description:
-      "eスポーツ関連企業のコーポレートサイトをフルリニューアル。モダンなデザインとSEO対策を施した5ページ構成のサイトを制作しました。",
-    details: {
-      period: "2025年9月",
-      location: "オンライン",
-      scale: "5ページ構成",
-    },
-    tags: ["コーポレート", "リニューアル", "SEO"],
-    icon: Monitor,
-    placeholder: "bg-gradient-to-br from-teal-900 to-cyan-900",
-    label: "CORPORATE SITE",
-  },
-  {
-    id: "stream-overlay",
-    title: "配信オーバーレイパッケージ",
-    category: "デザイン" as const,
-    description:
-      "ゲーム配信者向けのオーバーレイデザインをパッケージで制作。待機画面、ゲーム画面、エンディング画面のセットを統一デザインで提供しました。",
-    details: {
-      period: "2025年4月",
-      location: "-",
-      scale: "3画面セット",
-    },
-    tags: ["配信", "オーバーレイ", "パッケージ"],
-    icon: Palette,
-    placeholder: "bg-gradient-to-br from-violet-900 to-fuchsia-900",
-    label: "STREAM OVERLAY",
-  },
-  {
-    id: "school-league",
-    title: "学校対抗eスポーツリーグ",
-    category: "イベント運営" as const,
-    description:
-      "高校生を対象としたeスポーツリーグの運営支援。予選から決勝まで3ヶ月にわたるリーグ戦の進行管理とオンライン配信を担当しました。",
-    details: {
-      period: "2025年4月〜6月",
-      location: "オンライン + 決勝オフライン",
-      scale: "16校参加",
-    },
-    tags: ["学校", "リーグ戦", "長期運営", "配信"],
-    icon: Users,
-    placeholder: "bg-gradient-to-br from-indigo-900 to-purple-900",
-    label: "SCHOOL LEAGUE",
-  },
-]
+const categoryFilters = ["すべて", "大会運営", "イベント運営", "Web制作", "デザイン"] as const
+type CategoryFilter = (typeof categoryFilters)[number]
+
+const placeholders: Record<string, string> = {
+  "大会運営": "bg-gradient-to-br from-purple-900 to-blue-900",
+  "イベント運営": "bg-gradient-to-br from-amber-900 to-yellow-900",
+  "Web制作": "bg-gradient-to-br from-emerald-900 to-teal-900",
+  "デザイン": "bg-gradient-to-br from-orange-900 to-red-900",
+}
 
 export default function WorksPage() {
   return (
@@ -153,16 +41,22 @@ export default function WorksPage() {
 
 function WorksContent() {
   const searchParams = useSearchParams()
-  const [activeCategory, setActiveCategory] = useState<Category>("すべて")
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("すべて")
+  const [selectedItem, setSelectedItem] = useState<WorkItem | null>(null)
+  const [worksItems, setWorksItems] = useState<WorkItem[]>([])
 
-  // Open detail dialog if ?id= is in URL
   useEffect(() => {
-    const id = searchParams.get("id")
-    if (id) {
-      const index = worksItems.findIndex((item) => item.id === id)
-      if (index !== -1) setSelectedIndex(index)
-    }
+    fetch("/api/works", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        setWorksItems(data)
+        // Open detail dialog if ?id= is in URL
+        const id = searchParams.get("id")
+        if (id) {
+          const item = data.find((w: WorkItem) => w.id === id)
+          if (item) setSelectedItem(item)
+        }
+      })
   }, [searchParams])
 
   const filtered =
@@ -191,7 +85,7 @@ function WorksContent() {
           {/* Category Filter */}
           <ScrollAnimate delay={0.1}>
             <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {categories.map((category) => (
+              {categoryFilters.map((category) => (
                 <Button
                   key={category}
                   variant={activeCategory === category ? "default" : "outline"}
@@ -207,11 +101,9 @@ function WorksContent() {
           {/* Works Grid */}
           <div className="grid md:grid-cols-2 gap-8">
             <AnimatePresence mode="popLayout">
-            {filtered.map((item, index) => {
-              const Icon = item.icon
-              return (
+              {filtered.map((item) => (
                 <motion.div
-                  key={item.title}
+                  key={item.id}
                   layout
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -221,24 +113,23 @@ function WorksContent() {
                   <div className="group relative overflow-hidden rounded-xl border border-border bg-card hover:border-accent/50 transition-colors">
                     {/* Image Area */}
                     <button
-                      onClick={() => setSelectedIndex(worksItems.indexOf(item))}
+                      onClick={() => setSelectedItem(item)}
                       className="w-full aspect-[16/9] overflow-hidden cursor-pointer"
                     >
-                      <div
-                        className={`w-full h-full ${item.placeholder} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}
-                      >
-                        <span className="text-white/30 text-lg font-bold tracking-widest">
-                          {item.label}
-                        </span>
-                      </div>
+                      {item.imageUrl ? (
+                        <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" />
+                      ) : (
+                        <div className={`w-full h-full ${placeholders[item.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}>
+                          <span className="text-white/30 text-lg font-bold tracking-widest">
+                            {item.category.toUpperCase()}
+                          </span>
+                        </div>
+                      )}
                     </button>
 
                     {/* Card Content */}
                     <div className="p-6">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                          <Icon className="h-5 w-5 text-accent" />
-                        </div>
                         <div className="flex-1 min-w-0">
                           <span className="inline-block px-3 py-1 text-xs font-medium bg-secondary text-accent rounded-full mb-1">
                             {item.category}
@@ -254,26 +145,29 @@ function WorksContent() {
                       </p>
 
                       <div className="flex flex-wrap gap-3 text-xs text-muted-foreground mb-4">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3.5 w-3.5" />
-                          {item.details.period}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="h-3.5 w-3.5" />
-                          {item.details.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Users className="h-3.5 w-3.5" />
-                          {item.details.scale}
-                        </span>
+                        {item.period && (
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3.5 w-3.5" />
+                            {item.period}
+                          </span>
+                        )}
+                        {item.location && (
+                          <span className="flex items-center gap-1">
+                            <MapPin className="h-3.5 w-3.5" />
+                            {item.location}
+                          </span>
+                        )}
+                        {item.scale && (
+                          <span className="flex items-center gap-1">
+                            <Users className="h-3.5 w-3.5" />
+                            {item.scale}
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex flex-wrap gap-2">
                         {item.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground"
-                          >
+                          <span key={tag} className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground">
                             {tag}
                           </span>
                         ))}
@@ -281,8 +175,7 @@ function WorksContent() {
                     </div>
                   </div>
                 </motion.div>
-              )
-            })}
+              ))}
             </AnimatePresence>
           </div>
 
@@ -304,75 +197,78 @@ function WorksContent() {
       </section>
 
       {/* Detail Dialog */}
-      {selectedIndex !== null && worksItems[selectedIndex] && (() => {
-        const item = worksItems[selectedIndex]
-        const Icon = item.icon
-        return (
-          <div
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => setSelectedIndex(null)}
+      {selectedItem && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelectedItem(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-white/70 hover:text-white"
+            onClick={() => setSelectedItem(null)}
           >
-            <button
-              className="absolute top-6 right-6 text-white/70 hover:text-white"
-              onClick={() => setSelectedIndex(null)}
-            >
-              <X className="h-8 w-8" />
-            </button>
-            <div
-              className="max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-xl bg-card border border-border"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className={`w-full aspect-[16/9] ${item.placeholder} flex items-center justify-center`}>
+            <X className="h-8 w-8" />
+          </button>
+          <div
+            className="max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-xl bg-card border border-border"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {selectedItem.imageUrl ? (
+              <img src={selectedItem.imageUrl} alt={selectedItem.title} className="w-full aspect-[16/9] object-cover" />
+            ) : (
+              <div className={`w-full aspect-[16/9] ${placeholders[selectedItem.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center`}>
                 <span className="text-white/30 text-2xl font-bold tracking-widest">
-                  {item.label}
+                  {selectedItem.category.toUpperCase()}
                 </span>
               </div>
-              <div className="p-6 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                    <Icon className="h-5 w-5 text-accent" />
-                  </div>
-                  <span className="px-3 py-1 text-xs font-medium bg-secondary text-accent rounded-full">
-                    {item.category}
-                  </span>
-                </div>
-                <h2 className="text-xl font-bold text-foreground">{item.title}</h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                <div className="grid grid-cols-3 gap-4 pt-2">
+            )}
+            <div className="p-6 space-y-4">
+              <span className="px-3 py-1 text-xs font-medium bg-secondary text-accent rounded-full">
+                {selectedItem.category}
+              </span>
+              <h2 className="text-xl font-bold text-foreground">{selectedItem.title}</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedItem.description}</p>
+              <div className="grid grid-cols-3 gap-4 pt-2">
+                {selectedItem.period && (
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">期間</p>
                     <p className="text-sm text-foreground flex items-center gap-1">
                       <Calendar className="h-3.5 w-3.5 text-accent" />
-                      {item.details.period}
+                      {selectedItem.period}
                     </p>
                   </div>
+                )}
+                {selectedItem.location && (
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">場所</p>
                     <p className="text-sm text-foreground flex items-center gap-1">
                       <MapPin className="h-3.5 w-3.5 text-accent" />
-                      {item.details.location}
+                      {selectedItem.location}
                     </p>
                   </div>
+                )}
+                {selectedItem.scale && (
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">規模</p>
                     <p className="text-sm text-foreground flex items-center gap-1">
                       <Users className="h-3.5 w-3.5 text-accent" />
-                      {item.details.scale}
+                      {selectedItem.scale}
                     </p>
                   </div>
-                </div>
+                )}
+              </div>
+              {selectedItem.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {item.tags.map((tag) => (
+                  {selectedItem.tags.map((tag) => (
                     <span key={tag} className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground">
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
+              )}
             </div>
           </div>
-        )
-      })()}
+        </div>
+      )}
 
       <Footer />
     </main>
