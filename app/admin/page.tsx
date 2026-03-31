@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Pencil, Trash2, Plus, LogOut, Eye, EyeOff } from "lucide-react"
+import { Pencil, Trash2, Plus, LogOut, Eye, EyeOff, ImagePlus, X as XIcon } from "lucide-react"
 
 type NewsItem = {
   id: string
@@ -10,6 +10,7 @@ type NewsItem = {
   category: string
   title: string
   content: string
+  imageUrl?: string
 }
 
 const categories = ["お知らせ", "イベント", "メディア", "実績"]
@@ -232,10 +233,26 @@ function NewsForm({
   const [category, setCategory] = useState(initial?.category || categories[0])
   const [title, setTitle] = useState(initial?.title || "")
   const [content, setContent] = useState(initial?.content || "")
+  const [imageUrl, setImageUrl] = useState(initial?.imageUrl || "")
+  const [uploading, setUploading] = useState(false)
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    const formData = new FormData()
+    formData.append("file", file)
+    const res = await fetch("/api/upload", { method: "POST", body: formData })
+    if (res.ok) {
+      const { url } = await res.json()
+      setImageUrl(url)
+    }
+    setUploading(false)
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    onSave({ id: initial?.id, date, category, title, content })
+    onSave({ id: initial?.id, date, category, title, content, imageUrl: imageUrl || undefined })
   }
 
   return (
@@ -285,8 +302,37 @@ function NewsForm({
           required
         />
       </div>
+      <div>
+        <label className="block text-sm font-medium text-foreground mb-2">画像（任意）</label>
+        {imageUrl ? (
+          <div className="relative inline-block">
+            <img src={imageUrl} alt="プレビュー" className="max-h-48 rounded-lg border border-border" />
+            <button
+              type="button"
+              onClick={() => setImageUrl("")}
+              className="absolute -top-2 -right-2 p-1 rounded-full bg-destructive text-white hover:opacity-80"
+            >
+              <XIcon className="h-4 w-4" />
+            </button>
+          </div>
+        ) : (
+          <label className="flex flex-col items-center justify-center w-full h-32 rounded-lg border-2 border-dashed border-border bg-card hover:border-accent/50 transition-colors cursor-pointer">
+            <ImagePlus className="h-8 w-8 text-muted-foreground mb-2" />
+            <span className="text-sm text-muted-foreground">
+              {uploading ? "アップロード中..." : "クリックして画像を選択"}
+            </span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="hidden"
+              disabled={uploading}
+            />
+          </label>
+        )}
+      </div>
       <div className="flex items-center gap-3">
-        <Button type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading || uploading}>
           {loading ? "保存中..." : "保存"}
         </Button>
         <Button type="button" variant="outline" onClick={onCancel}>

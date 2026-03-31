@@ -6,6 +6,7 @@ export type NewsItem = {
   category: string
   title: string
   content: string
+  imageUrl?: string
 }
 
 const BLOB_KEY = 'news.json'

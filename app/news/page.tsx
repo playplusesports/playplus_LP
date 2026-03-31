@@ -12,6 +12,7 @@ type NewsItem = {
   category: string
   title: string
   content: string
+  imageUrl?: string
 }
 
 const categoryColors: Record<string, string> = {
@@ -66,6 +67,13 @@ export default function NewsPage() {
                   <h2 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
                     {item.title}
                   </h2>
+                  {item.imageUrl && (
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="w-full max-h-80 object-cover rounded-lg mb-3"
+                    />
+                  )}
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.content}
                   </p>
