@@ -232,7 +232,10 @@ function NewsForm({
   onCancel: () => void
   loading: boolean
 }) {
-  const [date, setDate] = useState(initial?.date || new Date().toISOString().split("T")[0].replace(/-/g, "."))
+  // Store as YYYY-MM-DD for date input, display as YYYY.MM.DD
+  const toInputDate = (d: string) => d.replace(/\./g, "-")
+  const toDisplayDate = (d: string) => d.replace(/-/g, ".")
+  const [date, setDate] = useState(toInputDate(initial?.date || new Date().toISOString().split("T")[0]))
   const [category, setCategory] = useState(initial?.category || categories[0])
   const [title, setTitle] = useState(initial?.title || "")
   const [content, setContent] = useState(initial?.content || "")
@@ -255,7 +258,7 @@ function NewsForm({
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    onSave({ id: initial?.id, date, category, title, content, imageUrl: imageUrl || undefined })
+    onSave({ id: initial?.id, date: toDisplayDate(date), category, title, content, imageUrl: imageUrl || undefined })
   }
 
   return (
@@ -263,10 +266,9 @@ function NewsForm({
       <div>
         <label className="block text-sm font-medium text-foreground mb-2">日付</label>
         <input
-          type="text"
+          type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          placeholder="2026.04.01"
           className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
           required
         />
