@@ -5,7 +5,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <p className="text-xl font-bold text-foreground">ESPORTS STUDIO</p>
+            <p className="text-xl font-bold text-foreground">Play+</p>
             <p className="text-sm text-muted-foreground mt-1">
               eスポーツ大会プロデュース / Web制作 / デザイン制作
             </p>
@@ -73,7 +73,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} ESPORTS STUDIO. All rights reserved.
+            &copy; {new Date().getFullYear()} Play+. All rights reserved.
           </p>
         </div>
       </div>

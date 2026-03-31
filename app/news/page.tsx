@@ -11,7 +11,7 @@ const newsItems = [
     category: "お知らせ",
     title: "Webサイトをリニューアルしました",
     content:
-      "ESPORTS STUDIOのWebサイトをリニューアルしました。サービス内容や実績をより分かりやすくお伝えできるよう、デザインと構成を一新しています。",
+      "Play+のWebサイトをリニューアルしました。サービス内容や実績をより分かりやすくお伝えできるよう、デザインと構成を一新しています。",
   },
   {
     date: "2026.03.15",
@@ -70,7 +70,7 @@ export default function NewsPage() {
                 お知らせ
               </h1>
               <p className="text-lg text-muted-foreground">
-                ESPORTS STUDIOの最新情報をお届けします。
+                Play+の最新情報をお届けします。
               </p>
             </div>
           </ScrollAnimate>

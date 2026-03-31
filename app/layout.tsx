@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'eスポーツ大会プロデュース | Web制作・デザイン支援サービス',
-  description: 'eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。企業・団体のための制作支援サービス。',
+  title: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
+  description: 'Play+（PlayPlus）- eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。企業・団体のための制作支援サービス。',
   generator: 'v0.app',
   icons: {
     icon: [

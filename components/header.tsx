@@ -24,7 +24,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="text-xl font-bold text-foreground">
-            ESPORTS STUDIO
+            Play+
           </a>
 
           {/* Desktop Navigation */}

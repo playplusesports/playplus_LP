@@ -224,7 +224,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-sm font-medium text-foreground">メール</p>
                       <p className="text-sm text-muted-foreground">
-                        info@esports-studio.example
+                        info@playplus.example
                       </p>
                     </div>
                   </div>
