@@ -1,19 +1,10 @@
-"use client"
-
-import { useState, useEffect } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
+import { getNews } from "@/lib/news"
 import { Calendar } from "lucide-react"
+import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
 
-type NewsItem = {
-  id: string
-  date: string
-  category: string
-  title: string
-  content: string
-  imageUrl?: string
-}
+export const dynamic = "force-dynamic"
 
 const categoryColors: Record<string, string> = {
   "お知らせ": "bg-accent/10 text-accent",
@@ -22,14 +13,8 @@ const categoryColors: Record<string, string> = {
   "実績": "bg-blue-500/10 text-blue-400",
 }
 
-export default function NewsPage() {
-  const [newsItems, setNewsItems] = useState<NewsItem[]>([])
-
-  useEffect(() => {
-    fetch("/api/news")
-      .then((res) => res.json())
-      .then((data) => setNewsItems(data))
-  }, [])
+export default async function NewsPage() {
+  const newsItems = await getNews()
 
   return (
     <main className="min-h-screen bg-background">
