@@ -26,18 +26,24 @@ export async function getNews(): Promise<NewsItem[]> {
 }
 
 export async function saveNews(news: NewsItem[]): Promise<void> {
-  // Delete all existing news blobs
-  const { blobs } = await list({ prefix: BLOB_KEY })
-  for (const blob of blobs) {
-    await del(blob.url)
-  }
+  // Get existing blobs before writing
+  const { blobs: oldBlobs } = await list({ prefix: BLOB_KEY })
 
-  // Save new data with fixed filename
+  // Write new data first (atomic: new data is available before old is deleted)
   await put(BLOB_KEY, JSON.stringify(news), {
     access: 'public',
     contentType: 'application/json',
     addRandomSuffix: false,
   })
+
+  // Clean up old blobs that have a different URL than the new one
+  const { blobs: newBlobs } = await list({ prefix: BLOB_KEY })
+  const newUrls = new Set(newBlobs.map((b) => b.url))
+  for (const blob of oldBlobs) {
+    if (!newUrls.has(blob.url)) {
+      await del(blob.url)
+    }
+  }
 }
 
 function getDefaultNews(): NewsItem[] {

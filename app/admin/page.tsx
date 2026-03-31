@@ -92,14 +92,17 @@ export default function AdminPage() {
 
   async function handleDelete(id: string) {
     if (!confirm("この記事を削除しますか？")) return
-    setLoading(true)
-    await fetch("/api/news", {
+    // Optimistic UI: remove from list immediately
+    setNews((prev) => prev.filter((n) => n.id !== id))
+    const res = await fetch("/api/news", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
     })
-    await fetchNews()
-    setLoading(false)
+    if (!res.ok) {
+      // Revert on failure
+      await fetchNews()
+    }
   }
 
   // Login screen
