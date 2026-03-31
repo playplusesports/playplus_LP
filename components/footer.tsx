@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export function Footer() {
   return (
     <footer className="py-12 border-t border-border">
@@ -5,7 +7,10 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <p className="text-xl font-bold text-foreground">Play+</p>
+            <div className="flex items-center gap-2">
+              <Image src="/logo.png" alt="Play+" width={40} height={40} className="rounded-full" />
+              <p className="text-xl font-bold text-foreground">Play+</p>
+            </div>
             <p className="text-sm text-muted-foreground mt-1">
               eスポーツ大会プロデュース / Web制作 / デザイン制作
             </p>
