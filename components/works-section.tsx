@@ -5,6 +5,7 @@ import { Trophy, Monitor, Palette, Users } from "lucide-react"
 
 const works = [
   {
+    id: "offline-128",
     title: "128名規模オフライン大会",
     category: "大会運営",
     description: "企画から当日の運営・配信まで一貫してサポート。128名のトーナメント管理、会場設営を担当。",
@@ -13,6 +14,7 @@ const works = [
     label: "TOURNAMENT VENUE",
   },
   {
+    id: "facility-event",
     title: "施設主催eスポーツイベント",
     category: "イベント運営",
     description: "商業施設でのeスポーツ体験イベント。親子向け体験ブース設計から当日進行まで対応。",
@@ -21,6 +23,7 @@ const works = [
     label: "FACILITY EVENT",
   },
   {
+    id: "tournament-website",
     title: "大会専用Webサイト",
     category: "Web制作",
     description: "大会告知・エントリー受付用のLP制作。レスポンシブ対応、エントリーフォーム実装。",
@@ -29,6 +32,7 @@ const works = [
     label: "OFFICIAL WEBSITE",
   },
   {
+    id: "branding-design",
     title: "大会ブランディングデザイン",
     category: "デザイン",
     description: "大会ロゴ、ポスター、SNSバナー、配信オーバーレイを統一デザインで制作。",
@@ -37,6 +41,7 @@ const works = [
     label: "BRANDING DESIGN",
   },
   {
+    id: "corporate-tournament",
     title: "企業対抗eスポーツ大会",
     category: "大会運営",
     description: "企業間交流eスポーツ大会をプロデュース。8社参加のチーム戦を企画・運営・配信。",
@@ -45,6 +50,7 @@ const works = [
     label: "CORPORATE TOURNAMENT",
   },
   {
+    id: "stream-overlay",
     title: "配信オーバーレイパッケージ",
     category: "デザイン",
     description: "待機画面、ゲーム画面、エンディング画面のセットを統一デザインで提供。",
@@ -72,7 +78,7 @@ export function WorksSection() {
             const Icon = work.icon
             return (
               <StaggerItem key={index}>
-                <a href="/works" className="block group">
+                <a href={`/works?id=${work.id}`} className="block group">
                   <div className="relative overflow-hidden rounded-xl border border-border bg-card hover:border-accent/50 transition-colors">
                     {/* Image Area */}
                     <div className="aspect-[16/10] overflow-hidden">

@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -13,6 +14,7 @@ type Category = (typeof categories)[number]
 
 const worksItems = [
   {
+    id: "offline-128",
     title: "128名規模オフライン大会",
     category: "大会運営" as const,
     description:
@@ -28,6 +30,7 @@ const worksItems = [
     label: "TOURNAMENT VENUE",
   },
   {
+    id: "facility-event",
     title: "施設主催eスポーツイベント",
     category: "イベント運営" as const,
     description:
@@ -43,6 +46,7 @@ const worksItems = [
     label: "FACILITY EVENT",
   },
   {
+    id: "tournament-website",
     title: "eスポーツ大会公式Webサイト",
     category: "Web制作" as const,
     description:
@@ -58,6 +62,7 @@ const worksItems = [
     label: "OFFICIAL WEBSITE",
   },
   {
+    id: "branding-design",
     title: "大会専用ブランディングデザイン",
     category: "デザイン" as const,
     description:
@@ -73,6 +78,7 @@ const worksItems = [
     label: "BRANDING DESIGN",
   },
   {
+    id: "corporate-tournament",
     title: "企業対抗eスポーツ大会",
     category: "大会運営" as const,
     description:
@@ -88,6 +94,7 @@ const worksItems = [
     label: "CORPORATE TOURNAMENT",
   },
   {
+    id: "corporate-site",
     title: "コーポレートサイトリニューアル",
     category: "Web制作" as const,
     description:
@@ -103,6 +110,7 @@ const worksItems = [
     label: "CORPORATE SITE",
   },
   {
+    id: "stream-overlay",
     title: "配信オーバーレイパッケージ",
     category: "デザイン" as const,
     description:
@@ -118,6 +126,7 @@ const worksItems = [
     label: "STREAM OVERLAY",
   },
   {
+    id: "school-league",
     title: "学校対抗eスポーツリーグ",
     category: "イベント運営" as const,
     description:
@@ -135,8 +144,26 @@ const worksItems = [
 ]
 
 export default function WorksPage() {
+  return (
+    <Suspense>
+      <WorksContent />
+    </Suspense>
+  )
+}
+
+function WorksContent() {
+  const searchParams = useSearchParams()
   const [activeCategory, setActiveCategory] = useState<Category>("すべて")
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+
+  // Open detail dialog if ?id= is in URL
+  useEffect(() => {
+    const id = searchParams.get("id")
+    if (id) {
+      const index = worksItems.findIndex((item) => item.id === id)
+      if (index !== -1) setSelectedIndex(index)
+    }
+  }, [searchParams])
 
   const filtered =
     activeCategory === "すべて"
@@ -194,7 +221,7 @@ export default function WorksPage() {
                   <div className="group relative overflow-hidden rounded-xl border border-border bg-card hover:border-accent/50 transition-colors">
                     {/* Image Area */}
                     <button
-                      onClick={() => setSelectedIndex(index)}
+                      onClick={() => setSelectedIndex(worksItems.indexOf(item))}
                       className="w-full aspect-[16/9] overflow-hidden cursor-pointer"
                     >
                       <div
@@ -276,38 +303,76 @@ export default function WorksPage() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      {selectedIndex !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setSelectedIndex(null)}
-        >
-          <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white"
+      {/* Detail Dialog */}
+      {selectedIndex !== null && worksItems[selectedIndex] && (() => {
+        const item = worksItems[selectedIndex]
+        const Icon = item.icon
+        return (
+          <div
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
             onClick={() => setSelectedIndex(null)}
           >
-            <X className="h-8 w-8" />
-          </button>
-          <div
-            className="max-w-4xl w-full aspect-[16/9] rounded-xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div
-              className={`w-full h-full ${filtered[selectedIndex].placeholder} flex flex-col items-center justify-center`}
+            <button
+              className="absolute top-6 right-6 text-white/70 hover:text-white"
+              onClick={() => setSelectedIndex(null)}
             >
-              <span className="text-white/30 text-2xl font-bold tracking-widest mb-4">
-                {filtered[selectedIndex].label}
-              </span>
-              <p className="text-white text-xl font-semibold">
-                {filtered[selectedIndex].title}
-              </p>
-              <span className="text-accent text-sm mt-2">
-                {filtered[selectedIndex].category}
-              </span>
+              <X className="h-8 w-8" />
+            </button>
+            <div
+              className="max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-xl bg-card border border-border"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={`w-full aspect-[16/9] ${item.placeholder} flex items-center justify-center`}>
+                <span className="text-white/30 text-2xl font-bold tracking-widest">
+                  {item.label}
+                </span>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-accent" />
+                  </div>
+                  <span className="px-3 py-1 text-xs font-medium bg-secondary text-accent rounded-full">
+                    {item.category}
+                  </span>
+                </div>
+                <h2 className="text-xl font-bold text-foreground">{item.title}</h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                <div className="grid grid-cols-3 gap-4 pt-2">
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">期間</p>
+                    <p className="text-sm text-foreground flex items-center gap-1">
+                      <Calendar className="h-3.5 w-3.5 text-accent" />
+                      {item.details.period}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">場所</p>
+                    <p className="text-sm text-foreground flex items-center gap-1">
+                      <MapPin className="h-3.5 w-3.5 text-accent" />
+                      {item.details.location}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">規模</p>
+                    <p className="text-sm text-foreground flex items-center gap-1">
+                      <Users className="h-3.5 w-3.5 text-accent" />
+                      {item.details.scale}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {item.tags.map((tag) => (
+                    <span key={tag} className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      })()}
 
       <Footer />
     </main>
