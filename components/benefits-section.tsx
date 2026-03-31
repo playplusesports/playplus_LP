@@ -1,4 +1,7 @@
+"use client"
+
 import { Layers, Gamepad2, Users, Wallet, Zap } from "lucide-react"
+import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
 
 const benefits = [
   {
@@ -32,29 +35,30 @@ export function BenefitsSection() {
   return (
     <section id="benefits" className="py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-sm text-accent font-medium mb-2">Why Choose Us</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            選ばれる理由
-          </h2>
-        </div>
+        <ScrollAnimate>
+          <div className="text-center mb-16">
+            <p className="text-sm text-accent font-medium mb-2">Why Choose Us</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+              選ばれる理由
+            </h2>
+          </div>
+        </ScrollAnimate>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="group p-8 rounded-xl border border-border bg-card hover:bg-secondary/50 transition-colors"
-            >
-              <div className="w-14 h-14 rounded-xl bg-secondary group-hover:bg-accent/20 flex items-center justify-center mb-6 transition-colors">
-                <benefit.icon className="h-7 w-7 text-accent" />
+            <StaggerItem key={index}>
+              <div className="group p-8 rounded-xl border border-border bg-card hover:bg-secondary/50 transition-colors h-full">
+                <div className="w-14 h-14 rounded-xl bg-secondary group-hover:bg-accent/20 flex items-center justify-center mb-6 transition-colors">
+                  <benefit.icon className="h-7 w-7 text-accent" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-muted-foreground">{benefit.description}</p>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {benefit.title}
-              </h3>
-              <p className="text-muted-foreground">{benefit.description}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   )

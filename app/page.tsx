@@ -7,6 +7,7 @@ import { WorksSection } from "@/components/works-section"
 import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
 import { CtaSection } from "@/components/cta-section"
+import { NewsSection } from "@/components/news-section"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 
@@ -20,6 +21,7 @@ export default function Home() {
       <ServicesSection />
       <BenefitsSection />
       <WorksSection />
+      <NewsSection />
       <PricingSection />
       <FaqSection />
       <CtaSection />
