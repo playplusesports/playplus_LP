@@ -16,7 +16,9 @@ export async function getNews(): Promise<NewsItem[]> {
     const { blobs } = await list({ prefix: BLOB_KEY })
     if (blobs.length === 0) return getDefaultNews()
 
-    const response = await fetch(blobs[0].url, { cache: 'no-store' })
+    // Get the most recent blob
+    const sorted = blobs.sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
+    const response = await fetch(sorted[0].url, { cache: 'no-store' })
     return await response.json()
   } catch {
     return getDefaultNews()
@@ -24,16 +26,17 @@ export async function getNews(): Promise<NewsItem[]> {
 }
 
 export async function saveNews(news: NewsItem[]): Promise<void> {
-  // Delete existing blob
+  // Delete all existing news blobs
   const { blobs } = await list({ prefix: BLOB_KEY })
   for (const blob of blobs) {
     await del(blob.url)
   }
 
-  // Save new data
+  // Save new data with fixed filename
   await put(BLOB_KEY, JSON.stringify(news), {
     access: 'public',
     contentType: 'application/json',
+    addRandomSuffix: false,
   })
 }
 
