@@ -25,9 +25,14 @@ export default function AdminPage() {
 
   // Check auth on mount
   useEffect(() => {
-    fetchNews().then((data) => {
-      if (data) setIsLoggedIn(true)
-    }).catch(() => {})
+    fetch("/api/auth")
+      .then((res) => {
+        if (res.ok) {
+          setIsLoggedIn(true)
+          fetchNews()
+        }
+      })
+      .catch(() => {})
   }, [])
 
   async function handleLogin() {
