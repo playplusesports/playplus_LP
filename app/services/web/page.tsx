@@ -58,6 +58,7 @@ const plans = [
     contract: "6ヶ月契約",
     recommended: false,
     items: [
+      "独自ドメイン・サーバー費用込み",
       "5ページ以内の静的サイト",
       "お問い合わせフォーム",
       "Googleマップ埋め込み",
@@ -71,6 +72,7 @@ const plans = [
     contract: "6ヶ月契約",
     recommended: true,
     items: [
+      "独自ドメイン・サーバー費用込み",
       "8ページ以内の静的サイト",
       "お問い合わせフォーム＋LINE誘導",
       "Instagram・Googleマップ埋め込み",
@@ -86,6 +88,7 @@ const plans = [
     contract: "3ヶ月契約",
     recommended: false,
     items: [
+      "独自ドメイン・サーバー費用込み",
       "ページ数無制限",
       "予約フォーム・カート連携",
       "月2回コンテンツ更新",
@@ -281,7 +284,7 @@ export default function WebServicePage() {
           </div>
           <div className="mt-8 text-center text-xs text-muted-foreground space-y-1">
             <p>※ 表示価格はすべて税込です。</p>
-            <p>※ ドメイン・サーバー費用は含まれません（年額約3,000円〜別途）。</p>
+            <p>※ 独自ドメイン・サーバー費用はプラン料金に含まれています。</p>
             <p>※ 内容によってはお見積りいたします。</p>
           </div>
         </div>
