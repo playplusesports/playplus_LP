@@ -20,15 +20,9 @@ const pricing = [
     href: null,
   },
   {
-    service: "ロゴ作成（シンプル）",
+    service: "ロゴ作成",
     price: "10,000",
-    unit: "円",
-    href: null,
-  },
-  {
-    service: "ロゴ作成（フルオリジナル）",
-    price: "39,800",
-    unit: "円",
+    unit: "円〜",
     href: null,
   },
   {
