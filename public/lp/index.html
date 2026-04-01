@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>お店のホームページ、丸ごとお任せください | Play+</title>
+  <meta name="description" content="Play+の地域密着型Web保守サービス。作成から更新・管理まで月々8,000円で全部対応します。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'] },
+          colors: {
+            brand: '#2D9E6B',
+            'brand-light': '#E8F5EE',
+            'brand-dark': '#1E7A4F',
+            amber: '#F5A623',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Noto Sans JP', sans-serif; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .wave-top { position: relative; }
+    .wave-top::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: inherit;
+      clip-path: ellipse(60% 100% at 50% 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-[#1A1A1A] antialiased">
+
+  <!-- ========== 1. ヘッダー / ヒーロー ========== -->
+  <header class="relative overflow-hidden bg-gradient-to-br from-white via-[#F8FAF9] to-[#E8F5EE] min-h-[90vh] flex items-center">
+    <!-- 装飾 -->
+    <div class="absolute top-0 right-0 w-72 h-72 bg-brand/10 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand/5 rounded-full translate-y-1/2 -translate-x-1/3"></div>
+    <div class="absolute top-20 left-10 w-4 h-4 bg-amber rounded-full opacity-60"></div>
+    <div class="absolute top-40 right-20 w-6 h-6 bg-brand/30 rounded-full"></div>
+    <div class="absolute bottom-32 right-10 w-3 h-3 bg-amber/40 rounded-full"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
+      <p class="inline-block px-4 py-1.5 bg-brand/10 text-brand text-sm font-medium rounded-full mb-8">地域密着のWeb保守サービス</p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
+        お店のホームページ、<br>
+        <span class="text-brand">丸ごとお任せ</span>ください。
+      </h1>
+      <p class="text-lg sm:text-xl text-[#6B7280] mb-10 leading-relaxed">
+        作成から更新・管理まで<br class="sm:hidden">
+        <span class="font-bold text-[#1A1A1A]">月々8,000円</span>で全部対応します。
+      </p>
+      <a href="#contact" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+        無料で相談する
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== 2. こんなお悩みありませんか？ ========== -->
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">こんなお悩みありませんか？</h2>
+      <p class="text-[#6B7280] text-center mb-12 fade-in">一つでも当てはまったら、お気軽にご相談ください</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-3xl mb-3 block">😰</span>
+          <p class="font-semibold">ホームページを持っていない</p>
+        </div>
+        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-3xl mb-3 block">😵‍💫</span>
+          <p class="font-semibold">WordPressが難しくて更新できていない</p>
+        </div>
+        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-3xl mb-3 block">🕸️</span>
+          <p class="font-semibold">作ったけど放置してしまっている</p>
+        </div>
+        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-3xl mb-3 block">🤯</span>
+          <p class="font-semibold">SNSの投稿文を考えるのが大変</p>
+        </div>
+        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-3xl mb-3 block">🔍</span>
+          <p class="font-semibold">Googleで検索されているか不安</p>
+        </div>
+        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-3xl mb-3 block">💸</span>
+          <p class="font-semibold">業者に頼むと高そうで相談しにくい</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. 選ばれる理由 ========== -->
+  <section class="py-16 sm:py-20 bg-[#F8FAF9]">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">Play+が<span class="text-brand">選ばれる理由</span></h2>
+      <p class="text-[#6B7280] text-center mb-12 fade-in">手軽さ・安さ・安心感の3つを大切にしています</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="fade-in bg-white rounded-2xl p-8 shadow-md text-center">
+          <div class="w-16 h-16 mx-auto mb-5 bg-brand/10 rounded-2xl flex items-center justify-center text-3xl">🤖</div>
+          <h3 class="text-lg font-bold mb-3">AIで素早く・安く</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">AIを活用して高品質なサイトを短期間・低コストで制作</p>
+        </div>
+        <div class="fade-in bg-white rounded-2xl p-8 shadow-md text-center">
+          <div class="w-16 h-16 mx-auto mb-5 bg-brand/10 rounded-2xl flex items-center justify-center text-3xl">📱</div>
+          <h3 class="text-lg font-bold mb-3">LINEで気軽に連絡</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">更新したいときはLINEで写真を送るだけでOK</p>
+        </div>
+        <div class="fade-in bg-white rounded-2xl p-8 shadow-md text-center">
+          <div class="w-16 h-16 mx-auto mb-5 bg-brand/10 rounded-2xl flex items-center justify-center text-3xl">📊</div>
+          <h3 class="text-lg font-bold mb-3">毎月レポートをお届け</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">何人が見たかを毎月わかりやすくご報告します</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. サービスの流れ ========== -->
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">サービスの流れ</h2>
+      <p class="text-[#6B7280] text-center mb-12 fade-in">お問い合わせから公開まで最短5日</p>
+      <div class="space-y-0">
+        <!-- Step 1 -->
+        <div class="fade-in relative pl-12 pb-10 border-l-2 border-brand/20 last:border-l-0">
+          <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+          <h3 class="text-lg font-bold mb-2">無料相談（30分）</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">お店の雰囲気・載せたい情報をヒアリング。<br>Zoom or 対面どちらでも対応します。</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="fade-in relative pl-12 pb-10 border-l-2 border-brand/20">
+          <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+          <h3 class="text-lg font-bold mb-2">サイト制作（3〜5日）</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">AIを活用して高速制作。<br>デザイン案をLINEで確認していただきます。</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="fade-in relative pl-12 pb-10 border-l-2 border-brand/20">
+          <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+          <h3 class="text-lg font-bold mb-2">公開・契約開始</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">サイト公開後、月額プランがスタートします。<br>初回修正は1回まで無料です。</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="fade-in relative pl-12 pb-0">
+          <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+          <h3 class="text-lg font-bold mb-2">毎月のサポート</h3>
+          <p class="text-[#6B7280] text-sm leading-relaxed">更新代行・投稿文3本・月次レポートをお届け。<br>LINEでいつでも相談できます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. 料金プラン ========== -->
+  <section class="py-16 sm:py-20 bg-[#F8FAF9]">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">料金プラン</h2>
+      <p class="text-[#6B7280] text-center mb-12 fade-in">お店の規模に合わせて選べる3プラン</p>
+      <div class="grid md:grid-cols-3 gap-6 items-start">
+        <!-- エントリー -->
+        <div class="fade-in bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="bg-gray-50 px-6 py-5 text-center border-b border-gray-100">
+            <p class="text-sm text-[#6B7280] mb-1">エントリープラン</p>
+            <p class="text-sm text-[#6B7280]">初期費用 <span class="font-bold text-[#1A1A1A] text-lg">無料</span></p>
+            <p class="mt-1"><span class="text-3xl font-extrabold text-[#1A1A1A]">¥5,000</span><span class="text-sm text-[#6B7280]">／月</span></p>
+            <p class="text-xs text-[#6B7280] mt-1">6ヶ月契約</p>
+          </div>
+          <ul class="px-6 py-6 space-y-3 text-sm">
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>5ページ以内の静的サイト</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>お問い合わせフォーム</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>Googleマップ埋め込み</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>サイト死活監視</li>
+          </ul>
+        </div>
+
+        <!-- ライト（おすすめ） -->
+        <div class="fade-in bg-white rounded-2xl shadow-xl overflow-hidden ring-2 ring-brand relative">
+          <div class="absolute top-0 left-0 right-0 bg-brand text-white text-center py-1.5 text-xs font-bold tracking-wider">★ おすすめ</div>
+          <div class="bg-brand/5 px-6 py-5 text-center border-b border-brand/10 pt-10">
+            <p class="text-sm text-brand font-semibold mb-1">ライトプラン</p>
+            <p class="text-sm text-[#6B7280]">初期費用 <span class="font-bold text-[#1A1A1A] text-lg">¥9,800</span></p>
+            <p class="mt-1"><span class="text-3xl font-extrabold text-brand">¥8,000</span><span class="text-sm text-[#6B7280]">／月</span></p>
+            <p class="text-xs text-[#6B7280] mt-1">6ヶ月契約</p>
+          </div>
+          <ul class="px-6 py-6 space-y-3 text-sm">
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>8ページ以内の静的サイト</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>お問い合わせフォーム＋LINE誘導</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>Instagram・Googleマップ埋め込み</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>月1回コンテンツ更新代行</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>AI投稿文 月3本プレゼント</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>月次アクセスレポート（LINE送付）</li>
+          </ul>
+        </div>
+
+        <!-- スタンダード -->
+        <div class="fade-in bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="bg-gray-50 px-6 py-5 text-center border-b border-gray-100">
+            <p class="text-sm text-[#6B7280] mb-1">スタンダードプラン</p>
+            <p class="text-sm text-[#6B7280]">初期費用 <span class="font-bold text-[#1A1A1A] text-lg">¥19,800</span></p>
+            <p class="mt-1"><span class="text-3xl font-extrabold text-[#1A1A1A]">¥15,000</span><span class="text-sm text-[#6B7280]">／月</span></p>
+            <p class="text-xs text-[#6B7280] mt-1">3ヶ月契約</p>
+          </div>
+          <ul class="px-6 py-6 space-y-3 text-sm">
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>ページ数無制限</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>予約フォーム・カート連携</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>月2回コンテンツ更新</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>AI投稿文 月10本</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>月次Googleアナリティクスレポート</li>
+            <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>SEO基本対策</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="#contact" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+          無料で相談する
+        </a>
+      </div>
+
+      <div class="mt-8 text-xs text-[#6B7280] text-center space-y-1">
+        <p>※ 表示価格はすべて税込です。</p>
+        <p>※ ドメイン・サーバー費用は含まれません（年額約3,000円〜別途）。</p>
+        <p>※ 内容によってはお見積りいたします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. 月次レポートサンプル ========== -->
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">月次レポートサンプル</h2>
+      <p class="text-[#6B7280] text-center mb-12 fade-in">毎月LINEでお届けするレポートのイメージです</p>
+
+      <div class="fade-in max-w-sm mx-auto">
+        <!-- Phone mockup -->
+        <div class="bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
+          <div class="bg-white rounded-[2rem] overflow-hidden">
+            <!-- Status bar -->
+            <div class="bg-[#7BBB8E] px-6 py-3 flex items-center gap-3">
+              <div class="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center text-white text-xs font-bold">P+</div>
+              <div>
+                <p class="text-white text-sm font-bold">Play+ サポート</p>
+                <p class="text-white/70 text-xs">オンライン</p>
+              </div>
+            </div>
+            <!-- Chat -->
+            <div class="bg-[#8CAAB5]/10 p-4 space-y-3 min-h-[400px]">
+              <div class="max-w-[85%]">
+                <div class="bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-sm text-xs leading-relaxed">
+                  <p class="font-bold mb-2">【4月のサイトレポート】</p>
+                  <div class="border-t border-gray-100 pt-2 mt-2">
+                    <p class="font-semibold mb-1">📊 先月のアクセス数</p>
+                    <p>&nbsp;&nbsp;👥 訪問者数：127人</p>
+                    <p>&nbsp;&nbsp;📄 ページ閲覧：384回</p>
+                    <p>&nbsp;&nbsp;🔍 Google検索流入：89人</p>
+                  </div>
+                  <div class="border-t border-gray-100 pt-2 mt-2">
+                    <p class="font-semibold mb-1">✅ 今月の対応内容</p>
+                    <p>&nbsp;&nbsp;・サイト稼働：問題なし</p>
+                    <p>&nbsp;&nbsp;・コンテンツ更新：完了</p>
+                    <p>&nbsp;&nbsp;・SSL証明書：正常</p>
+                  </div>
+                  <div class="border-t border-gray-100 pt-2 mt-2">
+                    <p>📝 来月の投稿文3本を<br>&nbsp;&nbsp;&nbsp;添付でお送りします！</p>
+                    <p class="mt-2">気になることがあれば<br>いつでもご連絡ください😊</p>
+                  </div>
+                </div>
+                <p class="text-[10px] text-[#6B7280] mt-1 ml-1">14:32</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. AI投稿文サンプル ========== -->
+  <section class="py-16 sm:py-20 bg-[#F8FAF9]">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">AI投稿文サンプル</h2>
+      <p class="text-[#6B7280] text-center mb-10 fade-in">毎月お届けするSNS投稿文のイメージです</p>
+
+      <div class="fade-in">
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-200 mb-0" id="ai-tabs">
+          <button class="ai-tab active flex-1 py-3 text-sm font-semibold text-center border-b-2 border-brand text-brand transition-colors" data-tab="0">お知らせ投稿</button>
+          <button class="ai-tab flex-1 py-3 text-sm font-semibold text-center border-b-2 border-transparent text-[#6B7280] hover:text-[#1A1A1A] transition-colors" data-tab="1">マルシェ告知</button>
+          <button class="ai-tab flex-1 py-3 text-sm font-semibold text-center border-b-2 border-transparent text-[#6B7280] hover:text-[#1A1A1A] transition-colors" data-tab="2">商品紹介</button>
+        </div>
+        <!-- Tab content -->
+        <div class="bg-white rounded-b-2xl shadow-md p-6">
+          <div class="ai-content" data-tab="0">
+            <p class="text-sm leading-relaxed whitespace-pre-line">🌸 春の新作、入荷しました！
+
+今年もお気に入りの布を使った
+ハンドメイドバッグが入荷しました✨
+
+使い込むほど馴染む素材で
+毎日のお出かけのお供に◎
+
+和泉市・泉北エリアの皆さん、
+ぜひ手に取りにいらしてください！
+
+<span class="text-blue-500">#ハンドメイドバッグ #和泉市 #泉北
+#ハンドメイド雑貨 #春新作</span></p>
+          </div>
+          <div class="ai-content hidden" data-tab="1">
+            <p class="text-sm leading-relaxed whitespace-pre-line">🎪 今週末、マルシェに出店します！
+
+【日時】4月13日（日）10:00〜16:00
+【場所】和泉中央 ○○広場
+
+当日限定の一点物も持っていきます🎁
+ぜひ遊びに来てください！
+
+<span class="text-blue-500">#和泉マルシェ #ハンドメイド
+#泉北イベント #週末お出かけ #大阪ママ</span></p>
+          </div>
+          <div class="ai-content hidden" data-tab="2">
+            <p class="text-sm leading-relaxed whitespace-pre-line">毎日使うものだから、こだわりたい🌿
+
+今月のおすすめは、
+国産リネンを使ったトートバッグ。
+
+軽くて丈夫で洗えるので
+お買い物にも習い事にも◎
+
+DMまたはプロフィールのリンクから
+ご注文いただけます！
+
+<span class="text-blue-500">#リネンバッグ #国産リネン
+#ハンドメイド和泉 #毎日バッグ</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8. よくある質問 ========== -->
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">よくある質問</h2>
+      <p class="text-[#6B7280] text-center mb-12 fade-in">ご不明な点はお気軽にお問い合わせください</p>
+
+      <div class="space-y-4">
+        <div class="fade-in faq-item border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-sm sm:text-base">パソコンが苦手でも大丈夫ですか？</span>
+            <svg class="faq-icon w-5 h-5 text-[#6B7280] shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-sm text-[#6B7280] leading-relaxed">はい、問題ありません。更新や連絡はLINEで完結します。難しい操作は一切不要です。</p>
+          </div>
+        </div>
+
+        <div class="fade-in faq-item border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-sm sm:text-base">今すでにホームページがある場合はどうなりますか？</span>
+            <svg class="faq-icon w-5 h-5 text-[#6B7280] shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-sm text-[#6B7280] leading-relaxed">現在のサイトの内容を引き継いで作り直すことも可能です。まずはご相談ください。</p>
+          </div>
+        </div>
+
+        <div class="fade-in faq-item border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-sm sm:text-base">6ヶ月より前に解約したい場合は？</span>
+            <svg class="faq-icon w-5 h-5 text-[#6B7280] shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-sm text-[#6B7280] leading-relaxed">6ヶ月未満での解約の場合、違約金として¥19,800をいただいております。詳しくは契約前にご説明します。</p>
+          </div>
+        </div>
+
+        <div class="fade-in faq-item border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-sm sm:text-base">写真や文章は自分で用意する必要がありますか？</span>
+            <svg class="faq-icon w-5 h-5 text-[#6B7280] shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-sm text-[#6B7280] leading-relaxed">写真はスマホで撮影したものをLINEで送っていただければ対応します。文章はAIを使ってPlay+側で作成することも可能です。</p>
+          </div>
+        </div>
+
+        <div class="fade-in faq-item border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-sm sm:text-base">対応エリアはどこですか？</span>
+            <svg class="faq-icon w-5 h-5 text-[#6B7280] shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-sm text-[#6B7280] leading-relaxed">現在は大阪府和泉市・泉大津市・岸和田市・堺市南区を中心に対応しています。オンラインでの対応も可能です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9. お問い合わせ ========== -->
+  <section id="contact" class="py-16 sm:py-20 bg-gradient-to-br from-brand to-brand-dark">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4 fade-in">まずは無料でご相談ください</h2>
+      <p class="text-white/80 mb-10 fade-in">お気軽にLINEかフォームでご連絡ください。</p>
+      <div class="fade-in flex flex-col sm:flex-row items-center justify-center gap-4">
+        <!-- TODO: 実際のLINE URLに差し替え -->
+        <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#06C755] hover:bg-[#05B34C] text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINEで相談する
+        </a>
+        <a href="/contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-brand font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+          お問い合わせフォームへ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10. フッター ========== -->
+  <footer class="py-8 bg-[#1A1A1A]">
+    <p class="text-center text-sm text-gray-400">&copy; 2026 Play+. All rights reserved.</p>
+  </footer>
+
+  <!-- ========== JavaScript ========== -->
+  <script>
+    // Scroll fade-in animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        const isOpen = !answer.classList.contains('hidden');
+
+        // Close all
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+        // Toggle current
+        if (!isOpen) {
+          answer.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // AI tabs
+    document.querySelectorAll('.ai-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const idx = tab.dataset.tab;
+        // Reset tabs
+        document.querySelectorAll('.ai-tab').forEach(t => {
+          t.classList.remove('border-brand', 'text-brand');
+          t.classList.add('border-transparent', 'text-[#6B7280]');
+        });
+        tab.classList.remove('border-transparent', 'text-[#6B7280]');
+        tab.classList.add('border-brand', 'text-brand');
+        // Show content
+        document.querySelectorAll('.ai-content').forEach(c => c.classList.add('hidden'));
+        document.querySelector(`.ai-content[data-tab="${idx}"]`).classList.remove('hidden');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
