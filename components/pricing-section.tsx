@@ -32,9 +32,33 @@ const pricing = [
     href: null,
   },
   {
-    service: "ロゴ制作",
+    service: "ロゴ作成（シンプル）",
     price: "10,000",
-    unit: "円〜",
+    unit: "円",
+    href: null,
+  },
+  {
+    service: "ロゴ作成（フルオリジナル）",
+    price: "39,800",
+    unit: "円",
+    href: null,
+  },
+  {
+    service: "追加ページ制作（1ページ）",
+    price: "8,000",
+    unit: "円",
+    href: null,
+  },
+  {
+    service: "Googleビジネスプロフィール設定",
+    price: "9,800",
+    unit: "円",
+    href: null,
+  },
+  {
+    service: "Instagram初期設定＋投稿5本",
+    price: "14,800",
+    unit: "円",
     href: null,
   },
 ]
