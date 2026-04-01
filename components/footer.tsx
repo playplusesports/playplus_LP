@@ -12,7 +12,7 @@ export function Footer() {
               <p className="text-xl font-bold text-foreground">Play+</p>
             </div>
             <p className="text-sm text-muted-foreground mt-1">
-              eスポーツ大会プロデュース / Web制作 / デザイン制作
+              イベントプロデュース / Web制作 / デザイン制作
             </p>
 
             {/* SNS Links */}

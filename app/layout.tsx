@@ -11,14 +11,14 @@ const siteUrl = 'https://playplus.jp'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
+    default: 'Play+ | イベントプロデュース・Web制作・デザイン支援',
     template: '%s | Play+',
   },
-  description: 'Play+（PlayPlus）- eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。企業・団体のための制作支援サービス。',
+  description: 'Play+（PlayPlus）- イベントの企画・運営からWebサイト制作・デザインまでワンストップで対応。企業・団体のための制作支援サービス。',
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
-    description: 'eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。',
+    title: 'Play+ | イベントプロデュース・Web制作・デザイン支援',
+    description: 'イベントの企画・運営からWebサイト制作・デザインまでワンストップで対応。',
     url: siteUrl,
     siteName: 'Play+',
     locale: 'ja_JP',
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Play+ - eスポーツ大会プロデュース・Web制作・デザイン支援',
+        alt: 'Play+ - イベントプロデュース・Web制作・デザイン支援',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Play+ | eスポーツ大会プロデュース・Web制作・デザイン支援',
-    description: 'eスポーツ大会の企画・運営からWebサイト制作・デザインまでワンストップで対応。',
+    title: 'Play+ | イベントプロデュース・Web制作・デザイン支援',
+    description: 'イベントの企画・運営からWebサイト制作・デザインまでワンストップで対応。',
     site: '@PlayPlus_E',
     images: ['/og-image.png'],
   },

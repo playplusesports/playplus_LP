@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Mail, MessageSquare, CheckCircle } from "lucide-react"
 
 const inquiryTypes = [
-  "eスポーツ大会の企画・運営について",
+  "イベントの企画・運営について",
   "Webサイト制作について",
   "デザイン制作について",
   "その他",

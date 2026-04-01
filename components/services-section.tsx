@@ -7,7 +7,7 @@ import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scrol
 const services = [
   {
     icon: Trophy,
-    title: "eスポーツ大会プロデュース",
+    title: "イベントプロデュース",
     items: [
       "大会企画設計",
       "会場レイアウト設計",

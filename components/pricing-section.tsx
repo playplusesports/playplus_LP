@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const pricing = [
   {
-    service: "eスポーツ大会プロデュース",
+    service: "イベントプロデュース",
     price: "50,000",
     unit: "円〜",
   },

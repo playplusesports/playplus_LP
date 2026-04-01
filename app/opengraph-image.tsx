@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'nodejs'
-export const alt = 'Play+ - eスポーツ大会プロデュース・Web制作・デザイン支援'
+export const alt = 'Play+ - イベントプロデュース・Web制作・デザイン支援'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -46,7 +46,7 @@ export default function Image() {
             maxWidth: '800px',
           }}
         >
-          eスポーツ大会プロデュース
+          イベントプロデュース
         </div>
         <div
           style={{

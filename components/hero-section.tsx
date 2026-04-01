@@ -82,7 +82,7 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 text-balance"
         >
-          eスポーツ大会の企画・運営から
+          イベントの企画・運営から
           <br />
           <span className="text-accent">Web制作・デザイン</span>まで
           <br />

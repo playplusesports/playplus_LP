@@ -9,7 +9,7 @@ export function CtaSection() {
           まずはお気軽にご相談ください
         </h2>
         <p className="text-lg text-muted-foreground mb-12 text-pretty">
-          eスポーツ大会の企画から
+          イベントの企画から
           <br className="sm:hidden" />
           Web制作・デザインまで
           <br />

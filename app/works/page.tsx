@@ -77,7 +77,7 @@ function WorksContent() {
                 実績・ギャラリー
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                これまでに手がけたeスポーツ大会運営・Web制作・デザイン制作の実績をご紹介します。
+                これまでに手がけたイベント運営・Web制作・デザイン制作の実績をご紹介します。
               </p>
             </div>
           </ScrollAnimate>

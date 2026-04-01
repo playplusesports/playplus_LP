@@ -1,7 +1,7 @@
 import { CheckCircle2 } from "lucide-react"
 
 const solutions = [
-  "eスポーツ大会の企画・運営支援",
+  "イベントの企画・運営支援",
   "集客用Webサイト制作",
   "バナー・ポスター・ロゴ制作",
   "参加者管理・導線設計",

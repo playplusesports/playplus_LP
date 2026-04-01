@@ -11,7 +11,7 @@ const benefits = [
   },
   {
     icon: Gamepad2,
-    title: "eスポーツ特化",
+    title: "イベント特化",
     description: "大会運営の実務経験をもとに設計",
   },
   {
