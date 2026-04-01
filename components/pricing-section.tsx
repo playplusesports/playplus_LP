@@ -201,7 +201,7 @@ export function PricingSection() {
         {/* Notes */}
         <div className="mt-10 text-center text-xs text-muted-foreground space-y-1">
           <p>※ 表示価格はすべて税込です。</p>
-          <p>※ 独自ドメイン・サーバー費用はプラン料金に含まれています。</p>
+          <p>※ ドメイン・サーバー費用は別途年額 ¥3,000〜 かかります。</p>
           <p>※ 内容によってはお見積りとなる場合があります。</p>
         </div>
       </div>
