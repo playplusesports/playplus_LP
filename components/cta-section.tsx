@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, MessageCircle } from "lucide-react"
 
 export function CtaSection() {
   return (
@@ -16,39 +16,22 @@ export function CtaSection() {
           最適な形をご提案いたします
         </p>
 
-        <Button size="lg" asChild className="text-base px-10 py-7">
-          <a href="/contact">
-            無料相談はこちら
-            <ArrowRight className="ml-2 h-5 w-5" />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <a
+            href="https://lin.ee/pYn3rVU"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05B34C] text-white font-bold text-base px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <MessageCircle className="h-5 w-5" />
+            LINEで相談する
           </a>
-        </Button>
-
-        <div className="mt-12 pt-12 border-t border-border">
-          <p className="text-sm text-muted-foreground mb-6">
-            お問い合わせは以下から
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <a
-              href="#"
-              className="text-foreground hover:text-accent transition-colors"
-            >
+          <Button size="lg" asChild className="text-base px-8 py-6">
+            <a href="/contact">
               お問い合わせフォーム
+              <ArrowRight className="ml-2 h-5 w-5" />
             </a>
-            <span className="text-border">|</span>
-            <a
-              href="#"
-              className="text-foreground hover:text-accent transition-colors"
-            >
-              X（旧Twitter）
-            </a>
-            <span className="text-border">|</span>
-            <a
-              href="#"
-              className="text-foreground hover:text-accent transition-colors"
-            >
-              メール
-            </a>
-          </div>
+          </Button>
         </div>
 
         <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm">

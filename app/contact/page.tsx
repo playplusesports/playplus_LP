@@ -219,6 +219,20 @@ export default function ContactPage() {
                   その他のお問い合わせ方法
                 </h3>
                 <div className="space-y-4">
+                  <a
+                    href="https://lin.ee/pYn3rVU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-[#06C755]/10 hover:bg-[#06C755]/20 transition-colors"
+                  >
+                    <div className="w-10 h-10 bg-[#06C755] rounded-lg flex items-center justify-center">
+                      <MessageSquare className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">LINE</p>
+                      <p className="text-xs text-muted-foreground">気軽にご相談ください</p>
+                    </div>
+                  </a>
                   <div className="flex items-start gap-3">
                     <Mail className="h-5 w-5 text-accent mt-0.5" />
                     <div>
