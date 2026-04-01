@@ -8,18 +8,6 @@ const pricing = [
     href: null,
   },
   {
-    service: "ランディングページ制作",
-    price: "30,000",
-    unit: "円〜",
-    href: null,
-  },
-  {
-    service: "Webサイト制作（複数ページ）",
-    price: "80,000",
-    unit: "円〜",
-    href: null,
-  },
-  {
     service: "Web制作保守運用",
     price: "5,000",
     unit: "円〜／月",
@@ -40,12 +28,6 @@ const pricing = [
   {
     service: "ロゴ作成（フルオリジナル）",
     price: "39,800",
-    unit: "円",
-    href: null,
-  },
-  {
-    service: "追加ページ制作（1ページ）",
-    price: "8,000",
     unit: "円",
     href: null,
   },
