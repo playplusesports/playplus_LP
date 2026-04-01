@@ -41,11 +41,11 @@ export function SolutionSection() {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500%] h-[500%] object-contain opacity-25"
               />
               <div className="text-center p-8 relative z-10">
-                <p className="text-6xl sm:text-8xl font-bold text-accent mb-4">1</p>
-                <p className="text-xl sm:text-2xl font-semibold text-foreground">
+                <p className="text-7xl sm:text-9xl font-bold text-accent mb-4">1</p>
+                <p className="text-2xl sm:text-4xl font-bold text-foreground">
                   ワンストップ対応
                 </p>
-                <p className="text-muted-foreground mt-2">
+                <p className="text-lg sm:text-xl text-muted-foreground mt-3">
                   「やりたい」を形にするまで
                 </p>
               </div>
