@@ -38,7 +38,7 @@ export function SolutionSection() {
               <img
                 src="/logo.png"
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-15"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500%] h-[500%] object-contain opacity-15"
               />
               <div className="text-center p-8 relative z-10">
                 <p className="text-6xl sm:text-8xl font-bold text-accent mb-4">1</p>
