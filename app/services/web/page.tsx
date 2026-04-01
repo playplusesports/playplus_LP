@@ -55,7 +55,7 @@ const plans = [
     name: "エントリープラン",
     initial: "無料",
     price: "5,000",
-    contract: "6ヶ月契約",
+    contract: "",
     recommended: false,
     items: [
       "独自ドメイン・サーバー費用込み",
