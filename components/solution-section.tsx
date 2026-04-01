@@ -34,8 +34,13 @@ export function SolutionSection() {
           </div>
 
           <div className="relative">
-            <div className="aspect-square rounded-2xl bg-secondary/50 border border-border overflow-hidden flex items-center justify-center">
-              <div className="text-center p-8">
+            <div className="aspect-square rounded-2xl bg-secondary/50 border border-border overflow-hidden flex items-center justify-center relative">
+              <img
+                src="/logo.png"
+                alt=""
+                className="absolute inset-0 w-full h-full object-contain p-12 opacity-15"
+              />
+              <div className="text-center p-8 relative z-10">
                 <p className="text-6xl sm:text-8xl font-bold text-accent mb-4">1</p>
                 <p className="text-xl sm:text-2xl font-semibold text-foreground">
                   ワンストップ対応

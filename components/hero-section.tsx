@@ -64,15 +64,6 @@ export function HeroSection() {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/75 to-background" />
 
-      {/* Background Logo Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
-        <img
-          src="/logo.png"
-          alt=""
-          className="w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] lg:w-[700px] lg:h-[700px] object-contain opacity-10"
-        />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
