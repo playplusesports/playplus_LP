@@ -62,7 +62,7 @@ export function HeroSection() {
       ) : null}
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/75 to-background" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 text-center">
         <motion.div
