@@ -8,6 +8,7 @@ const services = [
   {
     icon: Trophy,
     title: "イベントプロデュース",
+    href: null,
     items: [
       "大会企画設計",
       "会場レイアウト設計",
@@ -20,6 +21,7 @@ const services = [
   {
     icon: Monitor,
     title: "Webサイト制作・保守",
+    href: "/services/web",
     items: [
       "ランディングページ制作",
       "複数ページサイト制作",
@@ -33,6 +35,7 @@ const services = [
   {
     icon: Palette,
     title: "デザイン制作",
+    href: null,
     items: [
       "大会ロゴ",
       "ポスター",
@@ -60,9 +63,9 @@ export function ServicesSection() {
         </ScrollAnimate>
 
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <StaggerItem key={index}>
-              <Card className="bg-card border-border hover:border-accent/50 transition-colors h-full">
+          {services.map((service, index) => {
+            const cardEl = (
+              <Card className={`bg-card border-border hover:border-accent/50 transition-colors h-full ${service.href ? "cursor-pointer" : ""}`}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center mb-4">
                     <service.icon className="h-6 w-6 text-accent" />
@@ -78,10 +81,18 @@ export function ServicesSection() {
                       </li>
                     ))}
                   </ul>
+                  {service.href && (
+                    <p className="text-xs text-accent mt-4 font-medium">詳しく見る →</p>
+                  )}
                 </CardContent>
               </Card>
-            </StaggerItem>
-          ))}
+            )
+            return (
+              <StaggerItem key={index}>
+                {service.href ? <a href={service.href}>{cardEl}</a> : cardEl}
+              </StaggerItem>
+            )
+          })}
         </StaggerContainer>
       </div>
     </section>

@@ -23,7 +23,7 @@ const pricing = [
     service: "Web制作保守運用",
     price: "5,000",
     unit: "円〜／月",
-    href: "/lp/",
+    href: "/services/web",
   },
   {
     service: "デザイン制作",
