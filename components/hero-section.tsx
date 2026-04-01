@@ -1,14 +1,68 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Monitor, Palette, Trophy } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+
+const fallbackImages = [
+  "bg-gradient-to-br from-purple-900 to-blue-900",
+  "bg-gradient-to-br from-amber-900 to-yellow-900",
+  "bg-gradient-to-br from-emerald-900 to-teal-900",
+  "bg-gradient-to-br from-orange-900 to-red-900",
+  "bg-gradient-to-br from-blue-900 to-cyan-900",
+]
 
 export function HeroSection() {
+  const [images, setImages] = useState<string[]>([])
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Fetch work images
+  useEffect(() => {
+    fetch("/api/works")
+      .then((res) => res.json())
+      .then((data) => {
+        const urls = data
+          .filter((w: { imageUrl?: string }) => w.imageUrl)
+          .map((w: { imageUrl: string }) => w.imageUrl)
+        setImages(urls)
+      })
+      .catch(() => {})
+  }, [])
+
+  // Cycle images every 5 seconds
+  useEffect(() => {
+    if (images.length <= 1) return
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [images.length])
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary via-background to-background" />
+      {/* Background Slideshow */}
+      {images.length > 0 ? (
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0"
+          >
+            <img
+              src={images[currentIndex]}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+      ) : null}
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 text-center">
         <motion.div
@@ -17,7 +71,7 @@ export function HeroSection() {
           transition={{ duration: 0.6 }}
           className="flex items-center justify-center gap-2 mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/80 backdrop-blur-sm text-sm text-muted-foreground">
             企業・団体のための制作支援サービス
           </span>
         </motion.div>
