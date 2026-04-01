@@ -47,7 +47,7 @@ export function HeroSection() {
           <motion.div
             key={currentIndex}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
+            animate={{ opacity: 0.75 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
             className="absolute inset-0"
