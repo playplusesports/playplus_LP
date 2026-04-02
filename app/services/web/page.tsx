@@ -42,15 +42,16 @@ const steps = [
 
 const monthlyPlans = [
   {
-    name: "エントリープラン", initial: "¥0", price: "5,000", contract: "縛りなし", recommended: false,
+    name: "エントリープラン", initial: "無料", price: "5,000", contract: "縛りなし", recommended: false,
+    badge: "初期費用 ¥0",
     items: ["5ページ以内の静的サイト", "お問い合わせフォーム", "Googleマップ埋め込み", "サイト死活監視"],
   },
   {
-    name: "ライトプラン", initial: "¥9,800", price: "8,000", contract: "6ヶ月契約", recommended: true,
+    name: "ライトプラン", initial: "¥9,800", price: "8,000", contract: "6ヶ月契約", recommended: true, badge: "",
     items: ["8ページ以内の静的サイト", "お問い合わせ＋LINE誘導", "Instagram・Googleマップ埋め込み", "月1回コンテンツ更新代行", "AI投稿文 月3本プレゼント", "月次アクセスレポート（LINE送付）"],
   },
   {
-    name: "スタンダードプラン", initial: "¥19,800", price: "15,000", contract: "3ヶ月契約", recommended: false,
+    name: "スタンダードプラン", initial: "¥19,800", price: "15,000", contract: "3ヶ月契約", recommended: false, badge: "",
     items: ["ページ数無制限", "予約フォーム・ECカート連携", "月2回コンテンツ更新", "AI投稿文 月10本", "月次Googleアナリティクスレポート", "SEO基本対策"],
   },
 ]
@@ -200,13 +201,16 @@ export default function WebServicePage() {
           {pricingTab === "monthly" && (
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
               {monthlyPlans.map((plan, i) => (
-                <Card key={i} className={`bg-card text-center relative overflow-hidden ${plan.recommended ? "border-accent ring-2 ring-accent" : "border-border"}`}>
+                <Card key={i} className={`bg-card text-center relative overflow-hidden ${plan.recommended ? "border-accent ring-2 ring-accent" : plan.badge ? "border-green-500/50 ring-1 ring-green-500/50" : "border-border"}`}>
                   {plan.recommended && (
                     <div className="absolute top-0 left-0 right-0 bg-accent text-white text-xs font-bold py-1.5 text-center tracking-wider">おすすめ</div>
                   )}
-                  <CardHeader className={plan.recommended ? "pt-10" : ""}>
+                  {plan.badge && (
+                    <div className="absolute top-0 left-0 right-0 bg-green-500 text-white text-xs font-bold py-1.5 text-center tracking-wider">{plan.badge}</div>
+                  )}
+                  <CardHeader className={plan.recommended || plan.badge ? "pt-10" : ""}>
                     <CardTitle className="text-lg text-foreground">{plan.name}</CardTitle>
-                    <p className="text-sm text-muted-foreground">初期費用 <span className="font-bold text-foreground">{plan.initial}</span></p>
+                    <p className="text-sm text-muted-foreground">初期費用 <span className={`font-bold ${plan.badge ? "text-green-400 text-lg" : "text-foreground"}`}>{plan.initial}</span></p>
                     <div className="flex items-baseline justify-center gap-1 mt-2">
                       <span className="text-4xl font-bold text-foreground">¥{plan.price}</span>
                       <span className="text-muted-foreground">／月</span>
