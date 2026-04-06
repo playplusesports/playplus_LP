@@ -68,9 +68,14 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Play+. All rights reserved.
           </p>
-          <a href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            プライバシーポリシー
-          </a>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              プライバシーポリシー
+            </a>
+            <a href="/legal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              特定商取引法に基づく表記
+            </a>
+          </div>
         </div>
       </div>
     </footer>
