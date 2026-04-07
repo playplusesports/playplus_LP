@@ -27,8 +27,75 @@
   </script>
   <style>
     * { font-family: 'Noto Sans JP', sans-serif; }
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
+    /* Fade in from bottom */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Fade in from left */
+    .slide-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .slide-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Fade in from right */
+    .slide-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .slide-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Scale in */
+    .scale-in { opacity: 0; transform: scale(0.9); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .scale-in.visible { opacity: 1; transform: scale(1); }
+
+    /* Stagger delay for children */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* Hero text animation */
+    .hero-text { opacity: 0; transform: translateY(20px); animation: heroFadeIn 0.8s ease forwards; }
+    .hero-text-delay-1 { animation-delay: 0.2s; }
+    .hero-text-delay-2 { animation-delay: 0.4s; }
+    .hero-text-delay-3 { animation-delay: 0.6s; }
+    @keyframes heroFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* Floating animation for decorative elements */
+    .float { animation: float 6s ease-in-out infinite; }
+    .float-delay { animation: float 6s ease-in-out 2s infinite; }
+    .float-slow { animation: float 8s ease-in-out 1s infinite; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Pulse glow for CTA buttons */
+    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 15px rgba(45, 158, 107, 0.3); }
+      50% { box-shadow: 0 4px 30px rgba(45, 158, 107, 0.6); }
+    }
+
+    /* Card hover lift */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+    /* Counter animation */
+    .count-up { font-variant-numeric: tabular-nums; }
+
+    /* Step line animation */
+    .step-line { position: relative; }
+    .step-line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 0;
+      background: #2D9E6B;
+      transition: height 1s ease;
+    }
+    .step-line.visible::before { height: 100%; }
+
     .wave-top { position: relative; }
     .wave-top::before {
       content: '';
@@ -46,24 +113,24 @@
 
   <!-- ========== 1. ヘッダー / ヒーロー ========== -->
   <header class="relative overflow-hidden bg-gradient-to-br from-white via-[#F8FAF9] to-[#E8F5EE] min-h-[90vh] flex items-center">
-    <!-- 装飾 -->
-    <div class="absolute top-0 right-0 w-72 h-72 bg-brand/10 rounded-full -translate-y-1/2 translate-x-1/3"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand/5 rounded-full translate-y-1/2 -translate-x-1/3"></div>
-    <div class="absolute top-20 left-10 w-4 h-4 bg-amber rounded-full opacity-60"></div>
-    <div class="absolute top-40 right-20 w-6 h-6 bg-brand/30 rounded-full"></div>
-    <div class="absolute bottom-32 right-10 w-3 h-3 bg-amber/40 rounded-full"></div>
+    <!-- 装飾 (floating) -->
+    <div class="absolute top-0 right-0 w-72 h-72 bg-brand/10 rounded-full -translate-y-1/2 translate-x-1/3 float"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand/5 rounded-full translate-y-1/2 -translate-x-1/3 float-delay"></div>
+    <div class="absolute top-20 left-10 w-4 h-4 bg-amber rounded-full opacity-60 float-slow"></div>
+    <div class="absolute top-40 right-20 w-6 h-6 bg-brand/30 rounded-full float"></div>
+    <div class="absolute bottom-32 right-10 w-3 h-3 bg-amber/40 rounded-full float-delay"></div>
 
     <div class="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
-      <p class="inline-block px-4 py-1.5 bg-brand/10 text-brand text-sm font-medium rounded-full mb-8">地域密着のWeb保守サービス</p>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
+      <p class="hero-text inline-block px-4 py-1.5 bg-brand/10 text-brand text-sm font-medium rounded-full mb-8">地域密着のWeb保守サービス</p>
+      <h1 class="hero-text hero-text-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
         お店のホームページ、<br>
         <span class="text-brand">丸ごとお任せ</span>ください。
       </h1>
-      <p class="text-lg sm:text-xl text-[#6B7280] mb-10 leading-relaxed">
+      <p class="hero-text hero-text-delay-2 text-lg sm:text-xl text-[#6B7280] mb-10 leading-relaxed">
         作成から更新・管理まで<br class="sm:hidden">
         <span class="font-bold text-[#1A1A1A]">月々8,000円</span>で全部対応します。
       </p>
-      <a href="#contact" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+      <a href="#contact" class="hero-text hero-text-delay-3 inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 pulse-glow">
         無料で相談する
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </a>
@@ -76,27 +143,27 @@
       <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">こんなお悩みありませんか？</h2>
       <p class="text-[#6B7280] text-center mb-12 fade-in">一つでも当てはまったら、お気軽にご相談ください</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <div class="fade-in stagger-1 card-hover bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md">
           <span class="text-3xl mb-3 block">😰</span>
           <p class="font-semibold">ホームページを持っていない</p>
         </div>
-        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <div class="fade-in stagger-2 card-hover bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md">
           <span class="text-3xl mb-3 block">😵‍💫</span>
           <p class="font-semibold">WordPressが難しくて更新できていない</p>
         </div>
-        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <div class="fade-in stagger-3 card-hover bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md">
           <span class="text-3xl mb-3 block">🕸️</span>
           <p class="font-semibold">作ったけど放置してしまっている</p>
         </div>
-        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <div class="fade-in stagger-4 card-hover bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md">
           <span class="text-3xl mb-3 block">🤯</span>
           <p class="font-semibold">SNSの投稿文を考えるのが大変</p>
         </div>
-        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <div class="fade-in stagger-5 card-hover bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md">
           <span class="text-3xl mb-3 block">🔍</span>
           <p class="font-semibold">Googleで検索されているか不安</p>
         </div>
-        <div class="fade-in bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <div class="fade-in stagger-6 card-hover bg-[#F8FAF9] border border-gray-100 rounded-2xl p-6 shadow-md">
           <span class="text-3xl mb-3 block">💸</span>
           <p class="font-semibold">業者に頼むと高そうで相談しにくい</p>
         </div>
@@ -110,17 +177,17 @@
       <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">Play+が<span class="text-brand">選ばれる理由</span></h2>
       <p class="text-[#6B7280] text-center mb-12 fade-in">手軽さ・安さ・安心感の3つを大切にしています</p>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="fade-in bg-white rounded-2xl p-8 shadow-md text-center">
+        <div class="scale-in stagger-1 card-hover bg-white rounded-2xl p-8 shadow-md text-center">
           <div class="w-16 h-16 mx-auto mb-5 bg-brand/10 rounded-2xl flex items-center justify-center text-3xl">🤖</div>
           <h3 class="text-lg font-bold mb-3">AIで素早く・安く</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">AIを活用して高品質なサイトを短期間・低コストで制作</p>
         </div>
-        <div class="fade-in bg-white rounded-2xl p-8 shadow-md text-center">
+        <div class="scale-in stagger-2 card-hover bg-white rounded-2xl p-8 shadow-md text-center">
           <div class="w-16 h-16 mx-auto mb-5 bg-brand/10 rounded-2xl flex items-center justify-center text-3xl">📱</div>
           <h3 class="text-lg font-bold mb-3">LINEで気軽に連絡</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">更新したいときはLINEで写真を送るだけでOK</p>
         </div>
-        <div class="fade-in bg-white rounded-2xl p-8 shadow-md text-center">
+        <div class="scale-in stagger-3 card-hover bg-white rounded-2xl p-8 shadow-md text-center">
           <div class="w-16 h-16 mx-auto mb-5 bg-brand/10 rounded-2xl flex items-center justify-center text-3xl">📊</div>
           <h3 class="text-lg font-bold mb-3">毎月レポートをお届け</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">何人が見たかを毎月わかりやすくご報告します</p>
@@ -136,25 +203,25 @@
       <p class="text-[#6B7280] text-center mb-12 fade-in">お問い合わせから公開まで最短5日</p>
       <div class="space-y-0">
         <!-- Step 1 -->
-        <div class="fade-in relative pl-12 pb-10 border-l-2 border-brand/20 last:border-l-0">
+        <div class="slide-left stagger-1 relative pl-12 pb-10 border-l-2 border-brand/20 step-line">
           <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
           <h3 class="text-lg font-bold mb-2">無料相談（30分）</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">お店の雰囲気・載せたい情報をヒアリング。<br>Zoom or 対面どちらでも対応します。</p>
         </div>
         <!-- Step 2 -->
-        <div class="fade-in relative pl-12 pb-10 border-l-2 border-brand/20">
+        <div class="slide-left stagger-2 relative pl-12 pb-10 border-l-2 border-brand/20 step-line">
           <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
           <h3 class="text-lg font-bold mb-2">サイト制作（3〜5日）</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">AIを活用して高速制作。<br>デザイン案をLINEで確認していただきます。</p>
         </div>
         <!-- Step 3 -->
-        <div class="fade-in relative pl-12 pb-10 border-l-2 border-brand/20">
+        <div class="slide-left stagger-3 relative pl-12 pb-10 border-l-2 border-brand/20 step-line">
           <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
           <h3 class="text-lg font-bold mb-2">公開・契約開始</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">サイト公開後、月額プランがスタートします。<br>初回修正は1回まで無料です。</p>
         </div>
         <!-- Step 4 -->
-        <div class="fade-in relative pl-12 pb-0">
+        <div class="slide-left stagger-4 relative pl-12 pb-0">
           <div class="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
           <h3 class="text-lg font-bold mb-2">毎月のサポート</h3>
           <p class="text-[#6B7280] text-sm leading-relaxed">更新代行・投稿文3本・月次レポートをお届け。<br>LINEでいつでも相談できます。</p>
@@ -308,7 +375,7 @@
       <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">月次レポートサンプル</h2>
       <p class="text-[#6B7280] text-center mb-12 fade-in">毎月LINEでお届けするレポートのイメージです</p>
 
-      <div class="fade-in max-w-sm mx-auto">
+      <div class="scale-in max-w-sm mx-auto">
         <!-- Phone mockup -->
         <div class="bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
           <div class="bg-white rounded-[2rem] overflow-hidden">
@@ -545,7 +612,7 @@ DMまたはプロフィールのリンクから
         }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in, .step-line').forEach(el => observer.observe(el));
 
     // FAQ accordion
     document.querySelectorAll('.faq-btn').forEach(btn => {
