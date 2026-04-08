@@ -1,3 +1,4 @@
+import Link from "next/link"
 import Image from "next/image"
 
 export function Footer() {
@@ -46,10 +47,10 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold text-foreground mb-4">ページ</p>
             <nav className="flex flex-col gap-2">
-              <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">サービス</a>
-              <a href="/#benefits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">選ばれる理由</a>
-              <a href="/works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">実績</a>
-              <a href="/news" className="text-sm text-muted-foreground hover:text-foreground transition-colors">ニュース</a>
+              <Link href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">サービス</Link>
+              <Link href="/#benefits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">選ばれる理由</Link>
+              <Link href="/works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">実績</Link>
+              <Link href="/news" className="text-sm text-muted-foreground hover:text-foreground transition-colors">ニュース</Link>
             </nav>
           </div>
 
@@ -57,9 +58,9 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold text-foreground mb-4">お問い合わせ</p>
             <nav className="flex flex-col gap-2">
-              <a href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">お問い合わせフォーム</a>
-              <a href="/#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">料金</a>
-              <a href="/#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</a>
+              <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">お問い合わせフォーム</Link>
+              <Link href="/#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">料金</Link>
+              <Link href="/#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</Link>
             </nav>
           </div>
         </div>
@@ -69,12 +70,12 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Play+. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <a href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               プライバシーポリシー
-            </a>
-            <a href="/legal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link href="/legal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               特定商取引法に基づく表記
-            </a>
+            </Link>
           </div>
         </div>
       </div>

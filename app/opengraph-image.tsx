@@ -5,7 +5,11 @@ export const alt = 'Play+ - イベントプロデュース・Web制作・デザ�
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function Image() {
+export default async function Image() {
+  const fontData = await fetch(
+    'https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@latest/japanese-700-normal.woff'
+  ).then((res) => res.arrayBuffer())
+
   return new ImageResponse(
     (
       <div
@@ -17,7 +21,7 @@ export default function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: 'sans-serif',
+          fontFamily: '"Noto Sans JP", sans-serif',
         }}
       >
         <div
@@ -59,6 +63,16 @@ export default function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        {
+          name: 'Noto Sans JP',
+          data: fontData,
+          style: 'normal' as const,
+          weight: 700 as const,
+        },
+      ],
+    }
   )
 }
