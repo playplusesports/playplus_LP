@@ -29,8 +29,22 @@ const faqs = [
 ]
 
 export function FaqSection() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      }
+    }))
+  }
+
   return (
     <section id="faq" className="py-24 bg-secondary/30">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-sm text-accent font-medium mb-2">FAQ</p>

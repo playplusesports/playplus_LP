@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
@@ -86,6 +87,7 @@ export default function WebServicePage() {
 
   return (
     <main className="min-h-screen bg-background">
+      <BreadcrumbSchema items={[{ name: "ホーム", url: "https://playplus.jp" }, { name: "Webサイト制作・保守運用", url: "https://playplus.jp/services/web" }]} />
       <Header />
 
       {/* Hero */}

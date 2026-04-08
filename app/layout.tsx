@@ -52,6 +52,104 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://playplus.jp/#organization",
+                  "name": "Play+",
+                  "alternateName": "PlayPlus",
+                  "url": "https://playplus.jp",
+                  "logo": "https://playplus.jp/logo.png",
+                  "image": "https://playplus.jp/logo.png",
+                  "description": "イベントの企画・運営からWebサイト制作・デザインまでワンストップで対応。企業・団体のための制作支援サービス。",
+                  "email": "company@playplus.jp",
+                  "telephone": "090-3866-4176",
+                  "founder": {
+                    "@type": "Person",
+                    "name": "杉原 大誠"
+                  },
+                  "sameAs": [
+                    "https://x.com/PlayPlus_E",
+                    "https://www.instagram.com/playplus_e"
+                  ],
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "JP"
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://playplus.jp/#website",
+                  "url": "https://playplus.jp",
+                  "name": "Play+",
+                  "description": "イベントプロデュース・Web制作・デザイン支援",
+                  "publisher": { "@id": "https://playplus.jp/#organization" },
+                  "inLanguage": "ja"
+                },
+                {
+                  "@type": "Service",
+                  "name": "イベントプロデュース",
+                  "description": "イベント・大会の企画から当日の運営・配信まで一貫してサポート",
+                  "provider": { "@id": "https://playplus.jp/#organization" },
+                  "areaServed": { "@type": "Country", "name": "JP" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "50000",
+                    "priceCurrency": "JPY",
+                    "priceSpecification": { "@type": "UnitPriceSpecification", "price": "50000", "priceCurrency": "JPY", "unitText": "件〜" }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Web制作保守運用",
+                  "description": "サイトの制作から更新・管理まで月額プランで対応。LINEで気軽にやり取りできます。",
+                  "provider": { "@id": "https://playplus.jp/#organization" },
+                  "url": "https://playplus.jp/services/web",
+                  "areaServed": { "@type": "Country", "name": "JP" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "5000",
+                    "priceCurrency": "JPY",
+                    "priceSpecification": { "@type": "UnitPriceSpecification", "price": "5000", "priceCurrency": "JPY", "unitText": "月〜" }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "MEO / LLMO対策",
+                  "description": "Googleマップ上位表示とAI検索最適化で集客力を強化するサービス",
+                  "provider": { "@id": "https://playplus.jp/#organization" },
+                  "url": "https://playplus.jp/services/meo",
+                  "areaServed": { "@type": "Country", "name": "JP" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "15000",
+                    "priceCurrency": "JPY",
+                    "priceSpecification": { "@type": "UnitPriceSpecification", "price": "15000", "priceCurrency": "JPY", "unitText": "月〜" }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "デザイン制作",
+                  "description": "ロゴ・ポスター・バナー・配信オーバーレイ・SNS投稿画像の制作",
+                  "provider": { "@id": "https://playplus.jp/#organization" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "5000",
+                    "priceCurrency": "JPY",
+                    "priceSpecification": { "@type": "UnitPriceSpecification", "price": "5000", "priceCurrency": "JPY", "unitText": "件〜" }
+                  }
+                }
+              ]
+            })
+          }}
+        />
+      </head>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
