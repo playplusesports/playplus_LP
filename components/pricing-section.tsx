@@ -38,6 +38,12 @@ const pricing = [
     unit: "円",
     href: null,
   },
+  {
+    service: "MEO / LLMO対策",
+    price: "15,000",
+    unit: "円〜／月",
+    href: "/services/meo",
+  },
 ]
 
 export function PricingSection() {

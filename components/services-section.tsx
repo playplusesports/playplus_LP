@@ -1,6 +1,6 @@
 "use client"
 
-import { Trophy, Monitor, Palette } from "lucide-react"
+import { Trophy, Monitor, Palette, MapPin } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
 
@@ -30,6 +30,19 @@ const services = [
       "月次コンテンツ更新代行",
       "AI投稿文作成",
       "月次アクセスレポート",
+    ],
+  },
+  {
+    icon: MapPin,
+    title: "MEO / LLMO対策",
+    href: "/services/meo",
+    items: [
+      "Googleビジネスプロフィール最適化",
+      "口コミ管理・返信代行",
+      "定期投稿（週2回〜）",
+      "構造化データ実装",
+      "AI検索（ChatGPT等）最適化",
+      "月次分析レポート",
     ],
   },
   {
