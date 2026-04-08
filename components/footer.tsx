@@ -30,7 +30,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/playplus_e?igsh=eGxhOXF2cjhzd3J4&utm_source=qr"
+                href="https://www.instagram.com/playplus_e"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -46,8 +46,10 @@ export function Footer() {
           {/* Navigation */}
           <div>
             <p className="text-sm font-semibold text-foreground mb-4">ページ</p>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="ページナビゲーション" className="flex flex-col gap-2">
               <Link href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">サービス</Link>
+              <Link href="/services/web" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Web制作保守運用</Link>
+              <Link href="/services/meo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">MEO / LLMO対策</Link>
               <Link href="/#benefits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">選ばれる理由</Link>
               <Link href="/works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">実績</Link>
               <Link href="/news" className="text-sm text-muted-foreground hover:text-foreground transition-colors">ニュース</Link>
@@ -57,7 +59,7 @@ export function Footer() {
           {/* Info */}
           <div>
             <p className="text-sm font-semibold text-foreground mb-4">お問い合わせ</p>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="お問い合わせナビゲーション" className="flex flex-col gap-2">
               <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">お問い合わせフォーム</Link>
               <Link href="/#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">料金</Link>
               <Link href="/#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</Link>

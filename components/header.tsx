@@ -30,7 +30,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav aria-label="メインナビゲーション" className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -69,7 +69,8 @@ export function Header() {
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="メニューを開く"
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -80,7 +81,7 @@ export function Header() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="lg:hidden bg-background border-b border-border">
-          <nav className="flex flex-col px-4 py-4 gap-4">
+          <nav aria-label="モバイルナビゲーション" className="flex flex-col px-4 py-4 gap-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
