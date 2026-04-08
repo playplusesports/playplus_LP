@@ -11,6 +11,7 @@ const pricing = [
     service: "Web制作保守運用",
     price: "5,000",
     unit: "円〜／月",
+    note: "※エントリープランは6ヶ月限定",
     href: "/services/web",
   },
   {
@@ -69,6 +70,9 @@ export function PricingSection() {
                     </span>
                     <span className="text-muted-foreground">{item.unit}</span>
                   </div>
+                  {(item as Record<string, unknown>).note && (
+                    <p className="text-xs text-muted-foreground mt-2">{(item as Record<string, unknown>).note as string}</p>
+                  )}
                   {item.href && (
                     <p className="text-xs text-accent mt-3 font-medium">詳しく見る →</p>
                   )}
