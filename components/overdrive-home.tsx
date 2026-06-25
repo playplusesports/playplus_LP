@@ -414,7 +414,7 @@ export function OverdriveHome() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.png" alt="Play+" className="pin-logo-img" />
             </div>
-            <p className="pin-catch">あなたのPlayに、プラスを。</p>
+            <p className="pin-catch">好きを、もっと面白く。</p>
             <p className="pin-tagline"><span />Play+ — Creative Tech Studio<span /></p>
           </div>
         </section>
