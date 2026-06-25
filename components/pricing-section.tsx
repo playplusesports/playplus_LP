@@ -11,7 +11,7 @@ const pricing = [
     service: "Web制作保守運用",
     price: "5,000",
     unit: "円〜／月",
-    note: "※1ページお試しプランは最大6ヶ月限定",
+    note: "※1ページプランは最低契約期間なし",
     href: "/services/web",
   },
   {
