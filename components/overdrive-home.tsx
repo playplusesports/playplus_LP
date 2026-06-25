@@ -256,18 +256,7 @@ export function OverdriveHome() {
       <div className="prog" id="prog" />
 
       <div className="content">
-        {/* NAV */}
-        <nav id="nav">
-          <a href="#top" className="logo">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/logo.png" alt="Play+" className="logo-img" />PLAY+</a>
-          <ul className="nav-links" id="navLinks">
-            <li><a href="#services"><span>01</span>Services</a></li>
-            <li><a href="#work"><span>02</span>Work</a></li>
-            <li><a href="#pricing"><span>03</span>Pricing</a></li>
-            <li><a href="#faq"><span>04</span>FAQ</a></li>
-            <li><a href="#contact"><span>05</span>Contact</a></li>
-          </ul>
-          <div className="burger" id="burger"><span /><span /><span /></div>
-        </nav>
+        {/* NAV is provided by the shared <Header/> in app/page.tsx (single implementation across all pages) */}
 
         {/* HERO */}
         <header className="hero" id="top">
@@ -506,30 +495,7 @@ export function OverdriveHome() {
           <a href="/contact" className="btn solid rv d1"><span>お問い合わせフォーム</span></a>
         </section>
 
-        {/* FOOTER */}
-        <footer>
-          <div className="fcol">
-            <a href="#top" className="logo">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/logo.png" alt="Play+" className="logo-img" />PLAY+</a>
-            <p>4つの領域を「動く体験」で接続するクリエイティブテックスタジオ。</p>
-          </div>
-          <div className="fcol">
-            <h5>Menu</h5>
-            <a href="/services/web">Webサイト制作・保守</a>
-            <a href="/services/meo">SEO / MEO / LLMO対策</a>
-            <a href="/works">実績</a>
-            <a href="/news">お知らせ</a>
-            <a href="/contact">お問い合わせ</a>
-          </div>
-          <div className="fcol">
-            <h5>Connect</h5>
-            <a href="https://lin.ee/pYn3rVU" target="_blank" rel="noopener noreferrer">LINEで無料相談</a>
-            <a href="/contact">お問い合わせフォーム</a>
-          </div>
-          <div className="copy">
-            <span>© 2026 Play+</span>
-            <span>BUILT WITH CANVAS + CSS</span>
-          </div>
-        </footer>
+        {/* FOOTER is provided by the shared <Footer/> in app/page.tsx */}
       </div>
     </div>
   )
