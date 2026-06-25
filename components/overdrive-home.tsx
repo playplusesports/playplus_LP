@@ -411,11 +411,11 @@ export function OverdriveHome() {
         <section className="pin-wrap" id="logoReveal" aria-label="Logo reveal">
           <div className="pin-stage">
             <div className="pin-logo">
-              <span className="pin-mark" aria-hidden="true" />
-              <span className="pin-text">PLAY+</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.png" alt="Play+" className="pin-logo-img" />
             </div>
-            <p className="pin-catch">見るサイトより、動く体験を。</p>
-            <p className="pin-tagline"><span />Creative Tech Studio<span /></p>
+            <p className="pin-catch">あなたのPlayに、プラスを。</p>
+            <p className="pin-tagline"><span />Play+ — Creative Tech Studio<span /></p>
           </div>
         </section>
 

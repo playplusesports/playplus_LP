@@ -567,3 +567,14 @@
     rgba(8,11,34,.5) 0%,rgba(8,11,34,.72) 45%,
     rgba(8,11,34,.92) 78%,var(--bg) 100%);
 }
+
+/* === Logo Reveal: 実ロゴ画像を出現させる === */
+.od .pin-logo-img{
+  flex:none;
+  width:clamp(130px,32vw,300px);height:clamp(130px,32vw,300px);
+  border-radius:50%;object-fit:cover;object-position:center 40%;background:var(--bg2);
+  transform:rotate(var(--p-rot));
+  filter:drop-shadow(0 0 calc(34px * var(--p-glow)) rgba(70,96,255,.7))
+         drop-shadow(0 0 calc(70px * var(--p-glow)) rgba(245,50,30,.25));
+  will-change:transform,filter;
+}
