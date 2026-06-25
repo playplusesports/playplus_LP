@@ -40,7 +40,7 @@ export function OverdriveHome() {
       const onResize = () => size()
       const onMove = (e: MouseEvent) => { mouse.x = e.clientX * DPR; mouse.y = e.clientY * DPR }
       addEventListener("resize", onResize); addEventListener("mousemove", onMove)
-      const cols = ["#2230c4", "#f5321e", "#ff7a1a"]
+      const cols = ["#4660ff", "#f5321e", "#ff7a1a"]
       let raf = 0
       function draw() {
         if (document.hidden) { raf = requestAnimationFrame(draw); return }
@@ -53,7 +53,7 @@ export function OverdriveHome() {
           x!.beginPath(); x!.arc(p.x, p.y, p.r, 0, 7); x!.fillStyle = cols[i % 3]; x!.globalAlpha = .7; x!.fill()
           for (let j = i + 1; j < pts.length; j++) {
             const q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y)
-            if (d < 130 * DPR) { x!.globalAlpha = (1 - d / (130 * DPR)) * .32; x!.strokeStyle = "#2230c4"; x!.lineWidth = DPR * .6; x!.beginPath(); x!.moveTo(p.x, p.y); x!.lineTo(q.x, q.y); x!.stroke() }
+            if (d < 130 * DPR) { x!.globalAlpha = (1 - d / (130 * DPR)) * .32; x!.strokeStyle = "#4660ff"; x!.lineWidth = DPR * .6; x!.beginPath(); x!.moveTo(p.x, p.y); x!.lineTo(q.x, q.y); x!.stroke() }
           }
         }
         x!.globalAlpha = 1; raf = requestAnimationFrame(draw)
