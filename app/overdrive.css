@@ -21,7 +21,7 @@
   .od{min-height:100vh}
   .od{
     background:var(--bg);color:var(--ink);
-    font-family:var(--jp);overflow-x:hidden;
+    font-family:var(--jp);overflow-x:clip;
     -webkit-font-smoothing:antialiased;cursor:none;
   }
   .od ::selection{background:var(--cyan);color:#000}
