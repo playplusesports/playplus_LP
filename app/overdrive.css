@@ -484,3 +484,61 @@
 .od .wcard-body h3{font-family:var(--tech);font-weight:700;font-size:1.25rem;
   color:var(--ink);margin-bottom:8px;letter-spacing:.02em}
 .od .wcard-body p{color:var(--muted);font-size:.9rem;line-height:1.7}
+
+/* === 旧サイト内容の踏襲セクション === */
+/* Problem */
+.od .qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.od .qitem{display:flex;gap:14px;align-items:flex-start;background:var(--bg2);
+  border:1px solid var(--line);padding:22px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+  transition:border-color .25s}
+.od .qitem:hover{border-color:var(--magenta)}
+.od .qitem i{font-style:normal;color:var(--magenta);font-family:var(--disp);font-weight:900;font-size:1.1rem}
+.od .qitem p{color:var(--ink);font-size:.95rem;line-height:1.7}
+.od .q-note{text-align:center;color:var(--muted);margin-top:30px;font-size:1rem}
+/* Solution */
+.od .sol{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+@media(min-width:900px){.od .sol{grid-template-columns:1.1fr .9fr}}
+.od .sol h2{font-family:var(--disp);font-weight:900;font-size:clamp(2rem,5vw,3.4rem);line-height:1.05}
+.od .sol h2 b{color:var(--cyan)}
+.od .sol .lead{color:var(--muted);margin-top:14px;line-height:1.8}
+.od .sol .chips{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.od .sol .chips s{text-decoration:none;font-family:var(--tech);font-weight:600;font-size:.84rem;
+  border:1px solid var(--line);color:var(--ink);padding:8px 14px}
+.od .sol-badge{border:1px solid var(--line);background:var(--bg2);text-align:center;padding:48px 24px;
+  clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px)}
+.od .sol-badge .big{font-family:var(--disp);font-weight:900;font-size:clamp(4rem,12vw,7rem);color:var(--cyan);line-height:1;text-shadow:0 0 30px rgba(70,96,255,.5)}
+.od .sol-badge .t{font-size:1.4rem;font-weight:700;color:var(--ink);margin-top:8px}
+.od .sol-badge .s{color:var(--muted);margin-top:6px}
+/* Benefits */
+.od .bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.od .bcard{background:var(--bg2);border:1px solid var(--line);padding:28px 24px;
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  transition:transform .25s,border-color .25s}
+.od .bcard:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.od .bcard .mk{width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);border:1px solid var(--line);color:var(--cyan);margin-bottom:16px;font-size:1.1rem;
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.od .bcard h3{font-family:var(--tech);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:8px}
+.od .bcard p{color:var(--muted);font-size:.9rem;line-height:1.7}
+/* Pricing */
+.od .prgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.od .prcard{background:var(--bg2);border:1px solid var(--line);text-align:center;padding:26px 18px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+  transition:border-color .25s,transform .25s}
+.od .prcard:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.od .prcard .nm{font-family:var(--tech);font-weight:700;color:var(--ink);font-size:1rem;min-height:2.6em;display:flex;align-items:center;justify-content:center}
+.od .prcard .amt{font-family:var(--disp);font-weight:900;font-size:2.1rem;color:var(--cyan);line-height:1;margin-top:8px}
+.od .prcard .amt s{text-decoration:none;font-size:.5em;color:var(--muted);font-family:var(--tech);margin-left:4px}
+.od .pr-note{text-align:center;color:var(--muted);margin-top:24px;font-size:.9rem}
+/* FAQ */
+.od .faq{max-width:760px;margin:0 auto}
+.od .faq details{border:1px solid var(--line);background:var(--bg2);margin-bottom:12px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.od .faq summary{cursor:none;list-style:none;padding:18px 22px;font-family:var(--tech);font-weight:700;
+  color:var(--ink);font-size:1.02rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.od .faq summary::-webkit-details-marker{display:none}
+.od .faq summary::after{content:"+";color:var(--cyan);font-family:var(--disp);font-weight:900;font-size:1.3rem;transition:transform .25s}
+.od .faq details[open] summary::after{transform:rotate(45deg)}
+.od .faq .a{padding:0 22px 20px;color:var(--muted);line-height:1.8;font-size:.94rem}
+@media(hover:none){.od .faq summary{cursor:pointer}}

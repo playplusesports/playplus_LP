@@ -18,6 +18,44 @@ const WORKS = [
   { tag: "Tools", title: "業務自動化ツール群", desc: "LINE公式管理 / 議事録Bot / 死活監視を内製開発。", img: "/works/06.svg" },
 ]
 
+// 旧サイトから踏襲したコンテンツ
+const PROBLEMS = [
+  "イベントを開催したいがやり方がわからない",
+  "Webサイトを作りたいが制作会社が多すぎて選べない",
+  "デザインを頼みたいがイメージを言語化できない",
+  "ITやSNSが必要だと感じているが手が回らない",
+  "社内に詳しい人材がいない",
+  "予算感がわからず相談しにくい",
+]
+
+const SOLUTIONS = ["イベントの企画・運営支援", "集客用Webサイト制作", "バナー・ポスター・ロゴ制作", "参加者管理・導線設計", "SNS活用支援"]
+
+const BENEFITS = [
+  { mk: "◆", t: "ワンストップ対応", d: "企画から制作まで一括対応で手間を削減。" },
+  { mk: "▲", t: "イベント特化", d: "大会運営の実務経験をもとに設計。" },
+  { mk: "●", t: "柔軟な対応", d: "企業・団体・個人すべて対応可能。" },
+  { mk: "¥", t: "相談しやすい価格帯", d: "小規模案件から対応。" },
+  { mk: "⚡", t: "スピード対応", d: "最短1週間でLP制作可能。" },
+]
+
+const PRICING = [
+  { nm: "イベントプロデュース", amt: "50,000", unit: "円〜" },
+  { nm: "Web制作・保守運用", amt: "5,000", unit: "円〜／月" },
+  { nm: "デザイン制作", amt: "5,000", unit: "円〜" },
+  { nm: "ロゴ作成", amt: "10,000", unit: "円〜" },
+  { nm: "Googleビジネスプロフィール設定", amt: "9,800", unit: "円" },
+  { nm: "Instagram初期設定＋投稿5本", amt: "14,800", unit: "円" },
+  { nm: "SEO / MEO / LLMO対策", amt: "15,000", unit: "円〜／月" },
+]
+
+const FAQS = [
+  { q: "何も決まっていなくても相談できますか？", a: "はい、「こんなことがしたい」というざっくりとしたイメージだけでもご相談いただけます。ヒアリングを通じて、目的に合った企画をご一緒に考えていきます。" },
+  { q: "小規模イベントでも依頼できますか？", a: "可能です。個人主催の大会や少人数のイベントにも対応しています。規模に関わらず、企画から当日の運営サポートまで柔軟にお手伝いいたします。" },
+  { q: "修正は可能ですか？", a: "納品前の修正は対応いたします。初回のご確認時にフィードバックをいただき、ご納得いただけるまで調整を行います。回数や範囲はプランによって異なります。" },
+  { q: "納期はどれくらいですか？", a: "LP制作は最短1週間程度、通常のWebサイト制作は2〜4週間が目安です。内容やボリュームによって変動しますので、お早めにご相談ください。" },
+  { q: "オンライン対応可能ですか？", a: "全国対応可能です。打ち合わせはZoomやGoogle Meetなどで行えますので、遠方の方でも問題ありません。チャットやメールでのやり取りも柔軟に対応します。" },
+]
+
 export function OverdriveHome() {
   useEffect(() => {
     const cleanups: Array<() => void> = []
@@ -220,8 +258,9 @@ export function OverdriveHome() {
           <ul className="nav-links" id="navLinks">
             <li><a href="#services"><span>01</span>Services</a></li>
             <li><a href="#work"><span>02</span>Work</a></li>
-            <li><a href="#process"><span>03</span>Process</a></li>
-            <li><a href="#contact"><span>04</span>Contact</a></li>
+            <li><a href="#pricing"><span>03</span>Pricing</a></li>
+            <li><a href="#faq"><span>04</span>FAQ</a></li>
+            <li><a href="#contact"><span>05</span>Contact</a></li>
           </ul>
           <div className="burger" id="burger"><span /><span /><span /></div>
         </nav>
@@ -257,10 +296,43 @@ export function OverdriveHome() {
           </div>
         </div>
 
+        {/* PROBLEM */}
+        <section id="problem">
+          <div className="head rv">
+            <div className="k">System // 01</div>
+            <h2>Your Issues</h2>
+            <p>こんなお悩みありませんか？ — Play+ が一気通貫で引き受けます。</p>
+          </div>
+          <div className="qgrid">
+            {PROBLEMS.map((q, i) => (
+              <div className={`qitem rv${i % 4 ? ` d${i % 4}` : ""}`} key={q}><i>?</i><p>{q}</p></div>
+            ))}
+          </div>
+          <p className="q-note rv">多くの企業・団体が、同じ悩みを抱えています。</p>
+        </section>
+
+        {/* SOLUTION */}
+        <section id="solution">
+          <div className="sol">
+            <div className="rv">
+              <h2>その課題、<br /><b>すべて解決</b>できます。</h2>
+              <p className="lead">企画段階から伴走し、目的に合わせた最適な形をご提案します。</p>
+              <div className="chips">
+                {SOLUTIONS.map((s) => <s key={s}>{s}</s>)}
+              </div>
+            </div>
+            <div className="sol-badge rv d1">
+              <div className="big">1</div>
+              <div className="t">ワンストップ対応</div>
+              <div className="s">「やりたい」を形にするまで</div>
+            </div>
+          </div>
+        </section>
+
         {/* SERVICES */}
         <section id="services">
           <div className="head rv">
-            <div className="k">System // 01</div>
+            <div className="k">System // 02</div>
             <h2>Capabilities</h2>
             <p>4つの事業を、独立したサービスではなくひとつの体験設計エンジンとして提供します。カードにマウスを乗せると傾きます。</p>
           </div>
@@ -309,6 +381,24 @@ export function OverdriveHome() {
           <div className="viz-wrap rv" id="viz" />
         </section>
 
+        {/* BENEFITS */}
+        <section id="benefits">
+          <div className="head rv">
+            <div className="k">System // 03</div>
+            <h2>Why Play+</h2>
+            <p>選ばれる理由。ワンストップ × イベント特化 × スピード。</p>
+          </div>
+          <div className="bgrid">
+            {BENEFITS.map((b, i) => (
+              <div className={`bcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={b.t} data-hot>
+                <div className="mk">{b.mk}</div>
+                <h3>{b.t}</h3>
+                <p>{b.d}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* LOGO REVEAL (pinned scroll) */}
         <section className="pin-wrap" id="logoReveal" aria-label="Logo reveal">
           <div className="pin-stage">
@@ -324,7 +414,7 @@ export function OverdriveHome() {
         {/* WORK */}
         <section id="work">
           <div className="head rv">
-            <div className="k">System // 02</div>
+            <div className="k">System // 04</div>
             <h2>Selected Work</h2>
             <p>自社プロダクトからクライアントワークまで。手がけた制作・運営の一部です。</p>
           </div>
@@ -342,10 +432,28 @@ export function OverdriveHome() {
           </div>
         </section>
 
+        {/* PRICING */}
+        <section id="pricing">
+          <div className="head rv">
+            <div className="k">System // 05</div>
+            <h2>Pricing</h2>
+            <p>参考料金。内容によりお見積りいたします。</p>
+          </div>
+          <div className="prgrid">
+            {PRICING.map((p, i) => (
+              <div className={`prcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={p.nm} data-hot>
+                <div className="nm">{p.nm}</div>
+                <div className="amt">{p.amt}<s>{p.unit}</s></div>
+              </div>
+            ))}
+          </div>
+          <p className="pr-note rv">※ 表示は税込・目安です。詳細は <a href="/services/web">Web制作</a> / <a href="/services/meo">SEO/MEO/LLMO</a> の各ページをご覧ください。</p>
+        </section>
+
         {/* PROCESS */}
         <section id="process">
           <div className="head rv">
-            <div className="k">System // 03</div>
+            <div className="k">System // 06</div>
             <h2>Workflow</h2>
             <p>ヒアリングから振り返りまで。各フェーズで数値と仮説を共有し、判断を一緒に行います。</p>
           </div>
@@ -359,6 +467,23 @@ export function OverdriveHome() {
               <p>進捗を可視化しながら制作・運営。中間レビューで軌道修正します。</p></div>
             <div className="ts"><p className="tn">PHASE 04</p><h4>REVIEW</h4>
               <p>結果をKPIで評価し、次の打ち手を提案。一度きりで終わらせません。</p></div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq">
+          <div className="head rv">
+            <div className="k">System // 07</div>
+            <h2>FAQ</h2>
+            <p>よくある質問。気になる点はお気軽にどうぞ。</p>
+          </div>
+          <div className="faq rv">
+            {FAQS.map((f) => (
+              <details key={f.q}>
+                <summary>{f.q}</summary>
+                <p className="a">{f.a}</p>
+              </details>
+            ))}
           </div>
         </section>
 
