@@ -280,7 +280,6 @@ export function OverdriveHome() {
           <span className="hero-tag"><i />Creative Tech Studio / Play+</span>
           <h1>
             <span className="row r1"><b>WE MAKE</b></span>
-            <span className="row r2"><b className="glitch" data-t="DIGITAL">DIGITAL</b></span>
             <span className="row r3"><b className="outline">PLAY+</b></span>
           </h1>
           <p className="hero-sub">
