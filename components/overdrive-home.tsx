@@ -18,6 +18,9 @@ const WORKS = [
   { tag: "Tools", title: "業務自動化ツール群", desc: "LINE公式管理 / 議事録Bot / 死活監視を内製開発。", img: "/works/06.svg" },
 ]
 
+// ヒーロー背景スライド（フリー画像 / public/hero）。Event→eSports→Web→Design を巡回。
+const HERO_IMAGES = ["/hero/01.jpg", "/hero/04.jpg", "/hero/06.jpg", "/hero/02.jpg", "/hero/05.jpg"]
+
 // 旧サイトから踏襲したコンテンツ
 const PROBLEMS = [
   "イベントを開催したいがやり方がわからない",
@@ -57,28 +60,13 @@ const FAQS = [
 ]
 
 export function OverdriveHome() {
-  // ヒーロー背景: 実績写真を取得してクロスフェードで切り替え（旧サイト準拠）
-  const [heroImgs, setHeroImgs] = useState<string[]>(["/hero-crowd.jpg"])
+  // ヒーロー背景: フリー画像を5秒ごとにクロスフェード
   const [heroIdx, setHeroIdx] = useState(0)
-
   useEffect(() => {
-    let alive = true
-    fetch("/api/works")
-      .then((r) => r.json())
-      .then((data: { imageUrl?: string }[]) => {
-        if (!alive) return
-        const urls = data.filter((w) => w.imageUrl).map((w) => w.imageUrl as string)
-        if (urls.length) setHeroImgs(["/hero-crowd.jpg", ...urls])
-      })
-      .catch(() => {})
-    return () => { alive = false }
-  }, [])
-
-  useEffect(() => {
-    if (heroImgs.length <= 1) return
-    const id = setInterval(() => setHeroIdx((p) => (p + 1) % heroImgs.length), 5000)
+    if (HERO_IMAGES.length <= 1) return
+    const id = setInterval(() => setHeroIdx((p) => (p + 1) % HERO_IMAGES.length), 5000)
     return () => clearInterval(id)
-  }, [heroImgs.length])
+  }, [])
 
   useEffect(() => {
     const cleanups: Array<() => void> = []
@@ -284,9 +272,9 @@ export function OverdriveHome() {
         {/* HERO */}
         <header className="hero" id="top">
           <div className="hero-bg" aria-hidden="true">
-            {heroImgs.map((src, i) => (
+            {HERO_IMAGES.map((src, i) => (
               /* eslint-disable-next-line @next/next/no-img-element */
-              <img key={src + i} src={src} alt="" className={`hero-slide${i === heroIdx ? " on" : ""}`} />
+              <img key={src} src={src} alt="" className={`hero-slide${i === heroIdx ? " on" : ""}`} />
             ))}
           </div>
           <span className="hero-tag"><i />Creative Tech Studio / Play+</span>
