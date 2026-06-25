@@ -461,3 +461,26 @@
 .od .work .wthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
 .od .work:hover .wthumb img{transform:scale(1.07)}
 @media(max-width:760px){.od .work{flex-wrap:wrap}.od .work .wthumb{width:100%;height:150px;order:-1}}
+
+/* --- brand logo in nav/footer (added) --- */
+.od .logo-img{width:38px;height:38px;border-radius:50%;object-fit:cover;
+  object-position:center 40%;background:#fff;flex:none;
+  box-shadow:0 0 16px rgba(70,96,255,.5);animation:pulse 1.6s infinite}
+
+/* --- 実績: 旧サイト準拠のカードグリッド（サムネ上部）--- */
+.od .wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.od .wcard{background:var(--bg2);border:1px solid var(--line);overflow:hidden;
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);
+  transition:transform .3s,box-shadow .3s,border-color .3s}
+.od .wcard:hover{transform:translateY(-4px);border-color:var(--cyan);
+  box-shadow:0 14px 40px rgba(70,96,255,.18)}
+.od .wcard-img{aspect-ratio:16/10;overflow:hidden;background:var(--bg)}
+.od .wcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.od .wcard:hover .wcard-img img{transform:scale(1.06)}
+.od .wcard-body{padding:20px}
+.od .wcard-cat{display:inline-block;font-family:var(--tech);font-weight:700;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);
+  border:1px solid var(--line);padding:3px 10px;margin-bottom:12px}
+.od .wcard-body h3{font-family:var(--tech);font-weight:700;font-size:1.25rem;
+  color:var(--ink);margin-bottom:8px;letter-spacing:.02em}
+.od .wcard-body p{color:var(--muted);font-size:.9rem;line-height:1.7}

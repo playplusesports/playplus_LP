@@ -10,12 +10,12 @@ import "../app/overdrive.css"
 
 // 制作実績（実名）。status は正直に表記する。
 const WORKS = [
-  { n: "/01", title: "KOHAKU アートオークション", cat: "Web — オンラインオークション基盤をフルスクラッチ開発（決済・自動進行・通知）", img: "/works/01.svg" },
-  { n: "/02", title: "Hu-Mam", cat: "Web — ブランドコーポレートサイトの企画・制作・公開", img: "/works/02.svg" },
-  { n: "/03", title: "CAFEMANO", cat: "Web & SNS — Googleビジネスプロフィール最適化でMEO集客を強化", img: "/works/03.svg" },
-  { n: "/04", title: "mauve（モーヴ）", cat: "Web & SNS — サイト制作＋集客分析・改善運用を一貫サポート", img: "/works/04.svg" },
-  { n: "/05", title: "eスポーツ大会 運営・配信", cat: "eSports — 企画から当日運営・ライブ配信まで一貫プロデュース", img: "/works/05.svg" },
-  { n: "/06", title: "業務自動化ツール群", cat: "その他 — LINE公式管理 / 議事録Bot / 死活監視を内製開発", img: "/works/06.svg" },
+  { tag: "Web", title: "KOHAKU アートオークション", desc: "オンラインオークション基盤をフルスクラッチ開発（決済・自動進行・通知）。", img: "/works/01.svg" },
+  { tag: "Web", title: "Hu-Mam", desc: "ブランドコーポレートサイトの企画・制作・公開までを一貫対応。", img: "/works/02.svg" },
+  { tag: "Web & SNS", title: "CAFEMANO", desc: "Googleビジネスプロフィール最適化でMEO集客を強化。", img: "/works/03.svg" },
+  { tag: "Web & SNS", title: "mauve（モーヴ）", desc: "サイト制作＋集客分析・改善運用を一貫サポート。", img: "/works/04.svg" },
+  { tag: "eSports", title: "eスポーツ大会 運営・配信", desc: "企画から当日運営・ライブ配信まで一貫プロデュース。", img: "/works/05.svg" },
+  { tag: "Tools", title: "業務自動化ツール群", desc: "LINE公式管理 / 議事録Bot / 死活監視を内製開発。", img: "/works/06.svg" },
 ]
 
 export function OverdriveHome() {
@@ -216,7 +216,7 @@ export function OverdriveHome() {
       <div className="content">
         {/* NAV */}
         <nav id="nav">
-          <a href="#top" className="logo"><b />PLAY+</a>
+          <a href="#top" className="logo">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/logo.png" alt="Play+" className="logo-img" />PLAY+</a>
           <ul className="nav-links" id="navLinks">
             <li><a href="#services"><span>01</span>Services</a></li>
             <li><a href="#work"><span>02</span>Work</a></li>
@@ -328,12 +328,15 @@ export function OverdriveHome() {
             <h2>Selected Work</h2>
             <p>自社プロダクトからクライアントワークまで。手がけた制作・運営の一部です。</p>
           </div>
-          <div className="works">
+          <div className="wgrid">
             {WORKS.map((w, i) => (
-              <div className={`work rv${i ? ` d${Math.min(i, 4)}` : ""}`} key={w.n} data-hot>
-                <div className="wthumb">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={w.img} alt={`${w.title} のサムネイル`} loading="lazy" /></div>
-                <div className="wl"><span className="wn">{w.n}</span><h3>{w.title}</h3></div>
-                <span className="cat">{w.cat}</span><span className="ar">↗</span>
+              <div className={`wcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={w.title} data-hot>
+                <div className="wcard-img">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={w.img} alt={`${w.title} のサムネイル`} loading="lazy" /></div>
+                <div className="wcard-body">
+                  <span className="wcard-cat">{w.tag}</span>
+                  <h3>{w.title}</h3>
+                  <p>{w.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -372,7 +375,7 @@ export function OverdriveHome() {
         {/* FOOTER */}
         <footer>
           <div className="fcol">
-            <a href="#top" className="logo"><b />PLAY+</a>
+            <a href="#top" className="logo">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/logo.png" alt="Play+" className="logo-img" />PLAY+</a>
             <p>4つの領域を「動く体験」で接続するクリエイティブテックスタジオ。</p>
           </div>
           <div className="fcol">
