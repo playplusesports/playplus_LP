@@ -34,7 +34,7 @@ const services = [
   },
   {
     icon: MapPin,
-    title: "MEO / LLMO対策",
+    title: "SEO / MEO / LLMO対策",
     href: "/services/meo",
     items: [
       "Googleビジネスプロフィール最適化",

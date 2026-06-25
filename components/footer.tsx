@@ -49,7 +49,7 @@ export function Footer() {
             <nav aria-label="ページナビゲーション" className="flex flex-col gap-2">
               <Link href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">サービス</Link>
               <Link href="/services/web" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Web制作保守運用</Link>
-              <Link href="/services/meo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">MEO / LLMO対策</Link>
+              <Link href="/services/meo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">SEO / MEO / LLMO対策</Link>
               <Link href="/#benefits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">選ばれる理由</Link>
               <Link href="/works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">実績</Link>
               <Link href="/news" className="text-sm text-muted-foreground hover:text-foreground transition-colors">ニュース</Link>

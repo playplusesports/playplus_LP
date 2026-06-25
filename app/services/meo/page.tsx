@@ -47,7 +47,7 @@ const llmoFeatures = [
 
 const plans = [
   {
-    name: "MEO + LLMO スターター",
+    name: "SEO + MEO + LLMO スターター",
     price: "15,000",
     recommended: false,
     items: [
@@ -60,7 +60,7 @@ const plans = [
     ],
   },
   {
-    name: "MEO + LLMO スタンダード",
+    name: "SEO + MEO + LLMO スタンダード",
     price: "25,000",
     recommended: true,
     items: [
@@ -73,7 +73,7 @@ const plans = [
     ],
   },
   {
-    name: "MEO + LLMO プレミアム",
+    name: "SEO + MEO + LLMO プレミアム",
     price: "40,000",
     recommended: false,
     items: [
@@ -106,20 +106,20 @@ const faqs = [
 export default function MeoServicePage() {
   return (
     <main className="min-h-screen bg-background">
-      <BreadcrumbSchema items={[{ name: "ホーム", url: "https://playplus.jp" }, { name: "MEO / LLMO対策", url: "https://playplus.jp/services/meo" }]} />
+      <BreadcrumbSchema items={[{ name: "ホーム", url: "https://playplus.jp" }, { name: "SEO / MEO / LLMO対策", url: "https://playplus.jp/services/meo" }]} />
       <Header />
 
       {/* Hero */}
       <section className="pt-32 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimate>
-            <p className="text-sm text-accent font-medium mb-4">MEO / LLMO Service</p>
+            <p className="text-sm text-accent font-medium mb-4">SEO / MEO / LLMO Service</p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-              Googleマップ × AI検索で<br />
+              検索 × Googleマップ × AI検索で<br />
               <span className="text-accent">集客力を強化</span>する
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-              MEO対策でGoogleマップ上位表示、LLMO対策でChatGPT・GeminiなどのAI検索で推薦されるお店へ。
+              SEO対策で検索エンジンの上位表示、MEO対策でGoogleマップ上位表示、LLMO対策でChatGPT・GeminiなどのAI検索で推薦されるお店へ。
               データに基づいた改善で、確実に集客につなげます。
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

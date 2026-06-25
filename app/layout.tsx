@@ -125,7 +125,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Service",
-                  "name": "MEO / LLMO対策",
+                  "name": "SEO / MEO / LLMO対策",
                   "description": "Googleマップ上位表示とAI検索最適化で集客力を強化するサービス",
                   "provider": { "@id": "https://playplus.jp/#organization" },
                   "url": "https://playplus.jp/services/meo",
