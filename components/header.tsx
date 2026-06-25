@@ -1,85 +1,59 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
 
+// トップ(overdrive)ナビに合わせた共通ヘッダー。スタイルは globals.css の .site-* を参照。
 const navItems = [
-  { label: "サービス", href: "/#services" },
-  { label: "選ばれる理由", href: "/#benefits" },
-  { label: "実績", href: "/works" },
-  { label: "ニュース", href: "/news" },
-  { label: "料金", href: "/#pricing" },
-  { label: "FAQ", href: "/#faq" },
+  { n: "01", label: "Services", href: "/#services" },
+  { n: "02", label: "Work", href: "/works" },
+  { n: "03", label: "Pricing", href: "/#pricing" },
+  { n: "04", label: "News", href: "/news" },
+  { n: "05", label: "FAQ", href: "/#faq" },
 ]
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  const close = () => setOpen(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Play+" width={36} height={36} className="rounded-full" />
-            <span className="text-xl font-bold text-foreground">Play+</span>
-          </Link>
+    <header className={`site-header${scrolled ? " scr" : ""}`}>
+      <Link href="/" className="brand" onClick={close}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo.png" alt="Play+" />
+        PLAY+
+      </Link>
 
-          {/* Desktop Navigation */}
-          <nav aria-label="メインナビゲーション" className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.label}
+      <nav className={`site-nav-wrap${open ? " open" : ""}`} aria-label="メインナビゲーション">
+        <ul className="site-nav-links">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} onClick={close}>
+                <span>{item.n}</span>{item.label}
               </Link>
-            ))}
-          </nav>
+            </li>
+          ))}
+        </ul>
+        <Link href="/contact" className="site-cta" onClick={close}>無料相談</Link>
+      </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Button asChild>
-              <Link href="/contact">無料相談</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              className="p-2 text-foreground"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-expanded={isMenuOpen}
-              aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="lg:hidden bg-background border-b border-border">
-          <nav aria-label="モバイルナビゲーション" className="flex flex-col px-4 py-4 gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Button asChild className="mt-2">
-              <Link href="/contact">無料相談</Link>
-            </Button>
-          </nav>
-        </div>
-      )}
+      <button
+        className={`site-burger${open ? " x" : ""}`}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-label={open ? "メニューを閉じる" : "メニューを開く"}
+      >
+        <span /><span /><span />
+      </button>
     </header>
   )
 }
