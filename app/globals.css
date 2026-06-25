@@ -167,3 +167,28 @@
   .site-nav-links a{font-size:1.25rem}
   .site-burger{display:flex}
 }
+
+/* === 共通フッター: トップ(overdrive)フッターに合わせたスタイル === */
+.site-footer{border-top:1px solid rgba(70,96,255,.18);background:#161d47;
+  padding:54px clamp(18px,4vw,54px) 32px;display:flex;flex-wrap:wrap;
+  justify-content:space-between;gap:30px;font-family:'Rajdhani',sans-serif}
+.site-footer .brand{display:flex;align-items:center;gap:10px;text-decoration:none;
+  color:#e9edff;font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:.12em}
+.site-footer .brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;
+  object-position:center 40%;background:#fff;box-shadow:0 0 14px rgba(70,96,255,.5)}
+.site-footer .fcol{min-width:150px}
+.site-footer .fcol h5{font-weight:700;font-size:.76rem;letter-spacing:.18em;
+  text-transform:uppercase;color:#4660ff;margin-bottom:14px}
+.site-footer .fcol a.flink{display:block;color:#e9edff;text-decoration:none;
+  font-size:.95rem;margin-bottom:9px;transition:.25s}
+.site-footer .fcol a.flink:hover{color:#4660ff;padding-left:6px}
+.site-footer .fcol p{color:#93a0cf;font-size:.88rem;max-width:240px;margin-top:10px}
+.site-foot-sns{display:flex;gap:14px;margin-top:16px}
+.site-foot-sns a{color:#93a0cf;transition:color .25s;display:inline-flex}
+.site-foot-sns a:hover{color:#4660ff}
+.site-footer .copy{width:100%;border-top:1px solid rgba(70,96,255,.18);padding-top:22px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:.8rem;letter-spacing:.06em;color:#93a0cf}
+.site-footer .copy .links{display:flex;gap:18px;flex-wrap:wrap}
+.site-footer .copy a{color:#93a0cf;text-decoration:none;transition:color .25s}
+.site-footer .copy a:hover{color:#4660ff}
