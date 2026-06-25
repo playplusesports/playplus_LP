@@ -542,3 +542,30 @@
 .od .faq details[open] summary::after{transform:rotate(45deg)}
 .od .faq .a{padding:0 22px 20px;color:var(--muted);line-height:1.8;font-size:.94rem}
 @media(hover:none){.od .faq summary{cursor:pointer}}
+
+/* === 演出を緩める上書き（旧サイト寄り） === */
+/* 通常カーソルに戻す（カスタムカーソル無効） */
+.od{cursor:auto}
+.od .cur,.od .cur-dot{display:none!important}
+.od a,.od .btn,.od summary,.od [data-hot]{cursor:pointer}
+/* 強い装飾をオフ：スキャンライン / ビネット / RGBグリッチ */
+.od::before{display:none!important}
+.od::after{display:none!important}
+.od .glitch::before,.od .glitch::after{display:none!important}
+
+/* ヒーロー画像をゆっくり回転（隙間が出ないよう拡張してクリップ） */
+.od .hero{overflow:hidden}
+.od .hero::before{
+  inset:-75%;z-index:-2;
+  background:url("/hero-crowd.jpg") center/cover no-repeat;
+  filter:saturate(.9) contrast(1.02) brightness(.78);
+  animation:heroSpin 80s linear infinite;
+}
+.od .hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(8,11,34,.5) 0%,rgba(8,11,34,.72) 45%,
+    rgba(8,11,34,.92) 78%,var(--bg) 100%);
+}
+@keyframes heroSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.od .hero::before{animation:none}}

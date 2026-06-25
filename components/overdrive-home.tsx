@@ -73,7 +73,7 @@ export function OverdriveHome() {
       const DPR = Math.min(window.devicePixelRatio || 1, 2)
       function size() { W = c!.width = innerWidth * DPR; H = c!.height = innerHeight * DPR; c!.style.width = innerWidth + "px"; c!.style.height = innerHeight + "px" }
       size()
-      const COUNT = innerWidth < 760 ? 42 : 90
+      const COUNT = innerWidth < 760 ? 28 : 56
       for (let i = 0; i < COUNT; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3 * DPR, vy: (Math.random() - .5) * .3 * DPR, r: (Math.random() * 1.6 + .6) * DPR })
       const onResize = () => size()
       const onMove = (e: MouseEvent) => { mouse.x = e.clientX * DPR; mouse.y = e.clientY * DPR }
@@ -88,10 +88,10 @@ export function OverdriveHome() {
           if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1
           const dxm = p.x - mouse.x, dym = p.y - mouse.y, dm = Math.hypot(dxm, dym)
           if (dm < 140 * DPR) { const f = (140 * DPR - dm) / (140 * DPR); p.x += dxm / dm * f * 1.6; p.y += dym / dm * f * 1.6 }
-          x!.beginPath(); x!.arc(p.x, p.y, p.r, 0, 7); x!.fillStyle = cols[i % 3]; x!.globalAlpha = .7; x!.fill()
+          x!.beginPath(); x!.arc(p.x, p.y, p.r, 0, 7); x!.fillStyle = cols[i % 3]; x!.globalAlpha = .42; x!.fill()
           for (let j = i + 1; j < pts.length; j++) {
             const q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y)
-            if (d < 130 * DPR) { x!.globalAlpha = (1 - d / (130 * DPR)) * .32; x!.strokeStyle = "#4660ff"; x!.lineWidth = DPR * .6; x!.beginPath(); x!.moveTo(p.x, p.y); x!.lineTo(q.x, q.y); x!.stroke() }
+            if (d < 130 * DPR) { x!.globalAlpha = (1 - d / (130 * DPR)) * .16; x!.strokeStyle = "#4660ff"; x!.lineWidth = DPR * .6; x!.beginPath(); x!.moveTo(p.x, p.y); x!.lineTo(q.x, q.y); x!.stroke() }
           }
         }
         x!.globalAlpha = 1; raf = requestAnimationFrame(draw)
@@ -244,13 +244,6 @@ export function OverdriveHome() {
       <div className="cur-dot" id="curDot" />
       <div className="prog" id="prog" />
 
-      {/* LOADER */}
-      <div id="loader">
-        <div className="boot" id="boot">INITIALIZING SYSTEM</div>
-        <div className="boot-bar"><i id="bootBar" /></div>
-        <div className="boot-pct" id="bootPct">00</div>
-      </div>
-
       <div className="content">
         {/* NAV */}
         <nav id="nav">
@@ -283,8 +276,7 @@ export function OverdriveHome() {
             <a href="#work" className="btn"><span>VIEW WORK</span></a>
           </div>
           <div className="hero-meta">
-            <div>SCROLL TO EXPLORE <b>↓</b></div>
-            <div>FPS <b id="fps">60</b> / CANVAS <b>ON</b></div>
+            <div>SCROLL <b>↓</b></div>
           </div>
         </header>
 
