@@ -10,12 +10,12 @@ import "../app/overdrive.css"
 
 // 制作実績（実名）。status は正直に表記する。
 const WORKS = [
-  { n: "/01", title: "KOHAKU アートオークション", cat: "Web — オークションプラットフォーム制作 / 自社" },
-  { n: "/02", title: "SmashQueue", cat: "eSports — 大会フリー対戦キュー管理 / 自社・進行中" },
-  { n: "/03", title: "Hu-Mam（中山様）", cat: "Web — コーポレートサイト制作 / クライアント" },
-  { n: "/04", title: "CAFEMANO", cat: "Web & SNS — Googleビジネスプロフィール最適化(MEO)" },
-  { n: "/05", title: "mauve（モーヴ）", cat: "Web & SNS — サイト制作・集客分析 / クライアント" },
-  { n: "/06", title: "業務自動化ツール群", cat: "その他 — LINE管理 / 議事録Bot / 死活監視 / 自社" },
+  { n: "/01", title: "KOHAKU アートオークション", cat: "Web — オンラインオークション基盤をフルスクラッチ開発（決済・自動進行・通知）" },
+  { n: "/02", title: "Hu-Mam", cat: "Web — ブランドコーポレートサイトの企画・制作・公開" },
+  { n: "/03", title: "CAFEMANO", cat: "Web & SNS — Googleビジネスプロフィール最適化でMEO集客を強化" },
+  { n: "/04", title: "mauve（モーヴ）", cat: "Web & SNS — サイト制作＋集客分析・改善運用を一貫サポート" },
+  { n: "/05", title: "eスポーツ大会 運営・配信", cat: "eSports — 企画から当日運営・ライブ配信まで一貫プロデュース" },
+  { n: "/06", title: "業務自動化ツール群", cat: "その他 — LINE公式管理 / 議事録Bot / 死活監視を内製開発" },
 ]
 
 export function OverdriveHome() {
