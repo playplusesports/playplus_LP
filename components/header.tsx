@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { useTheme } from "next-themes"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 const navItems = [
   { label: "サービス", href: "/#services" },
@@ -18,7 +17,6 @@ const navItems = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -43,14 +41,6 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="テーマを切り替え"
-            >
-              <Sun className="h-5 w-5 hidden dark:block" />
-              <Moon className="h-5 w-5 block dark:hidden" />
-            </button>
             <Button asChild>
               <Link href="/contact">無料相談</Link>
             </Button>
@@ -58,14 +48,6 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="テーマを切り替え"
-            >
-              <Sun className="h-5 w-5 hidden dark:block" />
-              <Moon className="h-5 w-5 block dark:hidden" />
-            </button>
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
