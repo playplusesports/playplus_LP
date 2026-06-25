@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import "../app/overdrive.css"
 
 // Overdrive-style single-page homepage for Play+.
@@ -57,6 +57,29 @@ const FAQS = [
 ]
 
 export function OverdriveHome() {
+  // ヒーロー背景: 実績写真を取得してクロスフェードで切り替え（旧サイト準拠）
+  const [heroImgs, setHeroImgs] = useState<string[]>(["/hero-crowd.jpg"])
+  const [heroIdx, setHeroIdx] = useState(0)
+
+  useEffect(() => {
+    let alive = true
+    fetch("/api/works")
+      .then((r) => r.json())
+      .then((data: { imageUrl?: string }[]) => {
+        if (!alive) return
+        const urls = data.filter((w) => w.imageUrl).map((w) => w.imageUrl as string)
+        if (urls.length) setHeroImgs(["/hero-crowd.jpg", ...urls])
+      })
+      .catch(() => {})
+    return () => { alive = false }
+  }, [])
+
+  useEffect(() => {
+    if (heroImgs.length <= 1) return
+    const id = setInterval(() => setHeroIdx((p) => (p + 1) % heroImgs.length), 5000)
+    return () => clearInterval(id)
+  }, [heroImgs.length])
+
   useEffect(() => {
     const cleanups: Array<() => void> = []
     const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches
@@ -260,6 +283,12 @@ export function OverdriveHome() {
 
         {/* HERO */}
         <header className="hero" id="top">
+          <div className="hero-bg" aria-hidden="true">
+            {heroImgs.map((src, i) => (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img key={src + i} src={src} alt="" className={`hero-slide${i === heroIdx ? " on" : ""}`} />
+            ))}
+          </div>
           <span className="hero-tag"><i />Creative Tech Studio / Play+</span>
           <h1>
             <span className="row r1"><b>WE MAKE</b></span>
