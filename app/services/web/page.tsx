@@ -43,16 +43,20 @@ const steps = [
 
 const monthlyPlans = [
   {
-    name: "エントリープラン", initial: "無料", price: "5,000", contract: "最大6ヶ月のお試し", recommended: false,
+    name: "1ページプラン", initial: "無料", price: "5,000", contract: "最大6ヶ月のお試し", recommended: false,
     badge: "初期費用 ¥0",
+    items: ["1ページの静的サイト（LP型）", "お問い合わせフォーム", "Googleマップ埋め込み", "サイト死活監視"],
+  },
+  {
+    name: "エントリープラン", initial: "無料", price: "10,000", contract: "6ヶ月契約", recommended: false, badge: "",
     items: ["5ページ以内の静的サイト", "お問い合わせフォーム", "Googleマップ埋め込み", "サイト死活監視"],
   },
   {
-    name: "ライトプラン", initial: "¥9,800", price: "8,000", contract: "6ヶ月契約", recommended: true, badge: "",
+    name: "ライトプラン", initial: "¥9,800", price: "16,000", contract: "6ヶ月契約", recommended: true, badge: "",
     items: ["8ページ以内の静的サイト", "お問い合わせ＋LINE誘導", "Instagram・Googleマップ埋め込み", "月1回コンテンツ更新代行", "AI投稿文 月3本プレゼント", "月次アクセスレポート（LINE送付）"],
   },
   {
-    name: "スタンダードプラン", initial: "¥19,800", price: "15,000", contract: "3ヶ月契約", recommended: false, badge: "",
+    name: "スタンダードプラン", initial: "¥19,800", price: "30,000", contract: "3ヶ月契約", recommended: false, badge: "",
     items: ["ページ数無制限", "予約フォーム・ECカート連携", "月2回コンテンツ更新", "AI投稿文 月10本", "月次Googleアナリティクスレポート", "SEO基本対策"],
   },
 ]
@@ -74,7 +78,7 @@ const faqs = [
   { q: "今すでにホームページがある場合はどうなりますか？", a: "現在のサイトの内容を引き継いで作り直すことも可能です。まずはご相談ください。" },
   { q: "6ヶ月より前に解約したい場合は？", a: "6ヶ月未満での解約の場合、違約金として¥19,800をいただいております。詳しくは契約前にご説明します。" },
   { q: "写真や文章は自分で用意する必要がありますか？", a: "写真はスマホで撮影したものをLINEで送っていただければ対応します。文章はAIを使ってPlay+側で作成することも可能です。" },
-  { q: "月額プランはいつでも解約できますか？", a: "エントリープランは最大6ヶ月のお試しプランです。6ヶ月経過後はライトプラン以上への移行をお願いしています。ライトプランは6ヶ月、スタンダードプランは3ヶ月の最低契約期間があります。期間内の解約には違約金（¥19,800）が発生します。" },
+  { q: "月額プランはいつでも解約できますか？", a: "1ページプランは最大6ヶ月のお試しプランです。6ヶ月経過後はエントリープラン以上への移行をお願いしています。エントリープランは6ヶ月、ライトプランは6ヶ月、スタンダードプランは3ヶ月の最低契約期間があります。期間内の解約には違約金（¥19,800）が発生します。" },
   { q: "買い切りプランとは何ですか？", a: "制作費用を一度だけお支払いいただき、完成したサイトのファイル一式をお渡しするプランです。その後の更新・保守はお客様ご自身で行っていただく形となります。" },
   { q: "ロゴ制作もお願いできますか？", a: "はい、オプションで承ります。テキスト＋アイコンのシンプルなものは¥10,000、ヒアリングから複数案提案・修正込みのフルオリジナルは¥39,800です。" },
   { q: "オプションはどのプランでも追加できますか？", a: "はい、月額プラン・買い切りプランいずれにも追加いただけます。ロゴ作成のシンプルとフルオリジナルはどちらか1つのみ選択可能です。" },
@@ -201,7 +205,7 @@ export default function WebServicePage() {
 
           {/* Monthly Plans */}
           {pricingTab === "monthly" && (
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto items-start">
               {monthlyPlans.map((plan, i) => (
                 <Card key={i} className={`bg-card text-center relative overflow-hidden ${plan.recommended ? "border-accent ring-2 ring-accent" : plan.badge ? "border-green-500/50 ring-1 ring-green-500/50" : "border-border"}`}>
                   {plan.recommended && (
@@ -248,7 +252,7 @@ export default function WebServicePage() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <ul className="space-y-3">
-                    {["5ページ以内の静的サイト", "お問い合わせフォーム", "Googleマップ埋め込み", "修正1回無料", "納品：ファイル一式を圧縮してお渡し"].map((item, i) => (
+                    {["5ページ以内の静的サイト", "お問い合わせフォーム", "Googleマップ埋め込み", "修正1回無料", "追加修正：1回 ¥5,000", "納品：ファイル一式を圧縮してお渡し"].map((item, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                         {item}
