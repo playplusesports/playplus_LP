@@ -10,12 +10,12 @@ import "../app/overdrive.css"
 
 // 制作実績（実名）。status は正直に表記する。
 const WORKS = [
-  { n: "/01", title: "KOHAKU アートオークション", cat: "Web — オンラインオークション基盤をフルスクラッチ開発（決済・自動進行・通知）" },
-  { n: "/02", title: "Hu-Mam", cat: "Web — ブランドコーポレートサイトの企画・制作・公開" },
-  { n: "/03", title: "CAFEMANO", cat: "Web & SNS — Googleビジネスプロフィール最適化でMEO集客を強化" },
-  { n: "/04", title: "mauve（モーヴ）", cat: "Web & SNS — サイト制作＋集客分析・改善運用を一貫サポート" },
-  { n: "/05", title: "eスポーツ大会 運営・配信", cat: "eSports — 企画から当日運営・ライブ配信まで一貫プロデュース" },
-  { n: "/06", title: "業務自動化ツール群", cat: "その他 — LINE公式管理 / 議事録Bot / 死活監視を内製開発" },
+  { n: "/01", title: "KOHAKU アートオークション", cat: "Web — オンラインオークション基盤をフルスクラッチ開発（決済・自動進行・通知）", img: "/works/01.svg" },
+  { n: "/02", title: "Hu-Mam", cat: "Web — ブランドコーポレートサイトの企画・制作・公開", img: "/works/02.svg" },
+  { n: "/03", title: "CAFEMANO", cat: "Web & SNS — Googleビジネスプロフィール最適化でMEO集客を強化", img: "/works/03.svg" },
+  { n: "/04", title: "mauve（モーヴ）", cat: "Web & SNS — サイト制作＋集客分析・改善運用を一貫サポート", img: "/works/04.svg" },
+  { n: "/05", title: "eスポーツ大会 運営・配信", cat: "eSports — 企画から当日運営・ライブ配信まで一貫プロデュース", img: "/works/05.svg" },
+  { n: "/06", title: "業務自動化ツール群", cat: "その他 — LINE公式管理 / 議事録Bot / 死活監視を内製開発", img: "/works/06.svg" },
 ]
 
 export function OverdriveHome() {
@@ -40,7 +40,7 @@ export function OverdriveHome() {
       const onResize = () => size()
       const onMove = (e: MouseEvent) => { mouse.x = e.clientX * DPR; mouse.y = e.clientY * DPR }
       addEventListener("resize", onResize); addEventListener("mousemove", onMove)
-      const cols = ["#00f0ff", "#ff0080", "#c6ff00"]
+      const cols = ["#2230c4", "#f5321e", "#ff7a1a"]
       let raf = 0
       function draw() {
         if (document.hidden) { raf = requestAnimationFrame(draw); return }
@@ -53,7 +53,7 @@ export function OverdriveHome() {
           x!.beginPath(); x!.arc(p.x, p.y, p.r, 0, 7); x!.fillStyle = cols[i % 3]; x!.globalAlpha = .7; x!.fill()
           for (let j = i + 1; j < pts.length; j++) {
             const q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y)
-            if (d < 130 * DPR) { x!.globalAlpha = (1 - d / (130 * DPR)) * .32; x!.strokeStyle = "#00f0ff"; x!.lineWidth = DPR * .6; x!.beginPath(); x!.moveTo(p.x, p.y); x!.lineTo(q.x, q.y); x!.stroke() }
+            if (d < 130 * DPR) { x!.globalAlpha = (1 - d / (130 * DPR)) * .32; x!.strokeStyle = "#2230c4"; x!.lineWidth = DPR * .6; x!.beginPath(); x!.moveTo(p.x, p.y); x!.lineTo(q.x, q.y); x!.stroke() }
           }
         }
         x!.globalAlpha = 1; raf = requestAnimationFrame(draw)
@@ -331,6 +331,7 @@ export function OverdriveHome() {
           <div className="works">
             {WORKS.map((w, i) => (
               <div className={`work rv${i ? ` d${Math.min(i, 4)}` : ""}`} key={w.n} data-hot>
+                <div className="wthumb">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={w.img} alt={`${w.title} のサムネイル`} loading="lazy" /></div>
                 <div className="wl"><span className="wn">{w.n}</span><h3>{w.title}</h3></div>
                 <span className="cat">{w.cat}</span><span className="ar">↗</span>
               </div>
