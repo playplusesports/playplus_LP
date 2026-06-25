@@ -10,6 +10,7 @@ const navItems = [
   { n: "03", label: "Pricing", href: "/#pricing" },
   { n: "04", label: "News", href: "/news" },
   { n: "05", label: "FAQ", href: "/#faq" },
+  { n: "06", label: "Contact", href: "/contact" },
 ]
 
 export function Header() {
@@ -43,7 +44,6 @@ export function Header() {
             </li>
           ))}
         </ul>
-        <Link href="/contact" className="site-cta" onClick={close}>無料相談</Link>
       </nav>
 
       <button

@@ -137,13 +137,13 @@
 .site-header.scr{background:rgba(8,11,34,.82);backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(70,96,255,.18);padding-top:12px;padding-bottom:12px}
 .site-header .brand{display:flex;align-items:center;gap:10px;text-decoration:none;
-  color:#e9edff;font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.2rem;letter-spacing:.12em}
-.site-header .brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;
+  color:#e9edff;font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:.14em}
+.site-header .brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;
   object-position:center 40%;background:#fff;box-shadow:0 0 14px rgba(70,96,255,.5)}
 .site-nav-wrap{display:flex;align-items:center;gap:24px}
 .site-nav-links{display:flex;gap:6px;list-style:none;align-items:center;margin:0;padding:0}
-.site-nav-links a{color:#e9edff;text-decoration:none;font-weight:600;font-size:.84rem;
-  letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;position:relative;transition:color .25s}
+.site-nav-links a{color:#e9edff;text-decoration:none;font-weight:600;font-size:.86rem;
+  letter-spacing:.16em;text-transform:uppercase;padding:8px 16px;position:relative;transition:color .25s}
 .site-nav-links a span{color:#4660ff;font-size:.7em;margin-right:5px}
 .site-nav-links a::before{content:"";position:absolute;inset:0;border:1px solid transparent;
   clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:border-color .25s}
@@ -173,7 +173,7 @@
   padding:54px clamp(18px,4vw,54px) 32px;display:flex;flex-wrap:wrap;
   justify-content:space-between;gap:30px;font-family:'Rajdhani',sans-serif}
 .site-footer .brand{display:flex;align-items:center;gap:10px;text-decoration:none;
-  color:#e9edff;font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:.12em}
+  color:#e9edff;font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:.14em}
 .site-footer .brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;
   object-position:center 40%;background:#fff;box-shadow:0 0 14px rgba(70,96,255,.5)}
 .site-footer .fcol{min-width:150px}
