@@ -578,3 +578,9 @@
          drop-shadow(0 0 calc(70px * var(--p-glow)) rgba(245,50,30,.25));
   will-change:transform,filter;
 }
+
+/* Pricing カードをリンク化 */
+.od a.prcard{display:block;text-decoration:none}
+.od .pr-go{margin-top:14px;font-family:var(--tech);font-weight:600;font-size:.74rem;
+  letter-spacing:.1em;color:var(--cyan);opacity:.65;transition:opacity .25s}
+.od a.prcard:hover .pr-go{opacity:1}

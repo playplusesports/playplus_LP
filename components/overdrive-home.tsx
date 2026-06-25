@@ -42,13 +42,13 @@ const BENEFITS = [
 ]
 
 const PRICING = [
-  { nm: "イベントプロデュース", amt: "50,000", unit: "円〜" },
-  { nm: "Web制作・保守運用", amt: "5,000", unit: "円〜／月" },
-  { nm: "デザイン制作", amt: "5,000", unit: "円〜" },
-  { nm: "ロゴ作成", amt: "10,000", unit: "円〜" },
-  { nm: "Googleビジネスプロフィール設定", amt: "9,800", unit: "円" },
-  { nm: "Instagram初期設定＋投稿5本", amt: "14,800", unit: "円" },
-  { nm: "SEO / MEO / LLMO対策", amt: "15,000", unit: "円〜／月" },
+  { nm: "イベントプロデュース", amt: "50,000", unit: "円〜", href: "/contact" },
+  { nm: "Web制作・保守運用", amt: "5,000", unit: "円〜／月", href: "/services/web" },
+  { nm: "デザイン制作", amt: "5,000", unit: "円〜", href: "/contact" },
+  { nm: "ロゴ作成", amt: "10,000", unit: "円〜", href: "/services/web" },
+  { nm: "Googleビジネスプロフィール設定", amt: "9,800", unit: "円", href: "/services/meo" },
+  { nm: "Instagram初期設定＋投稿5本", amt: "14,800", unit: "円", href: "/services/meo" },
+  { nm: "SEO / MEO / LLMO対策", amt: "15,000", unit: "円〜／月", href: "/services/meo" },
 ]
 
 const FAQS = [
@@ -449,10 +449,11 @@ export function OverdriveHome() {
           </div>
           <div className="prgrid">
             {PRICING.map((p, i) => (
-              <div className={`prcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={p.nm} data-hot>
+              <a className={`prcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={p.nm} href={p.href} data-hot>
                 <div className="nm">{p.nm}</div>
                 <div className="amt">{p.amt}<s>{p.unit}</s></div>
-              </div>
+                <div className="pr-go">詳しく見る →</div>
+              </a>
             ))}
           </div>
           <p className="pr-note rv">※ 表示は税込・目安です。詳細は <a href="/services/web">Web制作</a> / <a href="/services/meo">SEO/MEO/LLMO</a> の各ページをご覧ください。</p>
