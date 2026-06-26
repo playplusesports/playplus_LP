@@ -246,13 +246,14 @@
   <section class="py-16 sm:py-20 bg-[#F8FAF9]">
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 fade-in">料金プラン</h2>
-      <p class="text-[#6B7280] text-center mb-8 fade-in">お店の規模・ご要望に合わせてお選びいただけます</p>
+      <p class="text-[#6B7280] text-center mb-8 fade-in">個人・個人事業主の方は月額／買い切り、法人のお客様はフルオーダーメイドの法人プランをご用意しています。</p>
 
       <!-- Tabs -->
-      <div class="flex justify-center gap-2 mb-10 fade-in" id="pricing-tabs">
-        <button class="pricing-tab active px-5 py-2.5 rounded-full text-sm font-semibold bg-brand text-white transition-all" data-tab="monthly">月額プラン</button>
+      <div class="flex flex-wrap justify-center gap-2 mb-10 fade-in" id="pricing-tabs">
+        <button class="pricing-tab active px-5 py-2.5 rounded-full text-sm font-semibold bg-brand text-white transition-all" data-tab="monthly">月額（個人）</button>
         <button class="pricing-tab px-5 py-2.5 rounded-full text-sm font-semibold bg-white text-[#6B7280] border border-gray-200 hover:border-brand hover:text-brand transition-all" data-tab="onetime">買い切り</button>
         <button class="pricing-tab px-5 py-2.5 rounded-full text-sm font-semibold bg-white text-[#6B7280] border border-gray-200 hover:border-brand hover:text-brand transition-all" data-tab="options">オプション</button>
+        <button class="pricing-tab px-5 py-2.5 rounded-full text-sm font-semibold bg-white text-[#6B7280] border border-gray-200 hover:border-brand hover:text-brand transition-all" data-tab="corporate">法人プラン</button>
       </div>
 
       <!-- Monthly Plans -->
@@ -381,6 +382,33 @@
             <p class="text-xl font-bold text-[#1A1A1A] shrink-0">¥14,800</p>
           </div>
           <p class="text-xs text-[#6B7280] text-center mt-6">※ ロゴ作成のシンプルとフルオリジナルはどちらか1つのみ選択可能です。</p>
+        </div>
+      </div>
+
+      <!-- Corporate Plan -->
+      <div class="pricing-content hidden" data-tab="corporate">
+        <div class="max-w-xl mx-auto">
+          <div class="fade-in bg-white rounded-2xl shadow-xl overflow-hidden ring-2 ring-brand relative">
+            <div class="absolute top-0 left-0 right-0 bg-brand text-white text-center py-1.5 text-xs font-bold tracking-wider">法人のお客様向け</div>
+            <div class="bg-brand/5 px-6 py-6 text-center border-b border-brand/10 pt-10">
+              <p class="text-lg font-bold text-[#1A1A1A] mb-1">法人プラン</p>
+              <p class="mt-2"><span class="text-3xl font-extrabold text-brand">お見積り</span></p>
+              <p class="text-xs text-[#6B7280] mt-2">ご要件に合わせて個別にご提案・お見積もり（料金相談）</p>
+            </div>
+            <div class="px-6 py-6 space-y-5">
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>フルオーダーメイドで制作（デザイン・機能を自由に設計）</li>
+                <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>料金はご相談（ご要望をヒアリングの上お見積もり）</li>
+                <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>制作後のご契約も可能（まず制作物をご確認いただいてからご判断OK）</li>
+                <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>予約・EC・会員・多言語など各種システム連携に対応</li>
+                <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span>公開後の運用・保守までまとめてサポート</li>
+              </ul>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://lin.ee/pYn3rVU" class="flex-1 inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05B34C] text-white font-bold py-3 rounded-full text-sm transition-colors">LINEで相談</a>
+                <a href="/contact" class="flex-1 inline-flex items-center justify-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-full text-sm transition-colors">お問い合わせフォーム</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

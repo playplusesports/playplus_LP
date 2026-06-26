@@ -82,9 +82,10 @@ const faqs = [
   { q: "買い切りプランとは何ですか？", a: "制作費用を一度だけお支払いいただき、完成したサイトのファイル一式をお渡しするプランです。その後の更新・保守はお客様ご自身で行っていただく形となります。" },
   { q: "ロゴ制作もお願いできますか？", a: "はい、オプションで承ります。テキスト＋アイコンのシンプルなものは¥10,000、ヒアリングから複数案提案・修正込みのフルオリジナルは¥39,800です。" },
   { q: "オプションはどのプランでも追加できますか？", a: "はい、月額プラン・買い切りプランいずれにも追加いただけます。ロゴ作成のシンプルとフルオリジナルはどちらか1つのみ選択可能です。" },
+  { q: "法人での依頼やオーダーメイド制作はできますか？", a: "はい、法人のお客様にはフルオーダーメイドの「法人プラン」をご用意しています。料金はご要望をヒアリングの上でのお見積もり（料金相談）となり、まず制作物をご確認いただいてから契約をご判断いただくことも可能です。予約・EC・会員・多言語などの各種システム連携にも対応します。" },
 ]
 
-type PricingTab = "monthly" | "onetime" | "options"
+type PricingTab = "monthly" | "onetime" | "options" | "corporate"
 
 export default function WebServicePage() {
   const [pricingTab, setPricingTab] = useState<PricingTab>("monthly")
@@ -186,16 +187,17 @@ export default function WebServicePage() {
             <div className="text-center mb-12">
               <p className="text-sm text-accent font-medium mb-2">Pricing</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">料金プラン</h2>
-              <p className="text-muted-foreground">お店の規模・ご要望に合わせてお選びいただけます</p>
+              <p className="text-muted-foreground">個人・個人事業主の方は月額／買い切りプラン、法人のお客様はフルオーダーメイドの法人プランをご用意しています。</p>
             </div>
           </ScrollAnimate>
 
           {/* Tabs */}
           <div className="flex justify-center gap-2 mb-12">
             {([
-              { key: "monthly" as PricingTab, label: "月額プラン" },
+              { key: "monthly" as PricingTab, label: "月額（個人・個人事業主）" },
               { key: "onetime" as PricingTab, label: "買い切り" },
               { key: "options" as PricingTab, label: "オプション" },
+              { key: "corporate" as PricingTab, label: "法人プラン" },
             ]).map((t) => (
               <Button key={t.key} variant={pricingTab === t.key ? "default" : "outline"} onClick={() => setPricingTab(t.key)} className="text-sm">
                 {t.label}
@@ -281,6 +283,47 @@ export default function WebServicePage() {
                 </div>
               ))}
               <p className="text-xs text-muted-foreground text-center mt-6">※ ロゴ作成のシンプルとフルオリジナルはどちらか1つのみ選択可能です。</p>
+            </div>
+          )}
+
+          {/* Corporate Plan */}
+          {pricingTab === "corporate" && (
+            <div className="max-w-2xl mx-auto">
+              <Card className="bg-card border-accent ring-2 ring-accent overflow-hidden relative">
+                <div className="absolute top-0 left-0 right-0 bg-accent text-white text-xs font-bold py-1.5 text-center tracking-wider">法人のお客様向け</div>
+                <CardHeader className="text-center pt-10">
+                  <CardTitle className="text-xl text-foreground">法人プラン</CardTitle>
+                  <div className="flex items-baseline justify-center gap-1 mt-3">
+                    <span className="text-4xl font-bold text-foreground">お見積り</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">ご要件に合わせて個別にご提案・お見積もりいたします</p>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <ul className="space-y-3 text-left">
+                    {[
+                      "フルオーダーメイドで制作（デザイン・機能を自由に設計）",
+                      "料金はご相談（ご要望をヒアリングの上お見積もり）",
+                      "制作後のご契約も可能（まず制作物をご確認いただいてからご判断いただけます）",
+                      "予約・EC・会員・多言語など各種システム連携に対応",
+                      "公開後の運用・保守までまとめてサポート",
+                    ].map((item, i) => (
+                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a href="https://lin.ee/pYn3rVU" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05B34C] text-white font-bold px-6 py-3 rounded-lg transition-colors">
+                      <MessageCircle className="h-5 w-5" />
+                      LINEで相談
+                    </a>
+                    <Button asChild className="flex-1 py-6">
+                      <a href="/contact">お問い合わせフォーム<ArrowRight className="ml-2 h-4 w-4" /></a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           )}
 
