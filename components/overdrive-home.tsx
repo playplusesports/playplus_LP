@@ -67,7 +67,7 @@ export function OverdriveHome() {
     let alive = true
     fetch("/api/works", { cache: "no-store" })
       .then((r) => r.json())
-      .then((d: WorkItem[]) => { if (alive) setWorks(d.slice(0, 6)) })
+      .then((d: WorkItem[]) => { if (alive) setWorks(d.slice(0, 9)) })
       .catch(() => {})
     return () => { alive = false }
   }, [])
