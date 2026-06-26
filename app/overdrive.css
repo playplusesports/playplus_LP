@@ -584,3 +584,16 @@
 .od .pr-go{margin-top:14px;font-family:var(--tech);font-weight:600;font-size:.74rem;
   letter-spacing:.1em;color:var(--cyan);opacity:.65;transition:opacity .25s}
 .od a.prcard:hover .pr-go{opacity:1}
+
+/* 実績カードをリンク化＋画像プレースホルダ＋一覧導線 */
+.od a.wcard{display:block;text-decoration:none}
+.od .wcard-body p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.od .wcard-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#1b1c6b,#4660ff);color:rgba(255,255,255,.5);
+  font-family:var(--disp);font-weight:900;letter-spacing:.12em;font-size:.9rem;text-transform:uppercase}
+.od .work-more{text-align:center;margin-top:40px}
+.od .work-more a{font-family:var(--tech);font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  font-size:.9rem;color:var(--cyan);text-decoration:none;border:1px solid var(--line);padding:12px 26px;
+  display:inline-block;transition:.25s;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.od .work-more a:hover{border-color:var(--cyan);background:rgba(70,96,255,.08)}

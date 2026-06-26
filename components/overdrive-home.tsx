@@ -8,15 +8,8 @@ import "../app/overdrive.css"
 // rebranded to Play+ with real 制作実績. All styles live in app/overdrive.css,
 // scoped under the .od wrapper so they never leak into other routes.
 
-// 制作実績（実名）。status は正直に表記する。
-const WORKS = [
-  { tag: "Web", title: "KOHAKU アートオークション", desc: "オンラインオークション基盤をフルスクラッチ開発（決済・自動進行・通知）。", img: "/works/01.svg" },
-  { tag: "Web", title: "Hu-Mam", desc: "ブランドコーポレートサイトの企画・制作・公開までを一貫対応。", img: "/works/02.svg" },
-  { tag: "Web & SNS", title: "CAFEMANO", desc: "Googleビジネスプロフィール最適化でMEO集客を強化。", img: "/works/03.svg" },
-  { tag: "Web & SNS", title: "mauve（モーヴ）", desc: "サイト制作＋集客分析・改善運用を一貫サポート。", img: "/works/04.svg" },
-  { tag: "eSports", title: "eスポーツ大会 運営・配信", desc: "企画から当日運営・ライブ配信まで一貫プロデュース。", img: "/works/05.svg" },
-  { tag: "Tools", title: "業務自動化ツール群", desc: "LINE公式管理 / 議事録Bot / 死活監視を内製開発。", img: "/works/06.svg" },
-]
+// 制作実績はトップ・/works とも /api/works（管理画面）を単一ソースにする
+type WorkItem = { id: string; title: string; category: string; description: string; imageUrl?: string }
 
 // ヒーロー背景スライド（フリー画像 / public/hero）。Event→eSports→Web→Design を巡回。
 const HERO_IMAGES = ["/hero/01.jpg", "/hero/04.jpg", "/hero/06.jpg", "/hero/02.jpg", "/hero/05.jpg"]
@@ -66,6 +59,17 @@ export function OverdriveHome() {
     if (HERO_IMAGES.length <= 1) return
     const id = setInterval(() => setHeroIdx((p) => (p + 1) % HERO_IMAGES.length), 5000)
     return () => clearInterval(id)
+  }, [])
+
+  // 実績: /works と同じ /api/works から取得（先頭6件）
+  const [works, setWorks] = useState<WorkItem[]>([])
+  useEffect(() => {
+    let alive = true
+    fetch("/api/works", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d: WorkItem[]) => { if (alive) setWorks(d.slice(0, 6)) })
+      .catch(() => {})
+    return () => { alive = false }
   }, [])
 
   useEffect(() => {
@@ -413,20 +417,25 @@ export function OverdriveHome() {
           <div className="head rv">
             <div className="k">System // 04</div>
             <h2>Selected Work</h2>
-            <p>自社プロダクトからクライアントワークまで。手がけた制作・運営の一部です。</p>
+            <p>これまでに手がけた制作・運営の一部です。カードから詳細をご覧いただけます。</p>
           </div>
           <div className="wgrid">
-            {WORKS.map((w, i) => (
-              <div className={`wcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={w.title} data-hot>
-                <div className="wcard-img">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={w.img} alt={`${w.title} のサムネイル`} loading="lazy" /></div>
-                <div className="wcard-body">
-                  <span className="wcard-cat">{w.tag}</span>
-                  <h3>{w.title}</h3>
-                  <p>{w.desc}</p>
+            {works.map((w, i) => (
+              <a className={`wcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={w.id} href={`/works?id=${w.id}`} data-hot>
+                <div className="wcard-img">
+                  {w.imageUrl
+                    ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={w.imageUrl} alt={`${w.title} のサムネイル`} loading="lazy" />
+                    : <div className="wcard-ph">{w.category}</div>}
                 </div>
-              </div>
+                <div className="wcard-body">
+                  <span className="wcard-cat">{w.category}</span>
+                  <h3>{w.title}</h3>
+                  <p>{w.description}</p>
+                </div>
+              </a>
             ))}
           </div>
+          <div className="work-more rv"><a href="/works">すべての実績を見る →</a></div>
         </section>
 
         {/* PRICING */}
