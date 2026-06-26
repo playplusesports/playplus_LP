@@ -420,8 +420,8 @@ export function OverdriveHome() {
             <p>これまでに手がけた制作・運営の一部です。カードから詳細をご覧いただけます。</p>
           </div>
           <div className="wgrid">
-            {works.map((w, i) => (
-              <a className={`wcard rv${i % 4 ? ` d${i % 4}` : ""}`} key={w.id} href={`/works?id=${w.id}`} data-hot>
+            {works.map((w) => (
+              <a className="wcard" key={w.id} href={`/works?id=${w.id}`} data-hot>
                 <div className="wcard-img">
                   {w.imageUrl
                     ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={w.imageUrl} alt={`${w.title} のサムネイル`} loading="lazy" />
