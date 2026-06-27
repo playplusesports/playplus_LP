@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
+import { LP_BLUE as BLUE, LP_CTA as CTA, LP_LINE, LpHeader, LpFooter, LpStickyCta, SecHead } from "@/components/lp/lp-chrome"
 import {
   ArrowRight,
   Check,
@@ -23,9 +24,6 @@ import {
 // アニメーションは framer-motion（scroll-animate のヘルパー）でスクロール連動フェード＋スライドアップ。
 
 type WorkItem = { id: string; title: string; category: string; description: string; imageUrl?: string }
-
-const BLUE = "#1d4ed8"
-const CTA = "#f5601e" // CTAは目立つオレンジ（ブランド #ff7a1a / #f5321e 系）
 
 const PROBLEMS = [
   "制作会社が多すぎて、どこに頼めばいいかわからない",
@@ -72,9 +70,9 @@ const COMPARE = [
 ]
 
 const PRICING = [
-  { nm: "Webサイト制作・保守運用", amt: "5,000円〜", unit: "／月", href: "/services/web", note: "制作から更新・管理まで月額で対応" },
-  { nm: "ロゴ作成", amt: "10,000円〜", unit: "", href: "/services/web", note: "ブランドの顔をプロが制作" },
-  { nm: "SEO / MEO / LLMO対策", amt: "15,000円〜", unit: "／月", href: "/services/meo", note: "検索・地図・AI検索からの集客を強化" },
+  { nm: "Webサイト制作・保守運用", amt: "5,000円〜", unit: "／月", href: "/lp/services/web", note: "制作から更新・管理まで月額で対応" },
+  { nm: "ロゴ作成", amt: "10,000円〜", unit: "", href: "/lp/services/web", note: "ブランドの顔をプロが制作" },
+  { nm: "SEO / MEO / LLMO対策", amt: "15,000円〜", unit: "／月", href: "/lp/services/meo", note: "検索・地図・AI検索からの集客を強化" },
 ]
 
 const FAQS = [
@@ -110,19 +108,8 @@ export function WebLp() {
 
   return (
     <div className="weblp min-h-screen bg-white pb-20 text-slate-800 antialiased lg:pb-0">
-      {/* ===== TOP BAR（最小ナビ：ロゴ＋CTA） ===== */}
-      <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2 font-bold text-slate-900">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Play+" className="h-7 w-7 object-contain" />
-            <span>Play+</span>
-          </Link>
-          <Link href="/contact" className="rounded-full px-5 py-2 text-sm font-bold text-white shadow-sm transition-transform hover:-translate-y-0.5" style={{ background: CTA }}>
-            無料で相談する
-          </Link>
-        </div>
-      </header>
+      {/* ===== TOP BAR（共通の最小ナビ） ===== */}
+      <LpHeader />
 
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
@@ -162,7 +149,7 @@ export function WebLp() {
           </motion.p>
 
           <motion.div variants={heroItem} className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold text-white shadow-lg transition-transform hover:-translate-y-0.5" style={{ background: CTA }}>
+            <Link href="/lp/contact" className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold text-white shadow-lg transition-transform hover:-translate-y-0.5" style={{ background: CTA }}>
               無料で相談する <ArrowRight className="h-5 w-5" />
             </Link>
             <a href="#works" className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-8 py-4 text-base font-bold text-slate-700 transition-colors hover:bg-slate-50">
@@ -288,7 +275,7 @@ export function WebLp() {
           <div className="mx-auto max-w-3xl px-4 text-center">
             <p className="text-lg font-extrabold text-white sm:text-xl">まずは話を聞いてみませんか？</p>
             <p className="mt-2 text-sm text-blue-100">ご相談・お見積りは無料。しつこい営業はいたしません。</p>
-            <Link href="/contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold shadow-lg transition-transform hover:-translate-y-0.5" style={{ color: CTA }}>
+            <Link href="/lp/contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold shadow-lg transition-transform hover:-translate-y-0.5" style={{ color: CTA }}>
               無料で相談する <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
@@ -333,7 +320,7 @@ export function WebLp() {
             <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {works.map((w) => (
                 <StaggerItem key={w.id} className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg">
-                  <Link href={`/works?id=${w.id}`}>
+                  <Link href={`/lp/works?id=${w.id}`}>
                     <div className="aspect-[16/10] overflow-hidden bg-slate-100">
                       {w.imageUrl ? (
                         /* eslint-disable-next-line @next/next/no-img-element */
@@ -356,7 +343,7 @@ export function WebLp() {
           )}
           <ScrollAnimate>
             <div className="mt-8 text-center">
-              <Link href="/works" className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-slate-900">
+              <Link href="/lp/works" className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-slate-900">
                 すべての実績を見る <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -394,10 +381,10 @@ export function WebLp() {
             「何も決まっていない」段階でも大丈夫。目的やご予算に合わせて、最適なプランをご提案します。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-lg transition-transform hover:-translate-y-0.5">
+            <Link href="/lp/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-lg transition-transform hover:-translate-y-0.5">
               <Mail className="h-5 w-5" /> 無料で相談する
             </Link>
-            <a href="https://lin.ee/pYn3rVU" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/50 px-8 py-4 text-base font-bold text-white transition-colors hover:bg-white/10">
+            <a href={LP_LINE} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/50 px-8 py-4 text-base font-bold text-white transition-colors hover:bg-white/10">
               <MessageCircle className="h-5 w-5" /> LINEで相談
             </a>
           </div>
@@ -409,43 +396,10 @@ export function WebLp() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="border-t border-slate-200 bg-white py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 text-xs text-slate-400 sm:flex-row">
-          <span>&copy; {new Date().getFullYear()} Play+</span>
-          <div className="flex gap-5">
-            <Link href="/" className="hover:text-slate-700">通常サイト</Link>
-            <Link href="/legal" className="hover:text-slate-700">特定商取引法に基づく表記</Link>
-            <Link href="/privacy" className="hover:text-slate-700">プライバシーポリシー</Link>
-          </div>
-        </div>
-      </footer>
+      <LpFooter />
 
       {/* ===== STICKY MOBILE CTA ===== */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 backdrop-blur lg:hidden">
-        <div className="mx-auto flex max-w-md gap-2">
-          <a href="https://lin.ee/pYn3rVU" target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-1.5 rounded-full border border-slate-300 py-3 text-sm font-bold text-slate-700">
-            <MessageCircle className="h-4 w-4" /> LINE
-          </a>
-          <Link href="/contact" className="flex flex-[2] items-center justify-center gap-1.5 rounded-full py-3 text-sm font-bold text-white shadow" style={{ background: CTA }}>
-            無料で相談する <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </div>
+      <LpStickyCta />
     </div>
-  )
-}
-
-// 見出し：参考LP風に左右の装飾スラッシュ（＼ 見出し ／）付き。スクロールでフェードイン。
-function SecHead({ eyebrow, title, sub }: { eyebrow?: string; title: string; sub?: string }) {
-  return (
-    <ScrollAnimate className="mb-10 text-center">
-      {eyebrow ? <p className="text-xs font-bold tracking-[0.2em]" style={{ color: CTA }}>{eyebrow}</p> : null}
-      <h2 className="mt-2 flex items-center justify-center gap-4 text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
-        <span aria-hidden className="inline-block h-6 w-px rotate-[20deg] bg-slate-300" />
-        {title}
-        <span aria-hidden className="inline-block h-6 w-px -rotate-[20deg] bg-slate-300" />
-      </h2>
-      {sub ? <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">{sub}</p> : null}
-    </ScrollAnimate>
   )
 }
