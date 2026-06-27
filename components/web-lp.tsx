@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 
 // 広告流入向けの1枚もの（LP）。お名前.com「AIホームページパック」LPの構成・トーンを参考に、
-// Play+ のホームページ制作サービス向けに翻案。情報は実データのみ（架空のキャンペーン・割引は載せない）。
+// Play+ のWeb制作・運用サービス向けに翻案。情報は実データのみ（架空のキャンペーン・割引は載せない）。
 // 配色は白基調＋CTAを温かみのあるオレンジで強調。.weblp 配下で自己完結（ダークテーマの影響を受けない）。
 // アニメーションは framer-motion（scroll-animate のヘルパー）でスクロール連動フェード＋スライドアップ。
 
@@ -72,7 +72,7 @@ const COMPARE = [
 ]
 
 const PRICING = [
-  { nm: "ホームページ制作・保守運用", amt: "5,000円〜", unit: "／月", href: "/services/web", note: "制作から更新・管理まで月額で対応" },
+  { nm: "Webサイト制作・保守運用", amt: "5,000円〜", unit: "／月", href: "/services/web", note: "制作から更新・管理まで月額で対応" },
   { nm: "ロゴ作成", amt: "10,000円〜", unit: "", href: "/services/web", note: "ブランドの顔をプロが制作" },
   { nm: "SEO / MEO / LLMO対策", amt: "15,000円〜", unit: "／月", href: "/services/meo", note: "検索・地図・AI検索からの集客を強化" },
 ]
@@ -81,7 +81,7 @@ const FAQS = [
   { q: "何も決まっていなくても相談できますか？", a: "はい。「こんなことがしたい」というざっくりしたイメージだけで大丈夫です。ヒアリングを通じて、目的に合った形をご一緒に考えます。" },
   { q: "デザインのイメージがうまく伝えられません。", a: "問題ありません。参考サイトや「こんな雰囲気」というキーワードから、プロが複数案でご提案します。言語化のお手伝いから始めます。" },
   { q: "公開したあと、自分で更新できますか？", a: "更新が不安な方向けに、月額プランで更新代行・保守に対応しています。LINEで「ここ直して」と送るだけでもOKです。" },
-  { q: "費用はどのくらいかかりますか？", a: "ホームページ制作・保守運用は月額5,000円〜。内容に応じてお見積りします。初回のご相談・お見積りは無料です。" },
+  { q: "費用はどのくらいかかりますか？", a: "Webサイト制作・保守運用は月額5,000円〜。内容に応じてお見積りします。初回のご相談・お見積りは無料です。" },
   { q: "納期はどれくらいですか？", a: "LP制作は最短1週間程度、通常のWebサイト制作は2〜4週間が目安です。お急ぎの場合はご相談ください。" },
   { q: "オンラインだけで対応できますか？", a: "全国対応可能です。打ち合わせはZoomやGoogle Meet、やり取りはLINE・メールで完結できます。" },
 ]
@@ -149,10 +149,10 @@ export function WebLp() {
           className="relative mx-auto max-w-5xl px-4 pt-12 pb-14 text-center lg:pt-16"
         >
           <motion.span variants={heroItem} className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-4 py-1.5 text-xs font-bold text-blue-700">
-            <ShieldCheck className="h-3.5 w-3.5" /> ホームページ制作・運用 / Play+
+            <ShieldCheck className="h-3.5 w-3.5" /> Web制作・運用 / Play+
           </motion.span>
           <motion.h1 variants={heroItem} className="mx-auto mt-6 max-w-3xl text-3xl font-extrabold leading-[1.35] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.9rem]">
-            集客できるホームページを、<br className="hidden sm:block" />
+            集客できるWebサイトを、<br className="hidden sm:block" />
             <span style={{ color: BLUE }}>丸ごとおまかせ。</span>
           </motion.h1>
           <motion.p variants={heroItem} className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600">
@@ -389,7 +389,7 @@ export function WebLp() {
       {/* ===== FINAL CTA ===== */}
       <section className="py-20" style={{ background: CTA }}>
         <ScrollAnimate className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-2xl font-extrabold text-white sm:text-3xl">ホームページの相談、ここからはじめましょう</h2>
+          <h2 className="text-2xl font-extrabold text-white sm:text-3xl">Webサイトのご相談、ここからはじめましょう</h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-orange-50">
             「何も決まっていない」段階でも大丈夫。目的やご予算に合わせて、最適なプランをご提案します。
           </p>
