@@ -278,7 +278,6 @@ export function OverdriveHome() {
           <p className="hero-sub">
             イベント・デザイン・Web/SNS・eスポーツ。
             4つの領域を「動く体験」で接続するクリエイティブテックスタジオ。
-            このサイト自体が、私たちの技術力のデモです。
           </p>
           <div className="hero-cta">
             <a href="#contact" className="btn solid"><span>START PROJECT</span></a>
