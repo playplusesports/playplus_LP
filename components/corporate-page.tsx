@@ -31,7 +31,6 @@ const NAV = [
   { label: "実績", href: "#works" },
   { label: "料金", href: "#pricing" },
   { label: "ご相談の流れ", href: "#process" },
-  { label: "会社概要", href: "#company" },
 ]
 
 const PROBLEMS = [
@@ -110,16 +109,6 @@ const FAQS = [
   { q: "修正は可能ですか？", a: "納品前の修正は対応いたします。初回のご確認時にフィードバックをいただき、ご納得いただけるまで調整を行います。回数や範囲はプランによって異なります。" },
   { q: "納期はどれくらいですか？", a: "LP制作は最短1週間程度、通常のWebサイト制作は2〜4週間が目安です。内容やボリュームによって変動しますので、お早めにご相談ください。" },
   { q: "オンライン対応可能ですか？", a: "全国対応可能です。打ち合わせはZoomやGoogle Meetなどで行えますので、遠方の方でも問題ありません。チャットやメールでのやり取りも柔軟に対応します。" },
-]
-
-const COMPANY = [
-  { k: "事業者名", v: "Play+（プレイプラス）" },
-  { k: "代表者名", v: "杉原 大誠" },
-  { k: "事業内容", v: "イベントプロデュース / Web制作・保守運用 / デザイン制作 / SEO・MEO・LLMO対策 / eスポーツ大会運営" },
-  { k: "電話番号", v: "090-3866-4176" },
-  { k: "メールアドレス", v: "company@playplus.jp" },
-  { k: "対応エリア", v: "全国（オンライン対応可）" },
-  { k: "所在地", v: "請求があった場合には速やかに開示いたします。" },
 ]
 
 export function CorporatePage() {
@@ -419,25 +408,6 @@ export function CorporatePage() {
           </div>
         </div>
       </section>
-
-      {/* ===== COMPANY ===== */}
-      <Section id="company" eyebrow="Company" title="会社概要" sub="">
-        <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-slate-200">
-          <table className="w-full text-sm">
-            <tbody className="divide-y divide-slate-100">
-              {COMPANY.map((c) => (
-                <tr key={c.k}>
-                  <th className="w-1/3 bg-slate-50 px-6 py-4 text-left align-top font-semibold text-slate-700">{c.k}</th>
-                  <td className="px-6 py-4 align-top text-slate-600">{c.v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="mx-auto mt-4 max-w-3xl text-xs text-slate-500">
-          詳しくは <Link href="/legal" className="underline">特定商取引法に基づく表記</Link> / <Link href="/privacy" className="underline">プライバシーポリシー</Link> をご覧ください。
-        </p>
-      </Section>
 
       {/* ===== CTA ===== */}
       <section className="py-20 lg:py-24" id="contact" style={{ background: ACCENT }}>
