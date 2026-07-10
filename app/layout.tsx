@@ -47,6 +47,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  // Google AdSense のサイト所有権確認用メタタグ（広告は表示しない）
+  other: {
+    'google-adsense-account': 'ca-pub-5484969216234278',
+  },
 }
 
 export default function RootLayout({
