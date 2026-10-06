@@ -3,6 +3,44 @@ import type { WorkItem } from './works'
 // コードで管理する実績。管理画面（Blob）の実績より前に表示され、管理画面からは編集・削除できない。
 // 管理画面の「通常の投稿に取り込む」で Blob に移すと、同じ id の項目はこちらからは表示されなくなる。
 export const CODE_MANAGED_WORKS: WorkItem[] = [
+  // お客様の案件（店名・個人名の掲載はご本人の了承済み）
+  {
+    id: 'cafe-meo-llmo',
+    title: 'CAFE MANO様 Googleマップ・検索での集客支援',
+    category: 'MEO・LLMO対策',
+    description:
+      '和泉市で18年続くカフェの、Googleマップと検索での見つけやすさを支援しています。グルメサイトや地図アプリの登録情報の誤りを洗い出して直し、Googleビジネスプロフィールの更新を続けています。2026年5〜9月のプロフィールからの反応（ルート検索・電話・メニュー閲覧・サイトへのアクセス）は前年同期比+50.7%、ルート検索は+75.6%でした。',
+    period: '2026/04〜',
+    location: '大阪府和泉市',
+    scale: '反応数 前年同期比+50.7%（2026年5〜9月）',
+    tags: ['MEO', 'LLMO', 'Googleビジネスプロフィール'],
+    managedInCode: true,
+  },
+  {
+    id: 'acupuncture-clinic-site',
+    title: '鍼灸マッサージ院モーヴ様 公式サイト制作',
+    category: 'Web制作',
+    description: '鍼灸マッサージ院の公式サイトを制作し、あわせてGoogleビジネスプロフィールの登録情報を整えました。',
+    period: '2026/05',
+    location: '大阪府和泉市',
+    scale: '公式サイト / Googleビジネスプロフィールの整備',
+    tags: ['Webサイト制作', 'MEO', '治療院'],
+    managedInCode: true,
+  },
+  {
+    id: 'apparel-agency-site',
+    title: '中山千佳様 公式サイト制作',
+    category: 'Web制作',
+    description:
+      'アパレル店舗の販売代行を営む個人事業主さまの公式サイトを制作しました。同業11社のサイトを比べたうえで、女性代表がみずから店舗スタッフを管理している点が伝わる構成にしています。',
+    period: '2026/04',
+    location: '大阪府',
+    scale: '5ページ構成',
+    tags: ['Webサイト制作', 'コーポレートサイト', '競合調査'],
+    imageUrl: '/works/hu-mam.jpg',
+    managedInCode: true,
+  },
+  // 自社で開発・運営しているサービスと動画
   {
     id: 'duovc',
     title: 'マッチングサービス DuoVC',
@@ -141,6 +179,55 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'YouTube',
     scale: '2チャンネル / 毎日投稿',
     tags: ['YouTube', 'BGM', '朗読'],
+    managedInCode: true,
+  },
+  // 代表個人の活動（大会名・研修先の名前は出さない。大会の写真は大会名が映らない範囲で切り出したもの）
+  {
+    id: 'local-esports-tournament',
+    title: '地域のeスポーツ大会の企画・運営',
+    category: '大会運営',
+    description:
+      '代表が個人で主催し、2023年から毎月続けている地域のeスポーツ大会です。1回あたり20〜100名ほどが参加しています。企画、当日の運営、告知用のデザイン、SNSでの告知までを一人で担当しています。',
+    period: '2023/03〜',
+    location: '大阪府和泉市',
+    scale: '毎月開催 / 1回20〜100名',
+    tags: ['eスポーツ', '大会運営', 'SNS告知'],
+    imageUrl: '/works/event-venue.jpg',
+    managedInCode: true,
+  },
+  {
+    id: 'tournament-promo-design',
+    title: 'eスポーツ大会の告知フライヤー・紹介サイト制作',
+    category: 'デザイン',
+    description: '主催しているeスポーツ大会の告知フライヤーと、自治体や協賛企業に向けた紹介サイトを制作しました。',
+    period: '2026',
+    location: '-',
+    scale: 'フライヤー / 紹介サイト',
+    tags: ['フライヤー', 'Webサイト制作', 'eスポーツ'],
+    managedInCode: true,
+  },
+  {
+    id: 'genai-training',
+    title: '企業向け 生成AIの業務活用研修の講師',
+    category: '研修・セミナー',
+    description:
+      '企業の社員の方に向けて、文書作成や要約などの業務で生成AIを使う方法を学ぶ研修を企画し、資料づくりと講師を担当しています。',
+    period: '2026/07〜',
+    location: '企業研修',
+    scale: '90分',
+    tags: ['研修', '講師', '業務効率化'],
+    managedInCode: true,
+  },
+  {
+    id: 'sns-strategy-seminar',
+    title: '製造業・BtoB企業向け SNS運用セミナーの講師',
+    category: '研修・セミナー',
+    description:
+      '製造業・BtoB企業の方に向けて、経営の目標からSNSの目的と数値目標を決め、運用して見直すまでの流れを学ぶセミナーを企画し、資料づくりと講師を担当しています。',
+    period: '2026/07〜',
+    location: '企業研修',
+    scale: '90分 / ワーク2本',
+    tags: ['SNS運用', 'セミナー', '講師'],
     managedInCode: true,
   },
 ]

@@ -20,7 +20,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "web",
     code: "WEB",
     heroWord: "Webに、",
-    heroScreen: { image: "/works/hu-mam.jpg", caption: "Hu-Mam コーポレートサイト" },
+    heroScreen: { image: "/works/hu-mam.jpg", caption: "中山千佳様 公式サイト（Hu-Mam）" },
     title: "Webサイト制作・集客",
     lead: "お店や会社のサイトを、月額で制作・更新します。",
     description:
@@ -31,7 +31,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
       "MEO・SEO 対策",
       "Googleビジネスプロフィール・Instagram の初期設定",
     ],
-    proofs: ["Hu-Mam コーポレートサイト", "CAFEMANO MEO最適化", "mauve サイト制作・集客改善"],
+    proofs: ["CAFE MANO様 Googleマップ・検索での集客支援", "鍼灸マッサージ院モーヴ様 公式サイト制作", "中山千佳様 公式サイト制作"],
     priceLabel: "個人 月額 ¥5,000〜 / 法人 お見積り",
     detailLinks: [
       { label: "Web制作・保守の料金", href: "/services/web" },
@@ -95,7 +95,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     description:
       "2023年から、毎月1回のeスポーツ大会を企画・運営しています。大会やイベントの企画・運営・配信に加えて、ロゴやポスター、SNS用の画像などのデザインも引き受けます。",
     offerings: ["イベント・大会の企画運営", "配信", "ロゴ・ポスター・チラシ", "SNS用のデザイン"],
-    proofs: ["eスポーツ大会の定期開催（2023年〜）", "ロゴデザイン 16件以上", "告知ポスター・フライヤー制作"],
+    proofs: ["地域のeスポーツ大会の企画・運営（2023年〜毎月）", "大会の告知フライヤー・紹介サイト制作", "ロゴデザイン 16件以上"],
     priceLabel: "イベント ¥50,000〜 / デザイン ¥5,000〜",
     detailLinks: [],
   },
