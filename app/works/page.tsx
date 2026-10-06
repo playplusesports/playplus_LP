@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollAnimate } from "@/components/scroll-animate"
 import { motion, AnimatePresence } from "framer-motion"
 import { Calendar, MapPin, Users, ExternalLink, X } from "lucide-react"
+import { WORKS_FILTERS, WORKS_PLACEHOLDER_GRADIENTS } from "@/lib/works-categories"
 
 type WorkItem = {
   id: string
@@ -21,15 +22,7 @@ type WorkItem = {
   imageUrl?: string
 }
 
-const categoryFilters = ["すべて", "大会運営", "イベント運営", "Web制作", "デザイン"] as const
-type CategoryFilter = (typeof categoryFilters)[number]
-
-const placeholders: Record<string, string> = {
-  "大会運営": "bg-gradient-to-br from-purple-900 to-blue-900",
-  "イベント運営": "bg-gradient-to-br from-amber-900 to-yellow-900",
-  "Web制作": "bg-gradient-to-br from-emerald-900 to-teal-900",
-  "デザイン": "bg-gradient-to-br from-orange-900 to-red-900",
-}
+type CategoryFilter = (typeof WORKS_FILTERS)[number]
 
 export default function WorksPage() {
   return (
@@ -77,7 +70,7 @@ function WorksContent() {
                 実績・ギャラリー
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                これまでに手がけたイベント運営・Web制作・デザイン制作の実績をご紹介します。
+                これまでに手がけたイベント運営・Web制作・デザイン・アプリ開発・動画制作の実績をご紹介します。
               </p>
             </div>
           </ScrollAnimate>
@@ -85,7 +78,7 @@ function WorksContent() {
           {/* Category Filter */}
           <ScrollAnimate delay={0.1}>
             <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {categoryFilters.map((category) => (
+              {WORKS_FILTERS.map((category) => (
                 <Button
                   key={category}
                   variant={activeCategory === category ? "default" : "outline"}
@@ -119,7 +112,7 @@ function WorksContent() {
                       {item.imageUrl ? (
                         <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" />
                       ) : (
-                        <div className={`w-full h-full ${placeholders[item.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}>
+                        <div className={`w-full h-full ${WORKS_PLACEHOLDER_GRADIENTS[item.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}>
                           <span className="text-white/30 text-lg font-bold tracking-widest">
                             {item.category.toUpperCase()}
                           </span>
@@ -215,7 +208,7 @@ function WorksContent() {
             {selectedItem.imageUrl ? (
               <img src={selectedItem.imageUrl} alt={selectedItem.title} className="w-full aspect-[16/9] object-cover" />
             ) : (
-              <div className={`w-full aspect-[16/9] ${placeholders[selectedItem.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center`}>
+              <div className={`w-full aspect-[16/9] ${WORKS_PLACEHOLDER_GRADIENTS[selectedItem.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center`}>
                 <span className="text-white/30 text-2xl font-bold tracking-widest">
                   {selectedItem.category.toUpperCase()}
                 </span>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Pencil, Trash2, Plus, LogOut, Eye, EyeOff, ImagePlus, X as XIcon, Newspaper, Briefcase } from "lucide-react"
+import { WORKS_CATEGORIES } from "@/lib/works-categories"
 
 // --- Types ---
 
@@ -28,7 +29,6 @@ type WorkItem = {
 }
 
 const newsCategories = ["お知らせ", "イベント", "メディア", "実績"]
-const worksCategories = ["大会運営", "イベント運営", "Web制作", "デザイン"]
 
 type Tab = "news" | "works"
 
@@ -422,7 +422,7 @@ function WorkForm({
   loading: boolean
 }) {
   const [title, setTitle] = useState(initial?.title || "")
-  const [category, setCategory] = useState(initial?.category || worksCategories[0])
+  const [category, setCategory] = useState(initial?.category || WORKS_CATEGORIES[0])
   const [description, setDescription] = useState(initial?.description || "")
   const [period, setPeriod] = useState(initial?.period || "")
   const [location, setLocation] = useState(initial?.location || "")
@@ -453,7 +453,7 @@ function WorkForm({
       </FormField>
       <FormField label="カテゴリ">
         <select value={category} onChange={(e) => setCategory(e.target.value)} className="form-input">
-          {worksCategories.map((c) => <option key={c} value={c}>{c}</option>)}
+          {WORKS_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
         </select>
       </FormField>
       <FormField label="説明">

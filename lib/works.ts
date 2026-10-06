@@ -14,9 +14,6 @@ export type WorkItem = {
 
 const BLOB_PREFIX = 'works-data-'
 
-const defaultCategories = ["大会運営", "イベント運営", "Web制作", "デザイン"]
-export { defaultCategories as worksCategories }
-
 export async function getWorks(): Promise<WorkItem[]> {
   try {
     const { blobs } = await list({ prefix: BLOB_PREFIX })

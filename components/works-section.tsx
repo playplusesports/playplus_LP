@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
+import { WORKS_PLACEHOLDER_GRADIENTS } from "@/lib/works-categories"
 
 type WorkItem = {
   id: string
@@ -9,13 +10,6 @@ type WorkItem = {
   category: string
   description: string
   imageUrl?: string
-}
-
-const placeholders: Record<string, string> = {
-  "大会運営": "bg-gradient-to-br from-purple-900 to-blue-900",
-  "イベント運営": "bg-gradient-to-br from-amber-900 to-yellow-900",
-  "Web制作": "bg-gradient-to-br from-emerald-900 to-teal-900",
-  "デザイン": "bg-gradient-to-br from-orange-900 to-red-900",
 }
 
 export function WorksSection() {
@@ -48,7 +42,7 @@ export function WorksSection() {
                     {work.imageUrl ? (
                       <img src={work.imageUrl} alt={work.title} className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" />
                     ) : (
-                      <div className={`w-full h-full ${placeholders[work.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}>
+                      <div className={`w-full h-full ${WORKS_PLACEHOLDER_GRADIENTS[work.category] || "bg-gradient-to-br from-gray-800 to-gray-900"} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}>
                         <span className="text-white/30 text-sm font-bold tracking-widest">
                           {work.category.toUpperCase()}
                         </span>

@@ -7,14 +7,13 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/scroll-animate"
 import { LpHeader, LpFooter, LpStickyCta, LP_BLUE as BLUE, LP_CTA as CTA } from "@/components/lp/lp-chrome"
 import { Calendar, MapPin, Users, X, ArrowRight, ShieldCheck } from "lucide-react"
+import { WORKS_FILTERS } from "@/lib/works-categories"
 
 // LP（/lp/works）：通常 /works と同じ /api/works を流用したクリーンな実績ギャラリー（フィルタ＋モーダル）。
 type WorkItem = {
   id: string; title: string; category: string; description: string
   period?: string; location?: string; scale?: string; tags?: string[]; imageUrl?: string
 }
-
-const FILTERS = ["すべて", "大会運営", "イベント運営", "Web制作", "デザイン"] as const
 
 export function LpWorks() {
   return (
@@ -27,7 +26,7 @@ export function LpWorks() {
 function LpWorksInner() {
   const searchParams = useSearchParams()
   const [items, setItems] = useState<WorkItem[]>([])
-  const [active, setActive] = useState<(typeof FILTERS)[number]>("すべて")
+  const [active, setActive] = useState<(typeof WORKS_FILTERS)[number]>("すべて")
   const [selected, setSelected] = useState<WorkItem | null>(null)
 
   useEffect(() => {
@@ -67,7 +66,7 @@ function LpWorksInner() {
       <section className="py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10 flex flex-wrap justify-center gap-2">
-            {FILTERS.map((f) => (
+            {WORKS_FILTERS.map((f) => (
               <button key={f} onClick={() => setActive(f)} className={`rounded-full px-4 py-2 text-sm font-bold transition ${active === f ? "text-white shadow" : "border border-slate-300 text-slate-600 hover:bg-slate-50"}`} style={active === f ? { background: BLUE } : undefined}>
                 {f}
               </button>
