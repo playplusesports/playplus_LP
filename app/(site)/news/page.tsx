@@ -16,7 +16,7 @@ export default async function NewsListPage() {
 
   return (
     <>
-      <PageIntro code="NEWS" title="お知らせ" crumbs={[{ label: "news", href: "/news" }]} />
+      <PageIntro title="お知らせ" crumbs={[{ label: "お知らせ", href: "/news" }]} />
       <section className="py-16 md:py-24">
         <div className="site-container max-w-4xl">
           {news.length === 0 ? (

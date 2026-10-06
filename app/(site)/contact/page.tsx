@@ -5,7 +5,7 @@ import { COMPANY_PROFILE, CONTACT_CHANNELS } from "@/lib/site/company-profile"
 
 export const metadata: Metadata = {
   title: "お問い合わせ",
-  description: "Play+ へのお問い合わせ。Webサイト制作、アプリ開発、AI・自動化、動画制作、イベントのご相談を無料で承ります。",
+  description: "Play+ へのお問い合わせ。Webサイト制作、アプリ開発、業務の自動化、動画制作、イベントのご相談を無料で承ります。",
   alternates: { canonical: "/contact" },
 }
 
@@ -19,10 +19,9 @@ export default function ContactPage() {
   return (
     <>
       <PageIntro
-        code="CONTACT"
         title="ご相談はこちらから"
-        lead="ご質問・お見積り・「こんなことできる？」まで、お気軽にどうぞ。初回のご相談は無料です。"
-        crumbs={[{ label: "contact", href: "/contact" }]}
+        lead="ご質問、お見積りのご依頼、「こんなことはできる？」といったご相談まで、お気軽にどうぞ。初回のご相談は無料です。"
+        crumbs={[{ label: "お問い合わせ", href: "/contact" }]}
       />
       <section className="py-16 md:py-24">
         <div className="site-container grid gap-14 lg:grid-cols-[1.6fr_1fr]">
@@ -30,7 +29,7 @@ export default function ContactPage() {
 
           <aside className="space-y-10">
             <div>
-              <p className="eyebrow mb-4">OTHER CHANNELS</p>
+              <h2 className="mb-4 font-bold">ほかの連絡方法</h2>
               <ul className="space-y-3">
                 <li>
                   <a
@@ -63,7 +62,7 @@ export default function ContactPage() {
               </ul>
             </div>
             <div>
-              <p className="eyebrow mb-4">Q&amp;A</p>
+              <h2 className="mb-4 font-bold">よくある質問</h2>
               <dl className="space-y-5">
                 {QUICK_ANSWERS.map((item) => (
                   <div key={item.question}>

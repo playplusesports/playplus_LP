@@ -7,31 +7,30 @@ import { SERVICE_PILLARS } from "@/lib/site/service-pillars"
 
 export const metadata: Metadata = {
   title: "Play+について",
-  description: "Play+（プレイプラス）のコンセプト「遊びに、プラスを。」と、これまでの歩み、事業者情報をご紹介します。",
+  description: "Play+（プレイプラス）の名前の由来と、これまでの活動、事業者情報です。",
   alternates: { canonical: "/about" },
 }
 
 const MILESTONES: readonly { period: string; title: string; description: string }[] = [
   {
-    period: "2023",
-    title: "eスポーツ大会「INNOSUMA!!」を開始",
-    description: "代表が趣味で始めた月1回の大会。普段は20名ほど、大型回には100名近くが集まるイベントに育ちました。Play+ の原点です。",
+    period: "2023年",
+    title: "毎月のeスポーツ大会を始める",
+    description: "代表が趣味で始めた月1回の大会です。普段は20名ほど、大きな回では100名近くが参加しています。",
   },
   {
-    period: "2023",
-    title: "デザイン制作を本格的に",
-    description: "大会や企業・団体のロゴ、ポスター、SNS用デザインを手がけるようになりました。",
+    period: "2023年",
+    title: "ロゴやポスターのデザインを始める",
+    description: "大会や企業・団体のロゴ、告知用のポスター、SNS用の画像を制作するようになりました。",
   },
   {
-    period: "2026",
-    title: "Web制作・集客支援を開始",
-    description: "店舗や中小企業のWebサイトを月額で制作・運用するサービスと、MEO / LLMO 対策を始めました。",
+    period: "2026年",
+    title: "Webサイトの制作と集客支援を始める",
+    description: "お店や会社のWebサイトを月額で制作・更新するサービスと、Googleマップの表示対策を始めました。",
   },
   {
-    period: "2026",
-    title: "アプリ・AI・動画へ広げる",
-    description:
-      "マッチングや投稿プラットフォームなどの自社サービスを次々に公開。動画の自動制作やニュースの自動更新など、毎日動く仕組みを運用しています。",
+    period: "2026年",
+    title: "アプリと動画の制作を始める",
+    description: "マッチングサービスや投稿サイトなどの自社サービスを公開し、YouTubeチャンネルの運営も始めました。",
   },
 ]
 
@@ -39,53 +38,42 @@ export default function AboutPage() {
   const companyFacts = [
     { label: "名称", value: `${COMPANY_PROFILE.name}（${COMPANY_PROFILE.alternateName}）` },
     { label: "代表", value: COMPANY_PROFILE.representative },
-    { label: "拠点", value: `${COMPANY_PROFILE.area}（全国オンライン対応）` },
+    { label: "拠点", value: `${COMPANY_PROFILE.area}（打ち合わせはオンラインで全国対応）` },
     { label: "活動開始", value: COMPANY_PROFILE.activitySince },
-    { label: "事業内容", value: SERVICE_PILLARS.map((pillar) => pillar.title).join(" / ") },
+    { label: "事業内容", value: SERVICE_PILLARS.map((pillar) => pillar.title).join("、") },
     { label: "メール", value: COMPANY_PROFILE.email },
     { label: "電話", value: COMPANY_PROFILE.telephone },
   ]
 
   return (
     <>
-      <PageIntro code="ABOUT" title={COMPANY_PROFILE.concept} crumbs={[{ label: "about", href: "/about" }]} />
+      <PageIntro title="Play+について" crumbs={[{ label: "Play+について", href: "/about" }]} />
 
       <section className="py-20 md:py-28">
-        <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-          <p className="font-display text-[clamp(8rem,22vw,16rem)] font-extrabold leading-none text-signal" aria-hidden="true">
-            +
-          </p>
-          <div className="space-y-6 text-lg leading-loose text-fg/90">
+        <div className="site-container grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+          <h2 className="text-3xl font-black leading-tight tracking-tight md:text-4xl">{COMPANY_PROFILE.concept}</h2>
+          <div className="space-y-6 leading-loose text-fg/90 md:text-lg md:leading-loose">
             <p>
-              Play+ の名前は、<strong className="text-fg">Play（遊び）</strong>に<strong className="text-fg">＋（プラス）</strong>
-              を足すことから来ています。ロゴの「＋」は、ゲームのコントローラーの十字キーです。
+              Play+
+              という名前は、Play（遊び）に＋（プラス）を足したものです。ロゴの「＋」は、ゲームのコントローラーの十字キーをかたどっています。
             </p>
             <p>
-              ゲーム大会の会場で、人が夢中になる瞬間を何度も見てきました。うまく設計された体験には、人を動かす力があります。その力を、Webサイトにも、アプリにも、AIの仕組みにも持ち込みたい。それが
-              Play+ の仕事です。
+              はじまりは、2023年に始めた毎月のeスポーツ大会でした。いまも大会の運営を続けながら、お店や会社のWebサイト、Webアプリ、YouTube向けの動画をつくっています。
             </p>
-            <p>
-              「便利」に「楽しい」をひとつ足す。くり返しの作業は仕組みに任せて、人は考えることと楽しむことに時間を使う。そんな“プラス”を、関わるすべての人に届けます。
-            </p>
+            <p>使う人が楽しめるか、続けやすいか。どの仕事でも、そこを一緒に考えながら進めています。</p>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-line bg-surface-1/40 py-20 md:py-28">
+      <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading index="01" code="HISTORY" title="これまでの歩み" />
-          <ol className="relative border-l border-line-strong pl-8">
+          <SectionHeading title="これまでの活動" />
+          <ol className="border-t border-line">
             {MILESTONES.map((milestone) => (
-              <li key={milestone.title} className="relative pb-12 last:pb-0">
-                <span
-                  className="absolute -left-[41px] top-0 font-display text-2xl font-extrabold leading-none text-signal"
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-                <p className="font-mono text-sm text-play">{milestone.period}</p>
-                <h3 className="mt-2 text-xl font-bold">{milestone.title}</h3>
-                <p className="mt-2 max-w-2xl leading-relaxed text-fg-dim">{milestone.description}</p>
+              <li key={milestone.title} className="grid gap-2 border-b border-line py-6 md:grid-cols-[8rem_16rem_1fr] md:gap-8">
+                <p className="text-sm font-bold text-signal">{milestone.period}</p>
+                <h3 className="font-bold">{milestone.title}</h3>
+                <p className="leading-relaxed text-fg-dim">{milestone.description}</p>
               </li>
             ))}
           </ol>
@@ -94,7 +82,7 @@ export default function AboutPage() {
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading index="02" code="PROFILE" title="事業者情報" />
+          <SectionHeading title="事業者情報" />
           <dl className="border-t border-line">
             {companyFacts.map((fact) => (
               <div key={fact.label} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[10rem_1fr] sm:gap-6">

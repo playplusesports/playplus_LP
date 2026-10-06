@@ -15,7 +15,7 @@ export default function NotFound() {
             <h1 className="mt-6 text-3xl font-black md:text-4xl">GAME OVER… ではありません。</h1>
             <p className="mt-4 text-fg-dim">お探しのページは見つかりませんでした。移動したか、削除された可能性があります。</p>
             <Link href="/" className="btn-primary mt-10">
-              CONTINUE → トップへ
+              トップへ戻る
             </Link>
           </div>
         </section>

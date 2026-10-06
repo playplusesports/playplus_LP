@@ -85,29 +85,6 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 10px);
 
-  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
-  --animate-word-in: word-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  @keyframes word-in {
-    from {
-      opacity: 0;
-      transform: translateY(0.35em);
-      filter: blur(6px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-  }
 }
 
 @layer base {
@@ -179,9 +156,9 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
   }
 
-  /* 小さな見出しラベル（等幅・大文字） */
+  /* 見出しの上に置く小さなラベル */
   .eyebrow {
-    @apply font-mono text-[11px] font-medium tracking-[0.2em] text-fg-dim uppercase;
+    @apply text-sm font-bold text-signal;
   }
 
   /* 背景に敷く十字キー模様。ロゴの「＋」を小さく反復させる */
@@ -197,10 +174,10 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-signal px-7 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-signal-bright hover:shadow-[0_10px_30px_-10px_var(--signal)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-signal px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-signal-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-fg/20 px-7 py-4 text-sm font-bold text-fg transition-colors hover:border-fg hover:bg-fg hover:text-surface-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-play;
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-fg/25 px-6 py-3.5 text-sm font-bold text-fg transition-colors hover:border-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-play;
   }
 
   .text-link {
@@ -209,7 +186,7 @@
 
   /* 角の丸い面。カードや表の地 */
   .panel {
-    @apply rounded-2xl border border-line bg-surface-1;
+    @apply rounded-lg border border-line bg-surface-1;
   }
 
   /* 管理画面のフォーム部品 */

@@ -32,9 +32,9 @@ const codeFont = JetBrains_Mono({
   display: 'swap',
 })
 
-const SITE_TITLE = 'Play+ | 遊びに、プラスを。Web・アプリ・AI・動画・イベント'
+const SITE_TITLE = 'Play+ | Webサイト・アプリ・動画制作とイベント運営（大阪）'
 const SITE_DESCRIPTION =
-  'Play+（プレイプラス）は、Webサイト制作・アプリ開発・AIによる業務の自動化・動画制作・イベント運営をひとつの窓口で手がけるクリエイティブテックスタジオです。'
+  'Play+（プレイプラス）は大阪を拠点に、Webサイト制作、Webアプリ開発、業務の自動化、動画制作、eスポーツ大会などのイベント運営を手がけています。'
 
 export const metadata: Metadata = {
   title: {

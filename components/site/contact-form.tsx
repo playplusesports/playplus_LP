@@ -49,8 +49,7 @@ export function ContactForm() {
   if (submitState === "sent") {
     return (
       <div className="rounded-lg border border-line bg-surface-1 p-8 text-center md:p-12" role="status">
-        <p className="font-pixel text-5xl text-signal">+1</p>
-        <h2 className="mt-6 text-2xl font-black">お問い合わせありがとうございます</h2>
+        <h2 className="text-2xl font-black">お問い合わせありがとうございます</h2>
         <p className="mt-3 leading-relaxed text-fg-dim">内容を確認のうえ、2営業日以内にご連絡します。</p>
         <Link href="/" className="btn-secondary mt-8">
           トップへ戻る

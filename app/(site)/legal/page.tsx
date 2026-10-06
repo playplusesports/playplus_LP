@@ -10,10 +10,9 @@ export default function LegalPage() {
   return (
     <>
       <PageIntro
-        code="LEGAL"
         title="特定商取引法に基づく表記"
         lead="最終更新日: 2026年10月6日"
-        crumbs={[{ label: "legal", href: "/legal" }]}
+        crumbs={[{ label: "特定商取引法に基づく表記", href: "/legal" }]}
       />
       <div className="site-container max-w-3xl py-16 md:py-24">
         <div className="overflow-hidden rounded-xl border border-border">

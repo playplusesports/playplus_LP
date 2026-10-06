@@ -68,7 +68,6 @@ export default function MeoServicePage() {
       <FaqSchema faqs={MEO_FAQS} />
 
       <PageIntro
-        code="WEB / SEO · MEO · LLMO"
         title={
           <>
             検索 × マップ × AI検索で、
@@ -78,8 +77,8 @@ export default function MeoServicePage() {
         }
         lead="SEOで検索エンジンの上位に、MEOでGoogleマップの上位に、LLMOでChatGPTやGeminiに推薦されるお店に。データを見ながら改善を続けます。"
         crumbs={[
-          { label: "services", href: "/services" },
-          { label: "meo", href: "/services/meo" },
+          { label: "事業内容", href: "/services" },
+          { label: "SEO / MEO / LLMO 対策", href: "/services/meo" },
         ]}
       >
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -94,12 +93,7 @@ export default function MeoServicePage() {
 
       <section className="py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading
-            index="01"
-            code="MEO"
-            title="Googleマップで上位に表示する"
-            lead="4つの施策で Googleビジネスプロフィール（GBP）を最適化します。"
-          />
+          <SectionHeading title="Googleマップで上位に表示する" lead="4つの施策で Googleビジネスプロフィール（GBP）を最適化します。" />
           <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {MEO_MEASURES.map((measure) => (
               <div key={measure.title} className="bg-surface-1 p-6">
@@ -122,12 +116,7 @@ export default function MeoServicePage() {
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading
-            index="02"
-            code="LLMO"
-            title="AI検索で推薦されるお店へ"
-            lead="ChatGPT・Gemini・Perplexity などのAI検索に対応する、これからのSEOです。"
-          />
+          <SectionHeading title="AI検索で推薦されるお店へ" lead="ChatGPT・Gemini・Perplexity などのAI検索に対応する、これからのSEOです。" />
           <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
             {LLMO_MEASURES.map((measure) => (
               <li key={measure.title} className="bg-surface-1 p-6 md:p-8">
@@ -141,12 +130,7 @@ export default function MeoServicePage() {
 
       <section id="plans" className="border-t border-line bg-surface-1/40 py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading
-            index="03"
-            code="PLANS"
-            title="料金プラン"
-            lead="初期費用0円・契約期間の縛りなし。効果を見ながらいつでもプランを変更できます。"
-          />
+          <SectionHeading title="料金プラン" lead="初期費用0円・契約期間の縛りなし。効果を見ながらいつでもプランを変更できます。" />
           <div className="grid gap-5 md:grid-cols-3">
             {MEO_MONTHLY_PLANS.map((plan) => (
               <PlanCard key={plan.name} plan={plan} />
@@ -158,11 +142,11 @@ export default function MeoServicePage() {
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading index="04" code="FLOW" title="導入の流れ" lead="最短2週間で技術的な実装が完了します。" />
+          <SectionHeading title="導入の流れ" lead="最短2週間で技術的な実装が完了します。" />
           <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
             {MEO_FLOW.map((step, position) => (
               <li key={step.title} className="bg-surface-1 p-6">
-                <p className="font-mono text-xs font-bold tracking-widest text-signal">STEP {position + 1}</p>
+                <p className="text-sm font-bold text-signal">{position + 1}</p>
                 <h3 className="mt-3 font-bold">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-fg-dim">{step.description}</p>
               </li>
@@ -173,7 +157,7 @@ export default function MeoServicePage() {
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <SectionHeading index="05" code="FAQ" title="よくある質問" />
+          <SectionHeading title="よくある質問" />
           <FaqList faqs={MEO_FAQS} />
         </div>
       </section>

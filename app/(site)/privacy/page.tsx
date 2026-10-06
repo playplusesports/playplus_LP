@@ -10,10 +10,9 @@ export default function PrivacyPage() {
   return (
     <>
       <PageIntro
-        code="PRIVACY POLICY"
         title="プライバシーポリシー"
         lead="最終更新日: 2026年3月31日"
-        crumbs={[{ label: "privacy", href: "/privacy" }]}
+        crumbs={[{ label: "プライバシーポリシー", href: "/privacy" }]}
       />
       <div className="site-container max-w-3xl py-16 md:py-24">
         <div className="prose prose-sm dark:prose-invert max-w-none space-y-8 text-muted-foreground">

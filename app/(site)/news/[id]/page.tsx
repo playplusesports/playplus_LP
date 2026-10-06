@@ -32,11 +32,10 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   return (
     <>
       <PageIntro
-        code={`NEWS / ${item.category}`}
         title={<span className="text-3xl sm:text-4xl md:text-5xl">{item.title}</span>}
         lead={item.date}
         crumbs={[
-          { label: "news", href: "/news" },
+          { label: "お知らせ", href: "/news" },
           { label: item.id, href: `/news/${item.id}` },
         ]}
       />

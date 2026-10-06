@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic"
 export const metadata: Metadata = {
   title: "実績",
   description:
-    "Play+ の実績。Webサイト制作、Webアプリ・サービス開発、AIによる自動化、動画制作、イベント・eスポーツ・デザインの事例を紹介します。",
+    "Play+ の実績。Webサイト制作、Webアプリ・サービス開発、業務の自動化、動画制作、イベント・eスポーツ・デザインの事例を紹介します。",
   alternates: { canonical: "/works" },
 }
 
@@ -21,10 +21,9 @@ export default async function WorksPage({ searchParams }: WorksPageProps) {
   return (
     <>
       <PageIntro
-        code="WORKS"
-        title="つくってきたもの"
-        lead="お客様の案件と、自社で開発・運用しているサービスの一部です。カードを押すと詳しく見られます。"
-        crumbs={[{ label: "works", href: "/works" }]}
+        title="実績"
+        lead="お客様の案件と、自社で開発・運営しているサービスです。カードを押すと詳しい内容を表示します。"
+        crumbs={[{ label: "実績", href: "/works" }]}
       />
       <section className="py-16 md:py-24">
         <div className="site-container">

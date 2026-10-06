@@ -16,7 +16,7 @@ type Direction = "up" | "right" | "down" | "left" | "center"
 const DIRECTION_TO_SLUG: Record<Direction, string> = {
   up: "web",
   right: "app",
-  down: "ai",
+  down: "automation",
   left: "video",
   center: "event",
 }
@@ -78,15 +78,10 @@ export function DpadHero() {
     <section className="plus-pattern relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
       <div className="site-container grid items-center gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-8">
         <div>
-          <p className="eyebrow flex items-center gap-3">
-            <span className="h-2 w-2 rounded-full bg-signal" aria-hidden="true" />
-            Creative Tech Studio — Osaka, Japan
-          </p>
-
-          <h1 className="mt-8 font-black leading-[1.04] tracking-[-0.02em]">
+          <h1 className="font-black leading-[1.04] tracking-[-0.02em]">
             <span className="sr-only">遊びに、プラスを。</span>
             <span aria-hidden="true" className="block text-[clamp(2.9rem,8.4vw,7.2rem)]">
-              <span key={word} className="inline-block animate-word-in">
+              <span key={word} className="inline-block">
                 {word}
               </span>
             </span>
@@ -97,15 +92,15 @@ export function DpadHero() {
 
           <div className="mt-8 min-h-[5.5rem] max-w-xl" aria-live="polite">
             {activePillar ? (
-              <p key={activePillar.slug} className="animate-word-in leading-relaxed text-fg-dim md:text-lg">
-                <span className="font-bold text-fg">{activePillar.title}</span> — {activePillar.lead}
+              <p key={activePillar.slug} className="leading-relaxed text-fg-dim md:text-lg">
+                <span className="font-bold text-fg">{activePillar.title}</span>：{activePillar.lead}
                 <Link href={`/services#${activePillar.slug}`} className="text-link ml-2 whitespace-nowrap text-sm">
                   詳しく →
                 </Link>
               </p>
             ) : (
               <p className="leading-relaxed text-fg-dim md:text-lg">
-                Webサイト、アプリ、AIの自動化、動画、イベント。つくる技術と、楽しませる発想で、あなたの「やりたい」にプラスを足すクリエイティブテックスタジオです。
+                Play+ は大阪を拠点に、Webサイトやアプリ、動画の制作と、eスポーツ大会などのイベント運営をしています。
               </p>
             )}
           </div>
@@ -125,14 +120,14 @@ export function DpadHero() {
             role="group"
             aria-label="十字キー。押すと事業が切り替わります（矢印キーでも操作できます）"
             onKeyDown={handleKeyDown}
-            className="relative grid aspect-square w-[min(66vw,340px)] grid-cols-3 grid-rows-3 drop-shadow-[0_24px_40px_rgba(16,16,106,0.28)]"
+            className="relative grid aspect-square w-[min(66vw,340px)] grid-cols-3 grid-rows-3 drop-shadow-[0_7px_0_#07074a]"
           >
             {/* 十字の地は1枚で描き、ボタンの継ぎ目を見せない */}
             <span aria-hidden="true" className="absolute inset-y-0 left-1/3 w-1/3 rounded-2xl bg-brand" />
             <span aria-hidden="true" className="absolute inset-x-0 top-1/3 h-1/3 rounded-2xl bg-brand" />
             <DpadArm
               direction="up"
-              label="WEB"
+              label="Web"
               area="col-start-2 row-start-1 rounded-t-2xl"
               active={active}
               pressed={pressed}
@@ -140,16 +135,16 @@ export function DpadHero() {
             />
             <DpadArm
               direction="left"
-              label="VIDEO"
+              label="動画"
               area="col-start-1 row-start-2 rounded-l-2xl"
               active={active}
               pressed={pressed}
               onPress={press}
             />
-            <DpadArm direction="center" label="EVENT" area="col-start-2 row-start-2" active={active} pressed={pressed} onPress={press} />
+            <DpadArm direction="center" label="イベント" area="col-start-2 row-start-2" active={active} pressed={pressed} onPress={press} />
             <DpadArm
               direction="right"
-              label="APP"
+              label="アプリ"
               area="col-start-3 row-start-2 rounded-r-2xl"
               active={active}
               pressed={pressed}
@@ -157,14 +152,16 @@ export function DpadHero() {
             />
             <DpadArm
               direction="down"
-              label="AI"
+              label="仕組み"
               area="col-start-2 row-start-3 rounded-b-2xl"
               active={active}
               pressed={pressed}
               onPress={press}
             />
           </div>
-          <p className="eyebrow mt-8">{isAutoplay ? "Press the + to play" : `Selected — ${activePillar?.code ?? "PLAY"}`}</p>
+          <p className="mt-8 text-sm text-fg-dim">
+            {isAutoplay ? "十字キーを押すと切り替わります" : `${activePillar?.title ?? "Play+"} を表示中`}
+          </p>
         </div>
       </div>
     </section>
@@ -194,7 +191,7 @@ function DpadArm({ direction, label, area, active, pressed, onPress }: DpadArmPr
     <button
       type="button"
       aria-pressed={isActive}
-      aria-label={`${label} を選ぶ`}
+      aria-label={`${label}を表示する`}
       onClick={() => onPress(direction)}
       className={`group relative flex items-center justify-center transition-[transform,background-color] duration-150 outline-none focus-visible:z-10 focus-visible:ring-4 focus-visible:ring-play/50 ${area} ${
         isPressed ? "translate-y-[3px] bg-black/25" : "hover:bg-white/[0.06]"
@@ -213,7 +210,7 @@ function DpadArm({ direction, label, area, active, pressed, onPress }: DpadArmPr
         </svg>
       )}
       <span
-        className={`pointer-events-none absolute font-mono text-[10px] tracking-[0.18em] transition-colors ${
+        className={`pointer-events-none absolute text-[11px] font-bold transition-colors ${
           isActive ? "text-white" : "text-white/45"
         } ${direction === "center" ? "bottom-2" : direction === "down" ? "bottom-2" : "top-2"}`}
       >

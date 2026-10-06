@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { BrandMark } from "@/components/site/brand-mark"
 import { COMPANY_PROFILE, CONTACT_CHANNELS } from "@/lib/site/company-profile"
 import { PRIMARY_NAVIGATION } from "@/lib/site/navigation"
 import { SERVICE_PILLARS } from "@/lib/site/service-pillars"
@@ -8,16 +9,17 @@ export function SiteFooter() {
     <footer className="theme-ink overflow-hidden">
       <div className="site-container grid gap-12 pt-20 pb-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
-          <p className="text-3xl font-black tracking-tight md:text-4xl">{COMPANY_PROFILE.concept}</p>
+          <BrandMark />
+          <p className="mt-6 text-2xl font-black tracking-tight">{COMPANY_PROFILE.concept}</p>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-dim">
-            Web・アプリ・AI・動画・イベント。つくる技術と、楽しませる発想で。
+            大阪を拠点に、Webサイト・アプリ・動画の制作と、イベントの運営をしています。
           </p>
           <Link href="/contact" className="btn-primary mt-8">
             無料で相談する
           </Link>
         </div>
 
-        <FooterColumn title="Pages">
+        <FooterColumn title="ページ">
           {PRIMARY_NAVIGATION.map((link) => (
             <FooterLink key={link.href} href={link.href}>
               {link.label}
@@ -26,7 +28,7 @@ export function SiteFooter() {
           <FooterLink href="/contact">お問い合わせ</FooterLink>
         </FooterColumn>
 
-        <FooterColumn title="Services">
+        <FooterColumn title="事業">
           {SERVICE_PILLARS.map((pillar) => (
             <FooterLink key={pillar.slug} href={`/services#${pillar.slug}`}>
               {pillar.title}
@@ -34,7 +36,7 @@ export function SiteFooter() {
           ))}
         </FooterColumn>
 
-        <FooterColumn title="Follow">
+        <FooterColumn title="連絡先・SNS">
           <FooterLink href={CONTACT_CHANNELS.line} isExternal>
             LINE
           </FooterLink>
@@ -50,16 +52,9 @@ export function SiteFooter() {
         </FooterColumn>
       </div>
 
-      <p
-        aria-hidden="true"
-        className="site-container select-none font-display text-[clamp(5rem,24vw,22rem)] leading-[0.8] font-extrabold tracking-[-0.06em] text-fg/[0.07]"
-      >
-        Play<span className="text-signal/60">+</span>
-      </p>
-
       <div className="border-t border-line">
         <div className="site-container flex flex-col gap-3 py-6 text-xs text-fg-dim sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono">
+          <p>
             © {new Date().getFullYear()} {COMPANY_PROFILE.name}
           </p>
           <div className="flex gap-5">
@@ -79,7 +74,7 @@ export function SiteFooter() {
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="eyebrow mb-5">{title}</p>
+      <p className="mb-5 text-sm font-bold">{title}</p>
       <ul className="space-y-3">{children}</ul>
     </div>
   )

@@ -77,7 +77,7 @@ export function LiveOperations() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-bright opacity-60" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-signal-bright" />
           </span>
-          daily-operations / Asia/Tokyo
+          日本時間
         </p>
         <p className="font-mono text-sm tabular-nums text-fg" aria-live="off">
           JST {clock?.label ?? "--:--:--"}
@@ -109,7 +109,7 @@ export function LiveOperations() {
         })}
         {clock && (
           <div className="absolute -top-3 bottom-[-6px] w-px bg-white" style={{ left: percentOfDay(clock.minutesOfDay) }}>
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 font-mono text-[10px] text-fg">NOW</span>
+            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[11px] font-bold text-fg">いま</span>
           </div>
         )}
       </div>

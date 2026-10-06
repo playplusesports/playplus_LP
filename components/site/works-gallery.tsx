@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { WorkItem } from "@/lib/works"
-import { WORKS_FILTERS, categoryCodeOf, type WorksFilter } from "@/lib/works-categories"
+import { WORKS_FILTERS, type WorksFilter } from "@/lib/works-categories"
 
 type WorksGalleryProps = {
   works: readonly WorkItem[]
@@ -57,14 +57,14 @@ export function WorksGallery({ works, initialOpenId = "", showFilters = true }: 
                 role="tab"
                 aria-selected={activeFilter === filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`rounded-full border px-5 py-2.5 text-sm font-bold transition-colors ${
+                className={`rounded-md border px-4 py-2 text-sm font-bold transition-colors ${
                   activeFilter === filter
                     ? "border-fg bg-fg text-surface-0"
                     : "border-line-strong text-fg-dim hover:border-fg hover:text-fg"
                 }`}
               >
                 {filter}
-                <span className="ml-2 font-mono text-[11px] opacity-60">{count}</span>
+                <span className="ml-2 text-xs opacity-60">{count}</span>
               </button>
             )
           })}
@@ -135,7 +135,6 @@ function GeneratedCover({ work }: { work: WorkItem }) {
           )
         })}
       </svg>
-      <span className="absolute bottom-4 left-5 font-mono text-[11px] tracking-[0.2em] text-fg-dim">{categoryCodeOf(work.category)}</span>
     </div>
   )
 }
@@ -158,7 +157,7 @@ function WorkCard({ work, isFeatured, onOpen }: { work: WorkItem; isFeatured: bo
   return (
     <button type="button" onClick={onOpen} className="group flex h-full w-full flex-col text-left focus-visible:outline-none">
       <div
-        className={`w-full overflow-hidden rounded-2xl border border-line bg-surface-2 transition-shadow group-hover:shadow-[0_24px_50px_-28px_rgba(13,13,51,0.55)] group-focus-visible:ring-4 group-focus-visible:ring-play/40 ${
+        className={`w-full overflow-hidden rounded-lg border border-line bg-surface-2 group-focus-visible:ring-4 group-focus-visible:ring-play/40 ${
           isFeatured ? "aspect-[16/10] md:aspect-[16/9.4]" : "aspect-[16/10]"
         }`}
       >
@@ -166,20 +165,15 @@ function WorkCard({ work, isFeatured, onOpen }: { work: WorkItem; isFeatured: bo
       </div>
       <div className="flex items-start justify-between gap-4 pt-5">
         <div className="min-w-0">
-          <p className="font-mono text-[11px] tracking-wide text-fg-dim">
-            <span className="text-signal">{work.category}</span>
-            <span className="mx-2">/</span>
-            {work.period}
+          <p className="text-xs text-fg-dim">
+            <span className="font-bold text-signal">{work.category}</span>
+            <span className="ml-3">{work.period}</span>
           </p>
-          <h3 className={`mt-2 font-bold leading-snug ${isFeatured ? "text-xl md:text-2xl" : "text-lg"}`}>{work.title}</h3>
+          <h3 className={`mt-2 font-bold leading-snug group-hover:text-signal ${isFeatured ? "text-xl md:text-2xl" : "text-lg"}`}>
+            {work.title}
+          </h3>
           {isFeatured && <p className="mt-2 line-clamp-2 max-w-2xl text-sm leading-relaxed text-fg-dim">{work.description}</p>}
         </div>
-        <span
-          aria-hidden="true"
-          className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line-strong transition-[transform,background-color,color,border-color] duration-300 group-hover:rotate-45 group-hover:border-fg group-hover:bg-fg group-hover:text-surface-0"
-        >
-          ↗
-        </span>
       </div>
     </button>
   )
@@ -213,14 +207,14 @@ function WorkDetail({ work, onClose }: { work: WorkItem; onClose: () => void }) 
         role="dialog"
         aria-modal="true"
         aria-labelledby="work-detail-title"
-        className="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-3xl bg-surface-1 sm:rounded-3xl"
+        className="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-xl bg-surface-1 sm:rounded-xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="group aspect-[16/9] w-full overflow-hidden">
           <WorkCover work={work} />
         </div>
         <div className="p-6 sm:p-10">
-          <p className="font-mono text-xs text-signal">{work.category}</p>
+          <p className="text-xs font-bold text-signal">{work.category}</p>
           <h2 id="work-detail-title" className="mt-2 text-2xl font-black leading-snug md:text-3xl">
             {work.title}
           </h2>
@@ -229,7 +223,7 @@ function WorkDetail({ work, onClose }: { work: WorkItem; onClose: () => void }) 
             <dl className="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
               {facts.map((fact) => (
                 <div key={fact.label} className="bg-surface-1 p-4">
-                  <dt className="font-mono text-[11px] text-fg-dim">{fact.label}</dt>
+                  <dt className="text-xs text-fg-dim">{fact.label}</dt>
                   <dd className="mt-1 text-sm font-bold">{fact.value}</dd>
                 </div>
               ))}
@@ -238,7 +232,7 @@ function WorkDetail({ work, onClose }: { work: WorkItem; onClose: () => void }) 
           {work.tags.length > 0 && (
             <ul className="mt-6 flex flex-wrap gap-2">
               {work.tags.map((tag) => (
-                <li key={tag} className="rounded-full bg-surface-2 px-3 py-1 font-mono text-[11px] text-fg-dim">
+                <li key={tag} className="rounded bg-surface-2 px-2 py-1 text-xs text-fg-dim">
                   #{tag}
                 </li>
               ))}

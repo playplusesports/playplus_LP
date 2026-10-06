@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 }
 
 const WEB_FEATURES: readonly { title: string; description: string }[] = [
-  { title: "AIを活用した高速制作", description: "LPから複数ページのサイトまで、短期間・低コストで制作します。" },
+  { title: "短い期間で制作", description: "1ページのサイトから複数ページのサイトまで、相談から最短1週間ほどで公開します。" },
   { title: "スマホ・タブレット対応", description: "どの端末でも見やすいレスポンシブデザインで仕上げます。" },
   { title: "問い合わせ＋LINE導線", description: "フォームに加えてLINEへの導線も用意し、連絡の取りこぼしを防ぎます。" },
   { title: "更新はLINEで依頼", description: "お知らせやブログの更新は、内容をLINEで送るだけで対応します。" },
-  { title: "SNS投稿文の作成", description: "AIを活用してInstagramやXの投稿文を毎月作成します。" },
+  { title: "SNS投稿文の作成", description: "InstagramやXに載せる投稿文を、プランに応じて毎月お渡しします。" },
   { title: "毎月のアクセスレポート", description: "訪問者数や検索からの流入を、わかりやすくまとめてお届けします。" },
 ]
 
@@ -44,7 +44,6 @@ export default function WebServicePage() {
       <FaqSchema faqs={WEB_FAQS} />
 
       <PageIntro
-        code="WEB / SITE & CARE"
         title={
           <>
             Webサイト制作・
@@ -54,8 +53,8 @@ export default function WebServicePage() {
         }
         lead="制作から更新・集客まで、月額でまるごとお任せ。やり取りはLINEで完結するので、パソコンが苦手な方でも安心です。"
         crumbs={[
-          { label: "services", href: "/services" },
-          { label: "web", href: "/services/web" },
+          { label: "事業内容", href: "/services" },
+          { label: "Web制作・保守運用", href: "/services/web" },
         ]}
       >
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -70,7 +69,7 @@ export default function WebServicePage() {
 
       <section className="py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading index="01" code="FEATURES" title="サービス内容" />
+          <SectionHeading title="サービス内容" />
           <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {WEB_FEATURES.map((feature) => (
               <li key={feature.title} className="bg-surface-1 p-6 md:p-8">
@@ -85,13 +84,11 @@ export default function WebServicePage() {
       <section id="plans" className="border-t border-line bg-surface-1/40 py-20 md:py-28">
         <div className="site-container">
           <SectionHeading
-            index="02"
-            code="PLANS"
             title="料金プラン"
             lead="個人・個人事業主の方は月額または買い切り、法人のお客様はフルオーダーメイドの法人プランをご用意しています。"
           />
 
-          <h3 className="eyebrow mb-6">月額プラン</h3>
+          <h3 className="mb-5 text-lg font-bold">月額プラン</h3>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {WEB_MONTHLY_PLANS.map((plan) => (
               <PlanCard key={plan.name} plan={plan} />
@@ -100,11 +97,11 @@ export default function WebServicePage() {
 
           <div className="mt-16 grid gap-10 lg:grid-cols-2">
             <div>
-              <h3 className="eyebrow mb-6">買い切り</h3>
+              <h3 className="mb-5 text-lg font-bold">買い切り</h3>
               <PlanCard plan={WEB_ONE_TIME_PLAN} />
             </div>
             <div>
-              <h3 className="eyebrow mb-6">法人プラン（お見積り）</h3>
+              <h3 className="mb-5 text-lg font-bold">法人プラン（お見積り）</h3>
               <div className="panel p-7">
                 <p className="font-bold">ご要件に合わせて個別にご提案します</p>
                 <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
@@ -122,7 +119,7 @@ export default function WebServicePage() {
           </div>
 
           <div id="options" className="mt-16">
-            <h3 className="eyebrow mb-6">オプション</h3>
+            <h3 className="mb-5 text-lg font-bold">オプション</h3>
             <ul className="border-t border-line">
               {WEB_OPTIONS.map((option) => (
                 <li key={option.name} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-6">
@@ -146,11 +143,11 @@ export default function WebServicePage() {
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
-          <SectionHeading index="03" code="FLOW" title="ご利用の流れ" />
+          <SectionHeading title="ご利用の流れ" />
           <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
             {WEB_FLOW.map((step, position) => (
               <li key={step.title} className="bg-surface-1 p-6 md:p-8">
-                <p className="font-mono text-xs font-bold tracking-widest text-signal">STEP {position + 1}</p>
+                <p className="text-sm font-bold text-signal">{position + 1}</p>
                 <h3 className="mt-4 text-lg font-bold">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-fg-dim">{step.description}</p>
               </li>
@@ -161,7 +158,7 @@ export default function WebServicePage() {
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <SectionHeading index="04" code="FAQ" title="よくある質問" />
+          <SectionHeading title="よくある質問" />
           <FaqList faqs={WEB_FAQS} />
         </div>
       </section>
