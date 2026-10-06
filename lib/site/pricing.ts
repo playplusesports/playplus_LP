@@ -73,7 +73,7 @@ export const WEB_ONE_TIME_PLAN: Plan = {
   price: "¥29,800",
   unit: "（一括）",
   initialFee: "縛りなし・一括払い",
-  contract: "保守・更新は含まれません",
+  contract: "保守・更新は含まれません。ファイルの管理はお客様側となります",
   features: [
     "5ページ以内の静的サイト",
     "お問い合わせフォーム",
@@ -102,7 +102,7 @@ export const WEB_CORPORATE_PLAN_POINTS: readonly string[] = [
 
 export const MEO_MONTHLY_PLANS: readonly Plan[] = [
   {
-    name: "スターター",
+    name: "SEO + MEO + LLMO スターター",
     price: "¥15,000",
     unit: "／月（税別）",
     initialFee: "初期費用 ¥0",
@@ -118,7 +118,7 @@ export const MEO_MONTHLY_PLANS: readonly Plan[] = [
     isRecommended: false,
   },
   {
-    name: "スタンダード",
+    name: "SEO + MEO + LLMO スタンダード",
     price: "¥25,000",
     unit: "／月（税別）",
     initialFee: "初期費用 ¥0",
@@ -134,7 +134,7 @@ export const MEO_MONTHLY_PLANS: readonly Plan[] = [
     isRecommended: true,
   },
   {
-    name: "プレミアム",
+    name: "SEO + MEO + LLMO プレミアム",
     price: "¥40,000",
     unit: "／月（税別）",
     initialFee: "初期費用 ¥0",
@@ -160,5 +160,7 @@ export const PRICE_GUIDE: readonly { service: string; price: string; href: strin
   { service: "動画・コンテンツ制作", price: "お見積り", href: "/services#video" },
   { service: "イベントプロデュース", price: "¥50,000〜", href: "/services#event" },
   { service: "デザイン制作", price: "¥5,000〜", href: "/services#event" },
+  { service: "Googleビジネスプロフィール設定", price: "¥9,800", href: "/services/web#options" },
+  { service: "Instagram初期設定＋投稿5本", price: "¥14,800", href: "/services/web#options" },
   { service: "ロゴ作成", price: "¥10,000〜", href: "/services/web#options" },
 ]
