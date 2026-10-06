@@ -122,17 +122,6 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     managedInCode: true,
   },
   {
-    id: 'line-manager',
-    title: '公式LINE管理アプリ',
-    category: 'アプリ開発',
-    description: '公式LINEへの問い合わせにAIが返信の下書きを作り、担当者が承認して送信できる管理アプリ。友だち管理も備えています。',
-    period: '2026/06',
-    location: 'オンライン',
-    scale: '業務アプリ',
-    tags: ['LINE', '業務効率化'],
-    managedInCode: true,
-  },
-  {
     id: 'youtube-shorts',
     title: 'YouTube 雑学ショートの自動制作・運用',
     category: '動画制作',

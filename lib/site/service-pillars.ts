@@ -62,7 +62,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     description:
       "問い合わせへの返信、毎日の更新作業、SNSへの投稿など、手で繰り返している作業を自動化します。自社でも、動画の投稿やサイトの更新を毎日決まった時刻に自動で回しています。",
     offerings: ["業務ツールの開発", "更新・投稿作業の自動化", "毎日自動で更新されるサイト", "LINE 公式アカウントの返信管理"],
-    proofs: ["公式LINE管理アプリ", "トピック日報サイト", "サッと計算", "おやすみ物語"],
+    proofs: ["トピック日報サイト", "サッと計算", "おやすみ物語"],
     priceLabel: "お見積り",
     detailLinks: [],
   },
