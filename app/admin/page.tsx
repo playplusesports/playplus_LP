@@ -26,6 +26,7 @@ type WorkItem = {
   scale: string
   tags: string[]
   imageUrl?: string
+  managedInCode?: true
 }
 
 const newsCategories = ["お知らせ", "イベント", "メディア", "実績"]
@@ -336,14 +337,18 @@ export default function AdminPage() {
                       </div>
                       <p className="text-sm font-medium text-foreground truncate">{item.title}</p>
                     </div>
-                    <div className="flex items-center gap-2 ml-4">
-                      <Button variant="ghost" size="icon" onClick={() => setEditingWork(item)}>
-                        <Pencil className="h-4 w-4" />
-                      </Button>
-                      <Button variant="ghost" size="icon" onClick={() => deleteWork(item.id)} disabled={loading}>
-                        <Trash2 className="h-4 w-4 text-red-500" />
-                      </Button>
-                    </div>
+                    {item.managedInCode ? (
+                      <span className="ml-4 text-xs text-muted-foreground whitespace-nowrap">コードで管理</span>
+                    ) : (
+                      <div className="flex items-center gap-2 ml-4">
+                        <Button variant="ghost" size="icon" onClick={() => setEditingWork(item)}>
+                          <Pencil className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" onClick={() => deleteWork(item.id)} disabled={loading}>
+                          <Trash2 className="h-4 w-4 text-red-500" />
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

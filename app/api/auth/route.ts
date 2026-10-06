@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import {
+  SESSION_COOKIE_NAME,
+  SESSION_MAX_AGE_SECONDS,
+  createSessionToken,
+  isAuthenticated,
+  isCorrectPassword,
+} from '@/lib/auth'
 
 export async function GET() {
-  const cookieStore = await cookies()
-  const session = cookieStore.get('admin_session')
-  if (session?.value === 'authenticated') {
+  if (await isAuthenticated()) {
     return NextResponse.json({ authenticated: true })
   }
   return NextResponse.json({ authenticated: false }, { status: 401 })
@@ -13,13 +18,13 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   const { password } = await req.json()
 
-  if (password === process.env.ADMIN_PASSWORD) {
+  if (isCorrectPassword(password)) {
     const cookieStore = await cookies()
-    cookieStore.set('admin_session', 'authenticated', {
+    cookieStore.set(SESSION_COOKIE_NAME, createSessionToken(), {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24, // 24 hours
+      maxAge: SESSION_MAX_AGE_SECONDS,
       path: '/',
     })
     return NextResponse.json({ success: true })
@@ -30,6 +35,6 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE() {
   const cookieStore = await cookies()
-  cookieStore.delete('admin_session')
+  cookieStore.delete(SESSION_COOKIE_NAME)
   return NextResponse.json({ success: true })
 }

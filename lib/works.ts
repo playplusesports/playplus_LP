@@ -10,6 +10,8 @@ export type WorkItem = {
   scale: string
   tags: string[]
   imageUrl?: string
+  // lib/works-code-managed.ts で定義された実績。管理画面からは編集・削除できない
+  managedInCode?: true
 }
 
 const BLOB_PREFIX = 'works-data-'
