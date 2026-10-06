@@ -2,12 +2,11 @@ import Link from "next/link"
 import { ContactBand } from "@/components/site/contact-band"
 import { DpadHero } from "@/components/site/dpad-hero"
 import { FaqList, FaqSchema } from "@/components/site/faq-list"
-import { LiveOperations } from "@/components/site/live-operations"
 import { SectionHeading } from "@/components/site/section-heading"
 import { WorksGallery } from "@/components/site/works-gallery"
 import { listPublicNews } from "@/lib/public-news"
 import { listPublicWorks } from "@/lib/public-works"
-import { STUDIO_FACTS } from "@/lib/site/daily-operations"
+import { STUDIO_FACTS } from "@/lib/site/studio-facts"
 import { GENERAL_FAQS } from "@/lib/site/faqs"
 import { PRICE_GUIDE } from "@/lib/site/pricing"
 import { SERVICE_PILLARS } from "@/lib/site/service-pillars"
@@ -68,17 +67,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="running" className="theme-ink">
-        <div className="site-container grid gap-12 py-24 md:py-32 lg:grid-cols-[1fr_1.15fr] lg:items-center">
-          <SectionHeading
-            title="毎日、自動で動いているもの"
-            lead="Play+ では、動画の投稿やサイトの更新を毎日決まった時刻に自動で行っています。右の表は、いまの日本時間で今日の進み具合を表示しています。"
-          />
-          <LiveOperations />
-        </div>
-      </section>
-
-      <section id="pricing" className="py-24 md:py-32">
+      <section id="pricing" className="border-t border-line py-24 md:py-32">
         <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <SectionHeading title="料金の目安" lead="内容に合わせてお見積りします。予算が決まっていなくてもご相談ください。" />
           <div>
