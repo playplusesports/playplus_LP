@@ -33,6 +33,32 @@ const newsCategories = ["お知らせ", "イベント", "メディア", "実績"
 
 type Tab = "news" | "works"
 
+// --- Delete Confirmation ---
+
+// window.confirm はアプリ内ブラウザ等で表示されず即キャンセル扱いになるため、画面内で2段階確認する。
+function ConfirmDeleteButton({ onConfirm, disabled }: { onConfirm: () => void; disabled: boolean }) {
+  const [isConfirming, setIsConfirming] = useState(false)
+
+  if (!isConfirming) {
+    return (
+      <Button variant="ghost" size="icon" onClick={() => setIsConfirming(true)} disabled={disabled} aria-label="削除">
+        <Trash2 className="h-4 w-4 text-red-500" />
+      </Button>
+    )
+  }
+
+  return (
+    <div className="flex items-center gap-1">
+      <Button variant="destructive" size="sm" onClick={() => { setIsConfirming(false); onConfirm() }} disabled={disabled}>
+        削除する
+      </Button>
+      <Button variant="ghost" size="sm" onClick={() => setIsConfirming(false)}>
+        やめる
+      </Button>
+    </div>
+  )
+}
+
 // --- Image Upload Helper ---
 
 async function uploadImage(file: File): Promise<string | null> {
@@ -124,7 +150,6 @@ export default function AdminPage() {
   }
 
   async function deleteNews(id: string) {
-    if (!confirm("この記事を削除しますか？")) return
     setLoading(true)
     setNews((prev) => prev.filter((n) => n.id !== id))
     await fetch("/api/news", {
@@ -157,7 +182,6 @@ export default function AdminPage() {
   }
 
   async function deleteWork(id: string) {
-    if (!confirm("この実績を削除しますか？")) return
     setLoading(true)
     setWorks((prev) => prev.filter((w) => w.id !== id))
     await fetch("/api/works", {
@@ -303,9 +327,7 @@ export default function AdminPage() {
                       <Button variant="ghost" size="icon" onClick={() => setEditingNews(item)}>
                         <Pencil className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon" onClick={() => deleteNews(item.id)} disabled={loading}>
-                        <Trash2 className="h-4 w-4 text-red-500" />
-                      </Button>
+                      <ConfirmDeleteButton onConfirm={() => deleteNews(item.id)} disabled={loading} />
                     </div>
                   </div>
                 ))}
@@ -344,9 +366,7 @@ export default function AdminPage() {
                         <Button variant="ghost" size="icon" onClick={() => setEditingWork(item)}>
                           <Pencil className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => deleteWork(item.id)} disabled={loading}>
-                          <Trash2 className="h-4 w-4 text-red-500" />
-                        </Button>
+                        <ConfirmDeleteButton onConfirm={() => deleteWork(item.id)} disabled={loading} />
                       </div>
                     )}
                   </div>
