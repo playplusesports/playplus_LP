@@ -139,7 +139,7 @@ function GeneratedCover({ work }: { work: WorkItem }) {
   )
 }
 
-function WorkCover({ work }: { work: WorkItem }) {
+export function WorkCover({ work }: { work: WorkItem }) {
   if (!work.imageUrl) return <GeneratedCover work={work} />
   // 管理画面からアップロードされた任意サイズの画像なので next/image の最適化は使わない
   return (

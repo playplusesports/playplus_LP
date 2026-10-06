@@ -23,7 +23,7 @@ export default async function HomePage() {
   return (
     <>
       <FaqSchema faqs={GENERAL_FAQS} />
-      <DpadHero />
+      <DpadHero works={works} />
       <Introduction />
 
       <section id="services" className="border-t border-line py-24 md:py-32">

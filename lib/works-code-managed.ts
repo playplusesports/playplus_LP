@@ -157,6 +157,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'YouTube',
     scale: '毎日投稿',
     tags: ['YouTube', 'ショート', '自動化'],
+    imageUrl: '/works/video-shorts.jpg',
     managedInCode: true,
   },
   {
@@ -168,6 +169,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'YouTube',
     scale: '長尺動画',
     tags: ['YouTube', '解説動画', '自動化'],
+    imageUrl: '/works/video-kaisetsu.jpg',
     managedInCode: true,
   },
   {
@@ -179,6 +181,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'YouTube',
     scale: '2チャンネル / 毎日投稿',
     tags: ['YouTube', 'BGM', '朗読'],
+    imageUrl: '/works/video-sleep.jpg',
     managedInCode: true,
   },
   // 代表個人の活動（大会名・研修先の名前は出さない。大会の写真は大会名が映らない範囲で切り出したもの）

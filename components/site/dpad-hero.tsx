@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { WorkCover } from "@/components/site/works-gallery"
 import { SERVICE_PILLARS, type ServicePillar } from "@/lib/site/service-pillars"
+import type { WorkItem } from "@/lib/works"
 
 /*
   トップの第一画面。ロゴの十字キーを持つ携帯ゲーム機を置き、
   十字キーを押すと見出しが「Webに、」「アプリに、」…と切り替わり、
-  画面にはその事業の実物（制作物の画面や現場の写真）が映る。
+  画面にはその事業の実績が映る。同じ矢印を押すたびに、その事業の次の実績へ切り替わる。
   触られるまでは自動で順番に切り替え、触ったらその人の操作に任せる。
   十字キーにフォーカスがある間は矢印キーでも操作できる（ページのスクロールは奪わない）。
 */
@@ -36,6 +38,15 @@ const AUTOPLAY_INTERVAL_MS = 2600
 const AUTOPLAY_SEQUENCE: readonly (Direction | null)[] = [null, "up", "right", "down", "left", "center"]
 const PRESS_FEEDBACK_MS = 160
 const SPEAKER_HOLE_COUNT = 18
+// まだ一度も押していない矢印の位置。最初に押したときに 0 番目（先頭の実績）になる
+const NOT_PRESSED = -1
+const INITIAL_STEPS: Record<Direction, number> = {
+  up: NOT_PRESSED,
+  right: NOT_PRESSED,
+  down: NOT_PRESSED,
+  left: NOT_PRESSED,
+  center: NOT_PRESSED,
+}
 
 function pillarOf(direction: Direction): ServicePillar {
   const pillar = SERVICE_PILLARS.find((candidate) => candidate.slug === DIRECTION_TO_SLUG[direction])
@@ -43,10 +54,22 @@ function pillarOf(direction: Direction): ServicePillar {
   return pillar
 }
 
-export function DpadHero() {
+// 事業ごとに、矢印で順番に映す実績の並び。データにない id は飛ばす
+function reelOf(pillar: ServicePillar, works: readonly WorkItem[]): WorkItem[] {
+  return pillar.heroWorkIds.flatMap((id) => works.filter((work) => work.id === id))
+}
+
+export function DpadHero({ works }: { works: readonly WorkItem[] }) {
   const [active, setActive] = useState<Direction | null>(null)
+  const [steps, setSteps] = useState<Record<Direction, number>>(INITIAL_STEPS)
   const [pressed, setPressed] = useState<Direction | null>(null)
   const [isAutoplay, setIsAutoplay] = useState(true)
+
+  // その矢印の事業を表示し、映す実績を1つ先へ進める
+  const advance = (direction: Direction) => {
+    setActive(direction)
+    setSteps((current) => ({ ...current, [direction]: current[direction] + 1 }))
+  }
 
   useEffect(() => {
     if (!isAutoplay) return
@@ -54,14 +77,16 @@ export function DpadHero() {
     let step = 0
     const timer = window.setInterval(() => {
       step = (step + 1) % AUTOPLAY_SEQUENCE.length
-      setActive(AUTOPLAY_SEQUENCE[step])
+      const direction = AUTOPLAY_SEQUENCE[step]
+      if (direction) advance(direction)
+      else setActive(null)
     }, AUTOPLAY_INTERVAL_MS)
     return () => window.clearInterval(timer)
   }, [isAutoplay])
 
   const press = (direction: Direction) => {
     setIsAutoplay(false)
-    setActive(direction)
+    advance(direction)
     setPressed(direction)
     window.setTimeout(() => setPressed(null), PRESS_FEEDBACK_MS)
   }
@@ -75,6 +100,12 @@ export function DpadHero() {
 
   const activePillar = active ? pillarOf(active) : null
   const word = activePillar?.heroWord ?? DEFAULT_WORD
+  const activeReel = activePillar ? reelOf(activePillar, works) : []
+  const activeIndex = active && activeReel.length > 0 ? steps[active] % activeReel.length : 0
+  const activeWork = activeReel[activeIndex]
+  const screenWorks = Array.from(
+    new Map(SERVICE_PILLARS.flatMap((pillar) => reelOf(pillar, works)).map((work) => [work.id, work])).values(),
+  )
 
   return (
     <section className="plus-pattern relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
@@ -92,7 +123,7 @@ export function DpadHero() {
 
           <div className="mt-8 min-h-[5.5rem] max-w-xl" aria-live="polite">
             {activePillar ? (
-              <p className="leading-relaxed text-fg-dim md:text-lg">
+              <p className="text-pretty leading-relaxed text-fg-dim md:text-lg">
                 <span className="font-bold text-fg">{activePillar.title}</span>：{activePillar.lead}
                 <Link href={`/services#${activePillar.slug}`} className="text-link ml-2 whitespace-nowrap text-sm">
                   詳しく見る
@@ -116,6 +147,9 @@ export function DpadHero() {
         </div>
 
         <GameConsole
+          screenWorks={screenWorks}
+          activeWork={activeWork}
+          position={activeWork ? `${activeIndex + 1}/${activeReel.length}` : ""}
           activePillar={activePillar}
           active={active}
           pressed={pressed}
@@ -129,6 +163,9 @@ export function DpadHero() {
 }
 
 type GameConsoleProps = {
+  screenWorks: readonly WorkItem[]
+  activeWork: WorkItem | undefined
+  position: string
   activePillar: ServicePillar | null
   active: Direction | null
   pressed: Direction | null
@@ -138,7 +175,17 @@ type GameConsoleProps = {
 }
 
 // ロゴの紺を本体色にした携帯ゲーム機。画面＋十字キー＋A/Bボタン
-function GameConsole({ activePillar, active, pressed, isAutoplay, onPress, onKeyDown }: GameConsoleProps) {
+function GameConsole({
+  screenWorks,
+  activeWork,
+  position,
+  activePillar,
+  active,
+  pressed,
+  isAutoplay,
+  onPress,
+  onKeyDown,
+}: GameConsoleProps) {
   return (
     <div className="mx-auto w-full max-w-[34rem]">
       <div className="rounded-[2.25rem] border-b-[10px] border-[#07074a] bg-brand p-5 pb-7 shadow-[0_2px_0_#2a2a99_inset] sm:p-7 sm:pb-9">
@@ -152,23 +199,27 @@ function GameConsole({ activePillar, active, pressed, isAutoplay, onPress, onKey
           </div>
           <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-[#0d0d3a]">
             <StartScreen />
-            {/* 切り替えで待たせないよう、全事業の画面を重ねて読み込んでおき、選ばれたものだけを見せる */}
-            {SERVICE_PILLARS.map((pillar) => (
-              // 制作物の画面・写真。サイズがまちまちなので next/image の最適化は使わない
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={pillar.slug}
-                src={pillar.heroScreen.image}
-                alt={pillar === activePillar ? pillar.heroScreen.caption : ""}
-                className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-200 ${
-                  pillar === activePillar ? "opacity-100" : "opacity-0"
-                }`}
-              />
+            {/* 切り替えで待たせないよう、映す候補の実績をすべて重ねて読み込んでおき、選ばれたものだけを見せる */}
+            {screenWorks.map((work) => (
+              <div
+                key={work.id}
+                aria-hidden={work !== activeWork}
+                className={`absolute inset-0 transition-opacity duration-200 ${work === activeWork ? "opacity-100" : "opacity-0"}`}
+              >
+                <WorkCover work={work} />
+              </div>
             ))}
           </div>
-          <p className="truncate px-1 pt-2 text-xs text-white/70">
-            {activePillar ? `▶ ${activePillar.heroScreen.caption}` : isAutoplay ? "十字キーを押してみてください" : ""}
-          </p>
+          <div className="flex items-center justify-between gap-3 px-1 pt-2 text-xs text-white/70">
+            {activeWork ? (
+              <Link href={`/works?id=${encodeURIComponent(activeWork.id)}`} className="truncate hover:text-white hover:underline">
+                ▶ {activeWork.title}
+              </Link>
+            ) : (
+              <span>{isAutoplay ? "十字キーを押してみてください" : ""}</span>
+            )}
+            <span className="shrink-0 font-pixel text-white/45">{position}</span>
+          </div>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 px-1 sm:mt-8 sm:px-3">
@@ -236,7 +287,7 @@ function GameConsole({ activePillar, active, pressed, isAutoplay, onPress, onKey
           </div>
         </div>
       </div>
-      <p className="mt-4 text-center text-xs text-fg-dim">十字キーで事業が切り替わります。Aで相談、Bで実績へ。</p>
+      <p className="mt-4 text-center text-xs text-fg-dim">矢印を押すたびに、その事業の別の実績に切り替わります。Aで相談、Bで実績へ。</p>
     </div>
   )
 }
