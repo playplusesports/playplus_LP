@@ -168,6 +168,13 @@ export default function AdminPage() {
     if (res.ok) setWorks(await res.json())
   }
 
+  async function importCodeManagedWorks() {
+    setLoading(true)
+    await fetch("/api/works/import", { method: "POST" })
+    await fetchWorks()
+    setLoading(false)
+  }
+
   async function saveWork(item: Omit<WorkItem, "id"> & { id?: string }) {
     setLoading(true)
     await fetch("/api/works", {
@@ -346,6 +353,16 @@ export default function AdminPage() {
                 新規作成
               </Button>
             </div>
+            {works.some((w) => w.managedInCode) && (
+              <div className="flex items-center justify-between gap-4 mb-6 p-4 rounded-lg border border-accent/40 bg-secondary/40">
+                <p className="text-sm text-foreground">
+                  コードで管理している実績が{works.filter((w) => w.managedInCode).length}件あります。取り込むと他の投稿と同じように編集・削除できます。
+                </p>
+                <Button onClick={importCodeManagedWorks} disabled={loading} className="shrink-0">
+                  通常の投稿に取り込む
+                </Button>
+              </div>
+            )}
             {works.length === 0 ? (
               <p className="text-muted-foreground text-center py-12">実績がありません</p>
             ) : (

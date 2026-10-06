@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isAuthenticated } from '@/lib/auth'
 import { getWorks, saveWorks, type WorkItem } from '@/lib/works'
-import { CODE_MANAGED_WORKS } from '@/lib/works-code-managed'
+import { codeManagedWorksNotIn } from '@/lib/works-code-managed'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
   const works = await getWorks()
-  return NextResponse.json([...CODE_MANAGED_WORKS, ...works], {
+  return NextResponse.json([...codeManagedWorksNotIn(works), ...works], {
     headers: { 'Cache-Control': 'no-store, max-age=0' },
   })
 }
@@ -43,8 +43,8 @@ export async function PUT(req: NextRequest) {
   }
 
   const body = await req.json()
-  if (isCodeManaged(body.id)) return codeManagedError()
   const works = await getWorks()
+  if (isCodeManagedOnly(body.id, works)) return codeManagedError()
   const index = works.findIndex((w) => w.id === body.id)
 
   if (index === -1) {
@@ -62,20 +62,20 @@ export async function DELETE(req: NextRequest) {
   }
 
   const { id } = await req.json()
-  if (isCodeManaged(id)) return codeManagedError()
   const works = await getWorks()
+  if (isCodeManagedOnly(id, works)) return codeManagedError()
   const filtered = works.filter((w) => w.id !== id)
   await saveWorks(filtered)
   return NextResponse.json({ success: true })
 }
 
-function isCodeManaged(id: unknown): boolean {
-  return CODE_MANAGED_WORKS.some((w) => w.id === id)
+function isCodeManagedOnly(id: unknown, works: WorkItem[]): boolean {
+  return codeManagedWorksNotIn(works).some((w) => w.id === id)
 }
 
 function codeManagedError() {
   return NextResponse.json(
-    { error: 'この実績はコードで管理しています。lib/works-code-managed.ts を編集してください' },
+    { error: 'この実績はコードで管理しています。先に「通常の投稿に取り込む」を実行してください' },
     { status: 409 },
   )
 }

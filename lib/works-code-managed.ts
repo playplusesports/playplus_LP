@@ -1,7 +1,7 @@
 import type { WorkItem } from './works'
 
 // コードで管理する実績。管理画面（Blob）の実績より前に表示され、管理画面からは編集・削除できない。
-// 追加・修正はこのファイルを編集してデプロイする。
+// 管理画面の「通常の投稿に取り込む」で Blob に移すと、同じ id の項目はこちらからは表示されなくなる。
 export const CODE_MANAGED_WORKS: WorkItem[] = [
   {
     id: 'duovc',
@@ -158,3 +158,9 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     managedInCode: true,
   },
 ]
+
+// Blob にまだ取り込まれていないコード管理の実績
+export function codeManagedWorksNotIn(works: WorkItem[]): WorkItem[] {
+  const storedIds = new Set(works.map((w) => w.id))
+  return CODE_MANAGED_WORKS.filter((w) => !storedIds.has(w.id))
+}
