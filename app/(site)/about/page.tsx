@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { ContactBand } from "@/components/site/contact-band"
 import { PageIntro } from "@/components/site/page-intro"
 import { SectionHeading } from "@/components/site/section-heading"
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
   description: "Play+（プレイプラス）の名前の由来と、これまでの活動、事業者情報です。",
   alternates: { canonical: "/about" },
 }
+
+const LOGO_SIZE_PX = 160
 
 const MILESTONES: readonly { period: string; title: string; description: string }[] = [
   {
@@ -51,8 +54,17 @@ export default function AboutPage() {
 
       <section className="py-20 md:py-28">
         <div className="site-container grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
-          <h2 className="text-3xl font-black leading-tight tracking-tight md:text-4xl">{COMPANY_PROFILE.concept}</h2>
-          <div className="space-y-6 leading-loose text-fg/90 md:text-lg md:leading-loose">
+          <div>
+            <h2 className="text-3xl font-black leading-tight tracking-tight md:text-4xl">{COMPANY_PROFILE.concept}</h2>
+            <Image
+              src="/brand/mark.png"
+              alt="Play+ のロゴ。Pの文字と、ゲームの十字キーの形をした「＋」"
+              width={LOGO_SIZE_PX}
+              height={LOGO_SIZE_PX}
+              className="mt-10 rounded-full"
+            />
+          </div>
+          <div className="space-y-6 leading-[1.9] text-fg/90 md:text-lg md:leading-[1.9]">
             <p>
               Play+
               という名前は、Play（遊び）に＋（プラス）を足したものです。ロゴの「＋」は、ゲームのコントローラーの十字キーをかたどっています。

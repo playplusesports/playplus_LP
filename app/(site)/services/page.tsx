@@ -38,7 +38,7 @@ export default function ServicesPage() {
               </div>
 
               <div>
-                <p className="leading-loose text-fg-dim md:text-lg md:leading-loose">{pillar.description}</p>
+                <p className="leading-[1.9] text-fg-dim md:text-lg md:leading-[1.9]">{pillar.description}</p>
 
                 <div className="mt-10 grid gap-8 sm:grid-cols-2">
                   <div>

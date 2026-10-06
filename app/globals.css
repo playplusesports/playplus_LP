@@ -98,12 +98,13 @@
   body {
     @apply bg-surface-0 text-fg font-sans antialiased;
     font-feature-settings: 'palt';
-    /* 日本語を文節で折り返す（「窓口／で。」のような泣き別れを防ぐ） */
-    word-break: auto-phrase;
   }
+  /* 見出しだけ文節で折り返す（「窓口／で。」のような泣き別れを防ぐ）。
+     本文にかけると行末がガタガタになるので、本文は通常どおり行の端まで詰める */
   h1,
   h2,
   h3 {
+    word-break: auto-phrase;
     text-wrap: balance;
   }
   ::selection {
