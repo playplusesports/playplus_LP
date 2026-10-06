@@ -111,17 +111,6 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     managedInCode: true,
   },
   {
-    id: 'ai-chokyo-diary',
-    title: 'AI調教日記',
-    category: 'アプリ開発',
-    description: 'AIの育て方やプロンプトを記事で公開し、有料記事をクリエイターごとの月額課金で販売できるメディアを開発しました。',
-    period: '2026/06',
-    location: 'オンライン',
-    scale: 'メディア / Stripe決済',
-    tags: ['メディア', '決済', 'AI'],
-    managedInCode: true,
-  },
-  {
     id: 'youtube-shorts',
     title: 'YouTube 雑学ショートの自動制作・運用',
     category: '動画制作',
