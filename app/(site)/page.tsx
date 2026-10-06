@@ -154,9 +154,7 @@ function Introduction() {
           <div>
             <p className="eyebrow">Play+ について</p>
             <h2 className="mt-4 text-3xl font-black leading-snug tracking-tight md:text-4xl md:leading-snug">
-              はじまりは、
-              <br className="hidden md:block" />
-              毎月のゲーム大会でした。
+              好きを、もっと面白く。
             </h2>
             <p className="mt-6 max-w-xl leading-[1.9] text-fg-dim md:text-lg md:leading-[1.9]">
               2023年に始めたeスポーツ大会の運営を、いまも毎月続けています。その傍らで、お店や会社のWebサイト、Webアプリ、YouTube向けの動画をつくるようになりました。
