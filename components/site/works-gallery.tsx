@@ -13,6 +13,10 @@ type WorksGalleryProps = {
 const ALL_FILTER: WorksFilter = "すべて"
 const WORKS_PAGE_PATH = "/works"
 
+// 6列のグリッドに「大1・小2」「小3」の順で並べる（5件で1周）
+const BENTO_PATTERN = ["md:col-span-4", "md:col-span-2", "md:col-span-2", "md:col-span-2", "md:col-span-2"] as const
+const FEATURED_SPAN = BENTO_PATTERN[0]
+
 // 実績ページでは開いている実績を URL（?id=）に残し、共有できるようにする
 function syncOpenIdToUrl(id: string) {
   if (window.location.pathname !== WORKS_PAGE_PATH) return
@@ -43,32 +47,39 @@ export function WorksGallery({ works, initialOpenId = "", showFilters = true }: 
   return (
     <div>
       {showFilters && (
-        <div role="tablist" aria-label="カテゴリで絞り込む" className="mb-10 flex flex-wrap gap-2">
-          {availableFilters.map((filter) => (
-            <button
-              key={filter}
-              type="button"
-              role="tab"
-              aria-selected={activeFilter === filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`rounded-md border px-4 py-2 text-sm transition-colors ${
-                activeFilter === filter
-                  ? "border-play bg-play text-white"
-                  : "border-line-strong text-text-dim hover:border-play hover:text-white"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
+        <div role="tablist" aria-label="カテゴリで絞り込む" className="mb-12 flex flex-wrap gap-2">
+          {availableFilters.map((filter) => {
+            const count = filter === ALL_FILTER ? works.length : works.filter((work) => work.category === filter).length
+            return (
+              <button
+                key={filter}
+                type="button"
+                role="tab"
+                aria-selected={activeFilter === filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-full border px-5 py-2.5 text-sm font-bold transition-colors ${
+                  activeFilter === filter
+                    ? "border-fg bg-fg text-surface-0"
+                    : "border-line-strong text-fg-dim hover:border-fg hover:text-fg"
+                }`}
+              >
+                {filter}
+                <span className="ml-2 font-mono text-[11px] opacity-60">{count}</span>
+              </button>
+            )
+          })}
         </div>
       )}
 
-      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {visibleWorks.map((work) => (
-          <li key={work.id}>
-            <WorkCard work={work} onOpen={() => open(work.id)} />
-          </li>
-        ))}
+      <ul className="grid gap-x-5 gap-y-12 md:grid-cols-6">
+        {visibleWorks.map((work, position) => {
+          const span = BENTO_PATTERN[position % BENTO_PATTERN.length]
+          return (
+            <li key={work.id} className={span}>
+              <WorkCard work={work} isFeatured={span === FEATURED_SPAN} onOpen={() => open(work.id)} />
+            </li>
+          )
+        })}
       </ul>
 
       {openWork && <WorkDetail work={openWork} onClose={close} />}
@@ -102,10 +113,10 @@ function litPattern(seed: string): boolean[] {
 function GeneratedCover({ work }: { work: WorkItem }) {
   const lit = litPattern(work.id)
   return (
-    <div className="relative h-full w-full bg-ink-2">
+    <div className="theme-ink relative h-full w-full">
       <svg
         viewBox={`0 0 ${COVER_COLUMNS * COVER_CELL} ${COVER_ROWS * COVER_CELL}`}
-        className="h-full w-full"
+        className="h-full w-full transition-transform duration-700 group-hover:scale-105"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
@@ -124,7 +135,7 @@ function GeneratedCover({ work }: { work: WorkItem }) {
           )
         })}
       </svg>
-      <span className="absolute bottom-3 left-4 font-pixel text-xs tracking-[0.2em] text-text-dim">{categoryCodeOf(work.category)}</span>
+      <span className="absolute bottom-4 left-5 font-mono text-[11px] tracking-[0.2em] text-fg-dim">{categoryCodeOf(work.category)}</span>
     </div>
   )
 }
@@ -132,33 +143,43 @@ function GeneratedCover({ work }: { work: WorkItem }) {
 function WorkCover({ work }: { work: WorkItem }) {
   if (!work.imageUrl) return <GeneratedCover work={work} />
   // 管理画面からアップロードされた任意サイズの画像なので next/image の最適化は使わない
-  // eslint-disable-next-line @next/next/no-img-element
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={work.imageUrl}
       alt=""
-      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+      className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
     />
   )
 }
 
-function WorkCard({ work, onOpen }: { work: WorkItem; onOpen: () => void }) {
+function WorkCard({ work, isFeatured, onOpen }: { work: WorkItem; isFeatured: boolean; onOpen: () => void }) {
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="group flex h-full w-full flex-col overflow-hidden rounded-lg border border-line bg-ink-1 text-left transition-colors hover:border-play focus-visible:border-play focus-visible:outline-none"
-    >
-      <div className="aspect-[16/10] w-full overflow-hidden border-b border-line">
+    <button type="button" onClick={onOpen} className="group flex h-full w-full flex-col text-left focus-visible:outline-none">
+      <div
+        className={`w-full overflow-hidden rounded-2xl border border-line bg-surface-2 transition-shadow group-hover:shadow-[0_24px_50px_-28px_rgba(13,13,51,0.55)] group-focus-visible:ring-4 group-focus-visible:ring-play/40 ${
+          isFeatured ? "aspect-[16/10] md:aspect-[16/9.4]" : "aspect-[16/10]"
+        }`}
+      >
         <WorkCover work={work} />
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <p className="flex items-center justify-between gap-3 font-mono text-[11px] text-text-dim">
-          <span className="text-play">{work.category}</span>
-          <span>{work.period}</span>
-        </p>
-        <h3 className="mt-2 font-bold leading-snug">{work.title}</h3>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-text-dim">{work.description}</p>
+      <div className="flex items-start justify-between gap-4 pt-5">
+        <div className="min-w-0">
+          <p className="font-mono text-[11px] tracking-wide text-fg-dim">
+            <span className="text-signal">{work.category}</span>
+            <span className="mx-2">/</span>
+            {work.period}
+          </p>
+          <h3 className={`mt-2 font-bold leading-snug ${isFeatured ? "text-xl md:text-2xl" : "text-lg"}`}>{work.title}</h3>
+          {isFeatured && <p className="mt-2 line-clamp-2 max-w-2xl text-sm leading-relaxed text-fg-dim">{work.description}</p>}
+        </div>
+        <span
+          aria-hidden="true"
+          className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line-strong transition-[transform,background-color,color,border-color] duration-300 group-hover:rotate-45 group-hover:border-fg group-hover:bg-fg group-hover:text-surface-0"
+        >
+          ↗
+        </span>
       </div>
     </button>
   )
@@ -187,46 +208,43 @@ function WorkDetail({ work, onClose }: { work: WorkItem; onClose: () => void }) 
   ].filter((fact) => fact.value && fact.value !== "-")
 
   return (
-    <div
-      className="fixed inset-0 z-[70] flex items-end justify-center bg-ink-0/80 backdrop-blur-sm sm:items-center sm:p-6"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-[70] flex items-end justify-center bg-fg/50 backdrop-blur-sm sm:items-center sm:p-6" onClick={onClose}>
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="work-detail-title"
-        className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-xl border border-line bg-ink-1 sm:rounded-xl"
+        className="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-3xl bg-surface-1 sm:rounded-3xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="group aspect-[16/9] w-full overflow-hidden border-b border-line">
+        <div className="group aspect-[16/9] w-full overflow-hidden">
           <WorkCover work={work} />
         </div>
-        <div className="p-6 sm:p-8">
-          <p className="font-mono text-xs text-play">{work.category}</p>
-          <h2 id="work-detail-title" className="mt-2 text-2xl font-black leading-snug">
+        <div className="p-6 sm:p-10">
+          <p className="font-mono text-xs text-signal">{work.category}</p>
+          <h2 id="work-detail-title" className="mt-2 text-2xl font-black leading-snug md:text-3xl">
             {work.title}
           </h2>
-          <p className="mt-4 whitespace-pre-line leading-relaxed text-text-dim">{work.description}</p>
+          <p className="mt-5 whitespace-pre-line leading-relaxed text-fg-dim">{work.description}</p>
           {facts.length > 0 && (
-            <dl className="mt-6 grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-3">
+            <dl className="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
               {facts.map((fact) => (
-                <div key={fact.label} className="bg-ink-1 p-3">
-                  <dt className="font-mono text-[11px] text-text-dim">{fact.label}</dt>
-                  <dd className="mt-1 text-sm">{fact.value}</dd>
+                <div key={fact.label} className="bg-surface-1 p-4">
+                  <dt className="font-mono text-[11px] text-fg-dim">{fact.label}</dt>
+                  <dd className="mt-1 text-sm font-bold">{fact.value}</dd>
                 </div>
               ))}
             </dl>
           )}
           {work.tags.length > 0 && (
-            <ul className="mt-5 flex flex-wrap gap-2">
+            <ul className="mt-6 flex flex-wrap gap-2">
               {work.tags.map((tag) => (
-                <li key={tag} className="rounded border border-line-strong px-2 py-0.5 font-mono text-[11px] text-text-dim">
+                <li key={tag} className="rounded-full bg-surface-2 px-3 py-1 font-mono text-[11px] text-fg-dim">
                   #{tag}
                 </li>
               ))}
             </ul>
           )}
-          <button ref={closeButtonRef} type="button" onClick={onClose} className="btn-outline mt-8 w-full">
+          <button ref={closeButtonRef} type="button" onClick={onClose} className="btn-secondary mt-10 w-full">
             閉じる
           </button>
         </div>

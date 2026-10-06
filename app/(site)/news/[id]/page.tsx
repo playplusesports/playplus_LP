@@ -46,8 +46,8 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={item.imageUrl} alt="" className="mb-10 w-full rounded-lg border border-line" />
         )}
-        <div className="whitespace-pre-line leading-loose text-text/90">{item.content}</div>
-        <Link href="/news" className="btn-outline mt-14">
+        <div className="whitespace-pre-line leading-loose text-fg/90">{item.content}</div>
+        <Link href="/news" className="btn-secondary mt-14">
           お知らせ一覧へ戻る
         </Link>
       </article>

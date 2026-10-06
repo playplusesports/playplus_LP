@@ -30,20 +30,20 @@ export default function ContactPage() {
 
           <aside className="space-y-10">
             <div>
-              <p className="pixel-label mb-4">OTHER CHANNELS</p>
+              <p className="eyebrow mb-4">OTHER CHANNELS</p>
               <ul className="space-y-3">
                 <li>
                   <a
                     href={CONTACT_CHANNELS.line}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block rounded-lg border border-line bg-ink-1 p-5 transition-colors hover:border-play"
+                    className="block panel block p-6 transition-colors hover:border-fg/30"
                   >
                     <span className="block font-bold">LINEで相談</span>
-                    <span className="mt-1 block text-sm text-text-dim">写真や資料もそのまま送れます</span>
+                    <span className="mt-1 block text-sm text-fg-dim">写真や資料もそのまま送れます</span>
                   </a>
                 </li>
-                <li className="rounded-lg border border-line bg-ink-1 p-5">
+                <li className="panel p-6">
                   <span className="block font-bold">メール</span>
                   <a href={`mailto:${COMPANY_PROFILE.email}`} className="text-link mt-1 block text-sm">
                     {COMPANY_PROFILE.email}
@@ -54,21 +54,21 @@ export default function ContactPage() {
                     href={CONTACT_CHANNELS.x}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block rounded-lg border border-line bg-ink-1 p-5 transition-colors hover:border-play"
+                    className="block panel block p-6 transition-colors hover:border-fg/30"
                   >
                     <span className="block font-bold">X（旧Twitter）</span>
-                    <span className="mt-1 block text-sm text-text-dim">DMでもお気軽にどうぞ</span>
+                    <span className="mt-1 block text-sm text-fg-dim">DMでもお気軽にどうぞ</span>
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="pixel-label mb-4">Q&amp;A</p>
+              <p className="eyebrow mb-4">Q&amp;A</p>
               <dl className="space-y-5">
                 {QUICK_ANSWERS.map((item) => (
                   <div key={item.question}>
                     <dt className="font-bold">{item.question}</dt>
-                    <dd className="mt-1 text-sm text-text-dim">{item.answer}</dd>
+                    <dd className="mt-1 text-sm text-fg-dim">{item.answer}</dd>
                   </div>
                 ))}
               </dl>

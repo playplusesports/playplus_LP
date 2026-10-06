@@ -21,11 +21,7 @@ export const DAILY_OPERATIONS_WITHOUT_FIXED_TIME: readonly { title: string; outp
 
 export const STUDIO_FACTS: readonly { value: string; unit: string; label: string }[] = [
   { value: "10", unit: "+", label: "自社で開発・公開中のWebサービス" },
-  {
-    value: String(SCHEDULED_OPERATIONS.length + DAILY_OPERATIONS_WITHOUT_FIXED_TIME.length),
-    unit: "本",
-    label: "毎日自動で動いている仕組み",
-  },
+  { value: "1", unit: "週間〜", label: "LPの制作から公開まで（最短）" },
   { value: "150", unit: "+", label: "店舗向けに制作した提案サイト" },
   { value: "2023", unit: "〜", label: "eスポーツ大会を毎月開催" },
 ]

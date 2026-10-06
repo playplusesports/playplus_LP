@@ -2,6 +2,8 @@
 export type ServicePillar = {
   slug: string
   code: string
+  // トップの見出し「◯◯に、プラスを。」の◯◯
+  heroWord: string
   title: string
   lead: string
   description: string
@@ -15,6 +17,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
   {
     slug: "web",
     code: "WEB",
+    heroWord: "Webに、",
     title: "Webサイト制作・集客",
     lead: "つくって終わりにしない、集まるWebサイト。",
     description:
@@ -35,6 +38,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
   {
     slug: "app",
     code: "APP",
+    heroWord: "アプリに、",
     title: "Webアプリ・サービス開発",
     lead: "予約も、決済も、マッチングも。「動く仕組み」をつくる。",
     description:
@@ -47,6 +51,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
   {
     slug: "ai",
     code: "AI",
+    heroWord: "AIに、",
     title: "AI活用・業務の自動化",
     lead: "くり返しの作業は、AIと仕組みに任せる。",
     description:
@@ -59,6 +64,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
   {
     slug: "video",
     code: "VIDEO",
+    heroWord: "動画に、",
     title: "動画・コンテンツ制作",
     lead: "毎日更新を、気合いではなく仕組みで。",
     description:
@@ -71,6 +77,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
   {
     slug: "event",
     code: "EVENT",
+    heroWord: "イベントに、",
     title: "イベント・eスポーツ・デザイン",
     lead: "Play+ の原点は、ゲーム大会の会場。",
     description:
@@ -80,4 +87,20 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     priceLabel: "イベント ¥50,000〜 / デザイン ¥5,000〜",
     detailLinks: [],
   },
+]
+
+// トップのマーキーに流す、これまでに手がけたプロジェクト名
+export const PROJECT_NAMES: readonly string[] = [
+  "DuoVC",
+  "Toybox",
+  "スマノート",
+  "サッと計算",
+  "WEB MIHONICHI",
+  "えいたん",
+  "レスバアリーナ",
+  "おやすみ物語",
+  "INNOSUMA!!",
+  "Hu-Mam",
+  "CAFEMANO",
+  "mauve",
 ]

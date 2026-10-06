@@ -249,7 +249,7 @@ export function PlusField() {
   return (
     <>
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full touch-manipulation" aria-hidden="true" />
-      <p className="pointer-events-none absolute bottom-6 right-4 font-pixel text-[11px] tracking-[0.2em] text-text-dim sm:right-8">
+      <p className="pointer-events-none absolute bottom-6 right-4 font-pixel text-[11px] tracking-[0.2em] text-fg-dim sm:right-8">
         {playCount === 0 ? "TAP / CLICK TO PLAY" : `PLAY +${playCount}`}
       </p>
     </>

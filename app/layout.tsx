@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { DotGothic16, JetBrains_Mono, Zen_Kaku_Gothic_New } from 'next/font/google'
+import { DotGothic16, Inter_Tight, JetBrains_Mono, Zen_Kaku_Gothic_New } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { COMPANY_PROFILE, CONTACT_CHANNELS } from '@/lib/site/company-profile'
@@ -16,6 +16,13 @@ const dotFont = DotGothic16({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-dot',
+  display: 'swap',
+})
+
+const latinFont = Inter_Tight({
+  weight: ['500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--font-latin',
   display: 'swap',
 })
 
@@ -64,7 +71,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#06071a',
+  themeColor: '#f4f4ee',
 }
 
 const ORGANIZATION_SCHEMA = {
@@ -98,7 +105,7 @@ const ORGANIZATION_SCHEMA = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja" className={`${bodyFont.variable} ${dotFont.variable} ${codeFont.variable}`}>
+    <html lang="ja" className={`${bodyFont.variable} ${latinFont.variable} ${dotFont.variable} ${codeFont.variable}`}>
       <head>
         <script
           type="application/ld+json"

@@ -51,10 +51,10 @@ const STATUS_LABEL: Record<OperationStatus, string> = {
 }
 
 const STATUS_STYLE: Record<OperationStatus, string> = {
-  done: "border-signal/50 text-signal-bright",
+  done: "border-signal/50 text-signal",
   next: "border-play text-play",
-  later: "border-line-strong text-text-dim",
-  unknown: "border-line-strong text-text-dim",
+  later: "border-line-strong text-fg-dim",
+  unknown: "border-line-strong text-fg-dim",
 }
 
 export function LiveOperations() {
@@ -70,16 +70,16 @@ export function LiveOperations() {
   const nextOperation = upcoming ?? SCHEDULED_OPERATIONS[0]
 
   return (
-    <div className="rounded-lg border border-line bg-ink-1/80 p-5 backdrop-blur sm:p-8">
+    <div className="rounded-lg border border-line bg-surface-1/80 p-5 backdrop-blur sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="flex items-center gap-2 font-mono text-xs text-text-dim">
+        <p className="flex items-center gap-2 font-mono text-xs text-fg-dim">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-bright opacity-60" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-signal-bright" />
           </span>
           daily-operations / Asia/Tokyo
         </p>
-        <p className="font-mono text-sm tabular-nums text-white" aria-live="off">
+        <p className="font-mono text-sm tabular-nums text-fg" aria-live="off">
           JST {clock?.label ?? "--:--:--"}
         </p>
       </div>
@@ -92,7 +92,7 @@ export function LiveOperations() {
         {HOUR_TICKS.map((hour) => (
           <div key={hour} className="absolute top-1/2 -translate-x-1/2" style={{ left: percentOfDay(hour * 60) }}>
             <div className="h-2 w-px -translate-y-1/2 bg-line-strong" />
-            <p className="mt-3 -translate-x-[2px] font-mono text-[10px] text-text-dim">{String(hour).padStart(2, "0")}</p>
+            <p className="mt-3 -translate-x-[2px] font-mono text-[10px] text-fg-dim">{String(hour).padStart(2, "0")}</p>
           </div>
         ))}
         {SCHEDULED_OPERATIONS.map((operation) => {
@@ -103,13 +103,13 @@ export function LiveOperations() {
               className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{ left: percentOfDay(minutesOf(operation)) }}
             >
-              <span className={`block font-pixel text-lg leading-none ${isDone ? "text-signal-bright" : "text-play"}`}>+</span>
+              <span className={`block font-display text-xl font-bold leading-none ${isDone ? "text-signal" : "text-play"}`}>+</span>
             </div>
           )
         })}
         {clock && (
           <div className="absolute -top-3 bottom-[-6px] w-px bg-white" style={{ left: percentOfDay(clock.minutesOfDay) }}>
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 font-mono text-[10px] text-white">NOW</span>
+            <span className="absolute -top-5 left-1/2 -translate-x-1/2 font-mono text-[10px] text-fg">NOW</span>
           </div>
         )}
       </div>
@@ -146,10 +146,10 @@ export function LiveOperations() {
 function OperationRow(props: { time: string; title: string; output: string; statusLabel: string; statusStyle: string }) {
   return (
     <li className="grid grid-cols-[3.5rem_1fr] items-center gap-x-4 gap-y-1 py-3.5 sm:grid-cols-[4rem_1fr_auto]">
-      <span className="font-mono text-sm tabular-nums text-white">{props.time}</span>
+      <span className="font-mono text-sm tabular-nums text-fg">{props.time}</span>
       <span className="min-w-0">
         <span className="block font-bold">{props.title}</span>
-        <span className="block text-xs text-text-dim">{props.output}</span>
+        <span className="block text-xs text-fg-dim">{props.output}</span>
       </span>
       <span className={`col-start-2 w-fit rounded border px-2 py-0.5 text-[11px] sm:col-start-auto ${props.statusStyle}`}>
         {props.statusLabel}

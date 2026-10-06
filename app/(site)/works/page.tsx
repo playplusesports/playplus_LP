@@ -29,7 +29,7 @@ export default async function WorksPage({ searchParams }: WorksPageProps) {
       <section className="py-16 md:py-24">
         <div className="site-container">
           <WorksGallery works={works} initialOpenId={id} />
-          <p className="mt-12 text-sm text-text-dim">ここに載せていない実績もあります。お気軽にお問い合わせください。</p>
+          <p className="mt-12 text-sm text-fg-dim">ここに載せていない実績もあります。お気軽にお問い合わせください。</p>
         </div>
       </section>
       <ContactBand />

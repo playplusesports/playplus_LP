@@ -59,10 +59,10 @@ export default function WebServicePage() {
         ]}
       >
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <a href={CONTACT_CHANNELS.line} target="_blank" rel="noopener noreferrer" className="btn-signal">
+          <a href={CONTACT_CHANNELS.line} target="_blank" rel="noopener noreferrer" className="btn-primary">
             LINEで無料相談
           </a>
-          <a href="#plans" className="btn-outline">
+          <a href="#plans" className="btn-secondary">
             料金プランを見る
           </a>
         </div>
@@ -71,18 +71,18 @@ export default function WebServicePage() {
       <section className="py-20 md:py-28">
         <div className="site-container">
           <SectionHeading index="01" code="FEATURES" title="サービス内容" />
-          <ul className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {WEB_FEATURES.map((feature) => (
-              <li key={feature.title} className="bg-ink-0 p-6 md:p-8">
+              <li key={feature.title} className="bg-surface-1 p-6 md:p-8">
                 <h3 className="font-bold">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-dim">{feature.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-dim">{feature.description}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section id="plans" className="border-t border-line bg-ink-1/40 py-20 md:py-28">
+      <section id="plans" className="border-t border-line bg-surface-1/40 py-20 md:py-28">
         <div className="site-container">
           <SectionHeading
             index="02"
@@ -91,7 +91,7 @@ export default function WebServicePage() {
             lead="個人・個人事業主の方は月額または買い切り、法人のお客様はフルオーダーメイドの法人プランをご用意しています。"
           />
 
-          <h3 className="pixel-label mb-6">月額プラン</h3>
+          <h3 className="eyebrow mb-6">月額プラン</h3>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {WEB_MONTHLY_PLANS.map((plan) => (
               <PlanCard key={plan.name} plan={plan} />
@@ -100,17 +100,17 @@ export default function WebServicePage() {
 
           <div className="mt-16 grid gap-10 lg:grid-cols-2">
             <div>
-              <h3 className="pixel-label mb-6">買い切り</h3>
+              <h3 className="eyebrow mb-6">買い切り</h3>
               <PlanCard plan={WEB_ONE_TIME_PLAN} />
             </div>
             <div>
-              <h3 className="pixel-label mb-6">法人プラン（お見積り）</h3>
-              <div className="rounded-lg border border-line bg-ink-1/60 p-6">
+              <h3 className="eyebrow mb-6">法人プラン（お見積り）</h3>
+              <div className="panel p-7">
                 <p className="font-bold">ご要件に合わせて個別にご提案します</p>
                 <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
                   {WEB_CORPORATE_PLAN_POINTS.map((point) => (
                     <li key={point} className="flex gap-2.5 text-sm leading-snug">
-                      <span className="font-pixel text-play" aria-hidden="true">
+                      <span className="font-display font-bold text-signal" aria-hidden="true">
                         +
                       </span>
                       {point}
@@ -122,13 +122,13 @@ export default function WebServicePage() {
           </div>
 
           <div id="options" className="mt-16">
-            <h3 className="pixel-label mb-6">オプション</h3>
+            <h3 className="eyebrow mb-6">オプション</h3>
             <ul className="border-t border-line">
               {WEB_OPTIONS.map((option) => (
                 <li key={option.name} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-6">
                   <div>
                     <p className="font-bold">{option.name}</p>
-                    <p className="mt-1 text-sm text-text-dim">{option.description}</p>
+                    <p className="mt-1 text-sm text-fg-dim">{option.description}</p>
                   </div>
                   <p className="font-mono text-lg font-bold sm:text-right">{option.price}</p>
                 </li>
@@ -136,7 +136,7 @@ export default function WebServicePage() {
             </ul>
           </div>
 
-          <div className="mt-8 space-y-1 text-xs leading-relaxed text-text-dim">
+          <div className="mt-8 space-y-1 text-xs leading-relaxed text-fg-dim">
             <p>※ 表示価格はすべて税込です。</p>
             <p>※ 独自ドメイン・サーバー費用はプラン料金に含まれています。</p>
             <p>※ 内容によってはお見積りとなる場合があります。</p>
@@ -147,12 +147,12 @@ export default function WebServicePage() {
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
           <SectionHeading index="03" code="FLOW" title="ご利用の流れ" />
-          <ol className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-4">
+          <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
             {WEB_FLOW.map((step, position) => (
-              <li key={step.title} className="bg-ink-0 p-6 md:p-8">
-                <p className="font-pixel text-sm text-signal-bright">STEP {position + 1}</p>
+              <li key={step.title} className="bg-surface-1 p-6 md:p-8">
+                <p className="font-mono text-xs font-bold tracking-widest text-signal">STEP {position + 1}</p>
                 <h3 className="mt-4 text-lg font-bold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-dim">{step.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-dim">{step.description}</p>
               </li>
             ))}
           </ol>

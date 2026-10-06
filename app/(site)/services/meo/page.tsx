@@ -83,10 +83,10 @@ export default function MeoServicePage() {
         ]}
       >
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <a href={CONTACT_CHANNELS.line} target="_blank" rel="noopener noreferrer" className="btn-signal">
+          <a href={CONTACT_CHANNELS.line} target="_blank" rel="noopener noreferrer" className="btn-primary">
             無料でGBP診断を相談する
           </a>
-          <a href="#plans" className="btn-outline">
+          <a href="#plans" className="btn-secondary">
             料金プランを見る
           </a>
         </div>
@@ -100,14 +100,14 @@ export default function MeoServicePage() {
             title="Googleマップで上位に表示する"
             lead="4つの施策で Googleビジネスプロフィール（GBP）を最適化します。"
           />
-          <div className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {MEO_MEASURES.map((measure) => (
-              <div key={measure.title} className="bg-ink-0 p-6">
+              <div key={measure.title} className="bg-surface-1 p-6">
                 <h3 className="font-bold">{measure.title}</h3>
                 <ul className="mt-4 space-y-2">
                   {measure.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm leading-snug text-text-dim">
-                      <span className="font-pixel text-play" aria-hidden="true">
+                    <li key={item} className="flex gap-2 text-sm leading-snug text-fg-dim">
+                      <span className="font-display font-bold text-signal" aria-hidden="true">
                         +
                       </span>
                       {item}
@@ -128,18 +128,18 @@ export default function MeoServicePage() {
             title="AI検索で推薦されるお店へ"
             lead="ChatGPT・Gemini・Perplexity などのAI検索に対応する、これからのSEOです。"
           />
-          <ul className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
+          <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
             {LLMO_MEASURES.map((measure) => (
-              <li key={measure.title} className="bg-ink-0 p-6 md:p-8">
+              <li key={measure.title} className="bg-surface-1 p-6 md:p-8">
                 <h3 className="font-bold">{measure.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-dim">{measure.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-dim">{measure.description}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section id="plans" className="border-t border-line bg-ink-1/40 py-20 md:py-28">
+      <section id="plans" className="border-t border-line bg-surface-1/40 py-20 md:py-28">
         <div className="site-container">
           <SectionHeading
             index="03"
@@ -152,19 +152,19 @@ export default function MeoServicePage() {
               <PlanCard key={plan.name} plan={plan} />
             ))}
           </div>
-          <p className="mt-8 text-xs text-text-dim">※ 表示価格は税別です。</p>
+          <p className="mt-8 text-xs text-fg-dim">※ 表示価格は税別です。</p>
         </div>
       </section>
 
       <section className="border-t border-line py-20 md:py-28">
         <div className="site-container">
           <SectionHeading index="04" code="FLOW" title="導入の流れ" lead="最短2週間で技術的な実装が完了します。" />
-          <ol className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+          <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
             {MEO_FLOW.map((step, position) => (
-              <li key={step.title} className="bg-ink-0 p-6">
-                <p className="font-pixel text-sm text-signal-bright">STEP {position + 1}</p>
+              <li key={step.title} className="bg-surface-1 p-6">
+                <p className="font-mono text-xs font-bold tracking-widest text-signal">STEP {position + 1}</p>
                 <h3 className="mt-3 font-bold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-dim">{step.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-dim">{step.description}</p>
               </li>
             ))}
           </ol>

@@ -48,11 +48,11 @@ export function ContactForm() {
 
   if (submitState === "sent") {
     return (
-      <div className="rounded-lg border border-line bg-ink-1 p-8 text-center md:p-12" role="status">
-        <p className="font-pixel text-5xl text-signal-bright">+1</p>
+      <div className="rounded-lg border border-line bg-surface-1 p-8 text-center md:p-12" role="status">
+        <p className="font-pixel text-5xl text-signal">+1</p>
         <h2 className="mt-6 text-2xl font-black">お問い合わせありがとうございます</h2>
-        <p className="mt-3 leading-relaxed text-text-dim">内容を確認のうえ、2営業日以内にご連絡します。</p>
-        <Link href="/" className="btn-outline mt-8">
+        <p className="mt-3 leading-relaxed text-fg-dim">内容を確認のうえ、2営業日以内にご連絡します。</p>
+        <Link href="/" className="btn-secondary mt-8">
           トップへ戻る
         </Link>
       </div>
@@ -129,7 +129,7 @@ export function ContactForm() {
         </p>
       )}
 
-      <p className="text-xs text-text-dim">
+      <p className="text-xs text-fg-dim">
         送信いただいた内容は
         <Link href="/privacy" className="text-link mx-1">
           プライバシーポリシー
@@ -140,7 +140,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitState === "sending"}
-        className="btn-signal w-full py-4 text-base disabled:opacity-60 sm:w-auto sm:px-12"
+        className="btn-primary w-full py-4 text-base disabled:opacity-60 sm:w-auto sm:px-12"
       >
         {submitState === "sending" ? "送信中…" : "送信する"}
       </button>
@@ -153,7 +153,7 @@ function Field({ label, isRequired = false, children }: { label: string; isRequi
     <label className="block">
       <span className="mb-2 flex items-center gap-2 text-sm font-bold">
         {label}
-        {isRequired && <span className="rounded bg-signal/15 px-1.5 py-0.5 text-[10px] text-signal-bright">必須</span>}
+        {isRequired && <span className="rounded bg-signal/15 px-1.5 py-0.5 text-[10px] text-signal">必須</span>}
       </span>
       {children}
     </label>

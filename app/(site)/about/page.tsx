@@ -52,12 +52,12 @@ export default function AboutPage() {
 
       <section className="py-20 md:py-28">
         <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-          <p className="font-pixel text-[clamp(5rem,18vw,12rem)] leading-none text-play" aria-hidden="true">
+          <p className="font-display text-[clamp(8rem,22vw,16rem)] font-extrabold leading-none text-signal" aria-hidden="true">
             +
           </p>
-          <div className="space-y-6 text-lg leading-loose text-text/90">
+          <div className="space-y-6 text-lg leading-loose text-fg/90">
             <p>
-              Play+ の名前は、<strong className="text-white">Play（遊び）</strong>に<strong className="text-white">＋（プラス）</strong>
+              Play+ の名前は、<strong className="text-fg">Play（遊び）</strong>に<strong className="text-fg">＋（プラス）</strong>
               を足すことから来ています。ロゴの「＋」は、ゲームのコントローラーの十字キーです。
             </p>
             <p>
@@ -71,18 +71,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-ink-1/40 py-20 md:py-28">
+      <section className="border-t border-line bg-surface-1/40 py-20 md:py-28">
         <div className="site-container">
           <SectionHeading index="01" code="HISTORY" title="これまでの歩み" />
           <ol className="relative border-l border-line-strong pl-8">
             {MILESTONES.map((milestone) => (
               <li key={milestone.title} className="relative pb-12 last:pb-0">
-                <span className="absolute -left-[41px] top-0 font-pixel text-xl leading-none text-signal-bright" aria-hidden="true">
+                <span
+                  className="absolute -left-[41px] top-0 font-display text-2xl font-extrabold leading-none text-signal"
+                  aria-hidden="true"
+                >
                   +
                 </span>
                 <p className="font-mono text-sm text-play">{milestone.period}</p>
                 <h3 className="mt-2 text-xl font-bold">{milestone.title}</h3>
-                <p className="mt-2 max-w-2xl leading-relaxed text-text-dim">{milestone.description}</p>
+                <p className="mt-2 max-w-2xl leading-relaxed text-fg-dim">{milestone.description}</p>
               </li>
             ))}
           </ol>
@@ -95,12 +98,12 @@ export default function AboutPage() {
           <dl className="border-t border-line">
             {companyFacts.map((fact) => (
               <div key={fact.label} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
-                <dt className="text-sm text-text-dim">{fact.label}</dt>
+                <dt className="text-sm text-fg-dim">{fact.label}</dt>
                 <dd className="leading-relaxed">{fact.value}</dd>
               </div>
             ))}
             <div className="grid gap-1 border-b border-line py-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
-              <dt className="text-sm text-text-dim">SNS</dt>
+              <dt className="text-sm text-fg-dim">SNS</dt>
               <dd className="flex flex-wrap gap-x-5 gap-y-1">
                 <a href={CONTACT_CHANNELS.x} target="_blank" rel="noopener noreferrer" className="text-link">
                   X

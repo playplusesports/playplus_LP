@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { ContactBand } from "@/components/site/contact-band"
+import { DpadHero } from "@/components/site/dpad-hero"
 import { FaqList, FaqSchema } from "@/components/site/faq-list"
 import { LiveOperations } from "@/components/site/live-operations"
 import { PlusField } from "@/components/site/plus-field"
+import { ProjectMarquee } from "@/components/site/project-marquee"
 import { SectionHeading } from "@/components/site/section-heading"
 import { WorksGallery } from "@/components/site/works-gallery"
 import { listPublicNews } from "@/lib/public-news"
@@ -15,7 +17,7 @@ import { WORKFLOW_STEPS } from "@/lib/site/workflow"
 
 export const dynamic = "force-dynamic"
 
-const FEATURED_WORKS_COUNT = 6
+const FEATURED_WORKS_COUNT = 5
 const LATEST_NEWS_COUNT = 3
 
 export default async function HomePage() {
@@ -24,36 +26,63 @@ export default async function HomePage() {
   return (
     <>
       <FaqSchema faqs={GENERAL_FAQS} />
-      <Hero />
-      <Concept />
+      <DpadHero />
+      <ProjectMarquee />
+      <Statement />
 
-      <section id="services" className="border-t border-line py-24 md:py-32">
-        <div className="site-container">
-          <SectionHeading
-            index="01"
-            code="SERVICES"
-            title="5つの「つくる」を、ひとつの窓口で。"
-            lead="Webサイトから、アプリ、AIの自動化、動画、イベントまで。分野ごとに別の会社を探さなくても、Play+ がまとめて引き受けます。"
-          />
-          <ol className="border-t border-line">
+      <section id="services" className="py-28 md:py-40">
+        <div className="site-container grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeading
+              index="01"
+              code="Services"
+              title={
+                <>
+                  5つの「つくる」を、
+                  <br />
+                  ひとつの窓口で。
+                </>
+              }
+              lead="Webサイトから、アプリ、AIの自動化、動画、イベントまで。分野ごとに別の会社を探さなくても、Play+ がまとめて引き受けます。"
+            />
+            <Link href="/services" className="btn-secondary -mt-6 md:-mt-10">
+              事業内容をくわしく見る
+            </Link>
+          </div>
+
+          <ol className="space-y-5">
             {SERVICE_PILLARS.map((pillar, position) => (
-              <li key={pillar.slug} className="border-b border-line">
+              <li key={pillar.slug}>
                 <Link
                   href={`/services#${pillar.slug}`}
-                  className="group grid gap-4 py-8 transition-colors md:grid-cols-[5rem_14rem_1fr_auto] md:items-center md:gap-8 md:py-10"
+                  className="panel group relative block overflow-hidden p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-fg/30 hover:shadow-[0_30px_60px_-30px_rgba(13,13,51,0.45)] md:p-10"
                 >
-                  <span className="font-mono text-sm text-text-dim">{String(position + 1).padStart(2, "0")}</span>
-                  <span className="font-pixel text-3xl tracking-[0.12em] text-play transition-colors group-hover:text-signal-bright md:text-4xl">
-                    {pillar.code}
-                  </span>
-                  <span>
-                    <span className="block text-xl font-bold md:text-2xl">{pillar.title}</span>
-                    <span className="mt-1.5 block text-sm leading-relaxed text-text-dim">{pillar.lead}</span>
-                  </span>
-                  <span className="flex items-center gap-3 font-mono text-xs text-text-dim">
-                    {pillar.priceLabel}
-                    <span className="font-pixel text-xl text-white transition-transform duration-300 group-hover:rotate-90">+</span>
-                  </span>
+                  <div className="flex items-start justify-between gap-6">
+                    <p className="font-mono text-xs text-fg-dim">
+                      {String(position + 1).padStart(2, "0")} / {String(SERVICE_PILLARS.length).padStart(2, "0")}
+                    </p>
+                    <span
+                      aria-hidden="true"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface-2 font-display text-2xl transition-[transform,background-color,color] duration-300 group-hover:rotate-90 group-hover:bg-signal group-hover:text-white"
+                    >
+                      +
+                    </span>
+                  </div>
+                  <p className="mt-2 font-display text-5xl font-extrabold tracking-tight text-brand md:text-7xl">{pillar.code}</p>
+                  <h3 className="mt-5 text-2xl font-black md:text-3xl">{pillar.title}</h3>
+                  <p className="mt-3 leading-relaxed text-fg-dim">{pillar.lead}</p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {pillar.offerings.map((offering) => (
+                      <li key={offering} className="rounded-full bg-surface-2 px-3 py-1.5 text-xs">
+                        {offering}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-6 border-t border-line pt-5 font-mono text-xs text-fg-dim">
+                    <span className="text-fg">{pillar.priceLabel}</span>
+                    <span className="mx-3">—</span>
+                    {pillar.proofs.slice(0, 2).join(" / ")}
+                  </p>
                 </Link>
               </li>
             ))}
@@ -61,58 +90,74 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="running" className="relative overflow-hidden border-t border-line bg-ink-1/40 py-24 md:py-32">
-        <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-          <SectionHeading
-            index="02"
-            code="NOW RUNNING"
-            title={
-              <>
-                いまも、
-                <br />
-                毎日動いている。
-              </>
-            }
-            lead="動画の制作と投稿、サイトの更新、ニュースの要約。Play+ では自社の仕組みが毎日決まった時刻に自動で動いています。同じ技術で、お客様のくり返し作業も仕組みに置き換えます。"
-          />
-          <LiveOperations />
-        </div>
-      </section>
-
-      <section id="works" className="border-t border-line py-24 md:py-32">
+      <section id="works" className="border-t border-line py-28 md:py-40">
         <div className="site-container">
           <SectionHeading
-            index="03"
-            code="WORKS"
+            index="02"
+            code="Works"
+            align="split"
             title="つくってきたもの"
-            lead="お客様の案件と、自社で開発・運用しているサービスの一部です。"
+            lead="お客様の案件と、自社で開発・運用しているサービスの一部です。どれも、実際に動いています。"
           />
           <WorksGallery works={works.slice(0, FEATURED_WORKS_COUNT)} showFilters={false} />
-          <div className="mt-12">
-            <Link href="/works" className="btn-outline">
+          <div className="mt-16 flex justify-center">
+            <Link href="/works" className="btn-secondary">
               すべての実績を見る（{works.length}件）
             </Link>
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="border-t border-line py-24 md:py-32">
-        <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.3fr]">
+      <section id="running" className="px-3 md:px-5">
+        <div className="theme-ink relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem]">
+          <PlusField />
+          <div
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,var(--surface-0)_30%,transparent)]"
+            aria-hidden="true"
+          />
+          <div className="site-container pointer-events-none relative grid gap-14 py-24 md:py-32 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+            <SectionHeading
+              index="03"
+              code="Now running"
+              title={
+                <>
+                  いまも、
+                  <br />
+                  毎日動いている。
+                </>
+              }
+              lead="動画の制作と投稿、サイトの更新、ニュースの要約。Play+ では自社の仕組みが毎日決まった時刻に自動で動いています。同じ技術で、お客様のくり返し作業も仕組みに置き換えます。"
+            />
+            <div className="pointer-events-auto">
+              <LiveOperations />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="py-28 md:py-40">
+        <div className="site-container grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <SectionHeading
             index="04"
-            code="PRICING"
+            code="Pricing"
             title="料金の目安"
             lead="内容に合わせてお見積りします。予算が固まっていない段階でもご相談ください。"
           />
-          <div>
-            <ul className="border-t border-line">
+          <div className="panel overflow-hidden">
+            <ul className="divide-y divide-line">
               {PRICE_GUIDE.map((row) => (
-                <li key={row.service} className="border-b border-line">
-                  <Link href={row.href} className="group flex items-center justify-between gap-4 py-5">
-                    <span className="font-bold">{row.service}</span>
-                    <span className="flex items-center gap-3 text-right font-mono text-sm text-text-dim group-hover:text-white">
-                      {row.price}
-                      <span aria-hidden="true" className="text-play transition-transform group-hover:translate-x-1">
+                <li key={row.service}>
+                  <Link
+                    href={row.href}
+                    className="group flex items-center justify-between gap-4 px-6 py-6 transition-colors hover:bg-surface-2 md:px-8"
+                  >
+                    <span className="font-bold md:text-lg">{row.service}</span>
+                    <span className="flex items-center gap-4 text-right">
+                      <span className="font-display text-lg font-bold md:text-xl">{row.price}</span>
+                      <span
+                        aria-hidden="true"
+                        className="text-fg-dim transition-transform group-hover:translate-x-1 group-hover:text-signal"
+                      >
                         →
                       </span>
                     </span>
@@ -120,58 +165,61 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-xs leading-relaxed text-text-dim">※ 税込・税別の区分は各サービスページの表記に準じます。</p>
+            <p className="border-t border-line bg-surface-2/60 px-6 py-4 text-xs text-fg-dim md:px-8">
+              ※ 税込・税別の区分は各サービスページの表記に準じます。
+            </p>
           </div>
         </div>
       </section>
 
-      <section id="process" className="border-t border-line bg-ink-1/40 py-24 md:py-32">
+      <section id="process" className="border-t border-line py-28 md:py-40">
         <div className="site-container">
           <SectionHeading
             index="05"
-            code="PROCESS"
+            code="Process"
+            align="split"
             title="ご相談から公開まで"
             lead="各ステップで進み具合を共有し、判断を一緒に行います。"
           />
-          <ol className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-4">
+          <ol className="grid gap-5 md:grid-cols-4">
             {WORKFLOW_STEPS.map((step, position) => (
-              <li key={step.title} className="bg-ink-0 p-6 md:p-8">
-                <p className="font-pixel text-sm text-signal-bright">STEP {position + 1}</p>
-                <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-dim">{step.description}</p>
+              <li key={step.title} className="panel relative p-7 md:p-8">
+                <p className="font-display text-6xl font-extrabold tracking-tight text-surface-2 md:text-7xl" aria-hidden="true">
+                  {String(position + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-4 text-xl font-black">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-fg-dim">{step.description}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {news.length > 0 && (
-        <section id="news" className="border-t border-line py-24 md:py-32">
-          <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-            <SectionHeading index="06" code="NEWS" title="お知らせ" />
-            <div>
-              <ul className="border-t border-line">
-                {news.slice(0, LATEST_NEWS_COUNT).map((item) => (
-                  <li key={item.id} className="border-b border-line">
-                    <Link href={`/news/${item.id}`} className="group grid gap-1 py-5 sm:grid-cols-[7rem_6rem_1fr] sm:items-center sm:gap-4">
-                      <span className="font-mono text-xs text-text-dim">{item.date}</span>
-                      <span className="w-fit rounded border border-line-strong px-2 py-0.5 text-[11px] text-text-dim">{item.category}</span>
-                      <span className="font-bold group-hover:text-play">{item.title}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/news" className="text-link mt-6 inline-block text-sm">
-                お知らせ一覧へ →
-              </Link>
-            </div>
+      <section id="faq" className="border-t border-line py-28 md:py-40">
+        <div className="site-container grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+          <div>
+            <SectionHeading index="06" code="FAQ" title="よくある質問" />
+            {news.length > 0 && (
+              <div className="-mt-4 md:-mt-8">
+                <p className="eyebrow mb-4">Latest news</p>
+                <ul className="divide-y divide-line border-y border-line">
+                  {news.slice(0, LATEST_NEWS_COUNT).map((item) => (
+                    <li key={item.id}>
+                      <Link href={`/news/${item.id}`} className="group block py-4">
+                        <span className="font-mono text-[11px] text-fg-dim">
+                          {item.date} · {item.category}
+                        </span>
+                        <span className="mt-1 block font-bold leading-snug group-hover:text-play">{item.title}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/news" className="text-link mt-4 inline-block text-sm">
+                  お知らせ一覧 →
+                </Link>
+              </div>
+            )}
           </div>
-        </section>
-      )}
-
-      <section id="faq" className="border-t border-line py-24 md:py-32">
-        <div className="site-container grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <SectionHeading index={news.length > 0 ? "07" : "06"} code="FAQ" title="よくある質問" />
           <FaqList faqs={GENERAL_FAQS} />
         </div>
       </section>
@@ -181,76 +229,34 @@ export default async function HomePage() {
   )
 }
 
-function Hero() {
+function Statement() {
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden pb-20 pt-32 md:items-center md:pb-0">
-      <PlusField />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_60%,rgba(6,7,26,0.9),rgba(6,7,26,0.35)_55%,transparent_80%)]"
-        aria-hidden="true"
-      />
-      <div className="site-container pointer-events-none relative">
-        <p className="pixel-label">CREATIVE TECH STUDIO / OSAKA</p>
-        <h1 className="mt-6 text-[clamp(3.2rem,11vw,8.5rem)] font-black leading-[1.02] tracking-tight">
-          遊びに、
-          <br />
-          プラス<span className="text-signal-bright">を。</span>
-        </h1>
-        <p className="mt-8 max-w-2xl text-base leading-relaxed text-text-dim md:text-lg">
-          Webサイト、アプリ、AIの自動化、動画、イベント。
-          <br />
-          つくる技術と、楽しませる発想で、
-          <br className="hidden sm:block" />
-          あなたの「やりたい」にプラスを足します。
+    <section className="py-28 md:py-40">
+      <div className="site-container">
+        <p className="eyebrow flex items-center gap-3">
+          <span className="h-2 w-2 rounded-full bg-signal" aria-hidden="true" />
+          About Play+
         </p>
-        <div className="pointer-events-auto mt-10 flex flex-col gap-3 sm:flex-row">
-          <Link href="/contact" className="btn-signal">
-            相談する（無料）
-          </Link>
-          <Link href="/works" className="btn-outline bg-ink-0/60 backdrop-blur">
-            実績を見る
-          </Link>
-        </div>
-        <ul className="mt-14 flex flex-wrap gap-x-5 gap-y-2 font-pixel text-xs tracking-[0.2em] text-text-dim" aria-label="事業領域">
-          {SERVICE_PILLARS.map((pillar) => (
-            <li key={pillar.slug}>
-              <span className="text-play">+</span> {pillar.code}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  )
-}
-
-function Concept() {
-  return (
-    <section className="border-t border-line py-24 md:py-32">
-      <div className="site-container grid gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
-        <div>
-          <p className="pixel-label">CONCEPT</p>
-          <p className="mt-6 text-2xl font-bold leading-relaxed md:text-3xl md:leading-relaxed">
-            Play+ は、ゲーム大会の会場から始まりました。
-            <br />
-            人が夢中になる瞬間をつくってきた経験を、
-            <span className="text-play">Web</span>にも、<span className="text-play">アプリ</span>にも、
-            <span className="text-play">AI</span>にも持ち込んでいます。
-          </p>
-          <p className="mt-6 max-w-xl leading-relaxed text-text-dim">
-            「便利」だけでは、人は使い続けてくれません。触って楽しい、見ていて飽きない、毎日動き続ける。そんな“遊び心”をプラスして、成果につながる形に仕上げます。
-          </p>
-        </div>
-        <dl className="grid grid-cols-2 gap-px self-start overflow-hidden rounded-lg border border-line bg-line">
+        <p className="mt-8 max-w-5xl text-3xl font-black leading-[1.45] tracking-tight md:text-5xl md:leading-[1.4]">
+          Play+ は、ゲーム大会の会場から始まりました。人が夢中になる瞬間をつくってきた経験を、
+          <span className="text-play">Web</span>にも、<span className="text-play">アプリ</span>にも、
+          <span className="text-play">AI</span>にも。
+          <span className="text-fg-dim">「便利」に「楽しい」をひとつ足して、成果につながる形に仕上げます。</span>
+        </p>
+        <dl className="mt-20 grid grid-cols-2 gap-x-6 gap-y-12 border-t border-line pt-12 md:grid-cols-4">
           {STUDIO_FACTS.map((fact) => (
-            <div key={fact.label} className="bg-ink-0 p-5 md:p-7">
-              <dd className="font-pixel text-4xl text-white md:text-5xl">
+            <div key={fact.label}>
+              <dd className="font-display text-6xl font-extrabold tracking-tight md:text-7xl">
                 {fact.value}
-                <span className="ml-1 text-xl text-signal-bright md:text-2xl">{fact.unit}</span>
+                <span className="ml-1 text-2xl text-signal md:text-3xl">{fact.unit}</span>
               </dd>
-              <dt className="mt-3 text-xs leading-relaxed text-text-dim md:text-sm">{fact.label}</dt>
+              <dt className="mt-3 text-sm leading-relaxed text-fg-dim">{fact.label}</dt>
             </div>
           ))}
         </dl>
+        <Link href="/about" className="text-link mt-12 inline-block">
+          Play+ について →
+        </Link>
       </div>
     </section>
   )

@@ -12,7 +12,7 @@ export default function LegalPage() {
       <PageIntro
         code="LEGAL"
         title="特定商取引法に基づく表記"
-        lead="最終更新日: 2026年4月6日"
+        lead="最終更新日: 2026年10月6日"
         crumbs={[{ label: "legal", href: "/legal" }]}
       />
       <div className="site-container max-w-3xl py-16 md:py-24">
@@ -41,7 +41,10 @@ export default function LegalPage() {
               </tr>
               <tr>
                 <th className="bg-secondary/50 px-6 py-4 text-left font-semibold text-foreground align-top">販売価格</th>
-                <td className="px-6 py-4 text-muted-foreground">各サービスページに記載の価格に準じます。表示価格はすべて税込です。</td>
+                <td className="px-6 py-4 text-muted-foreground">
+                  各サービスページに記載の価格に準じます。税込・税別の区分は各ページの表記に従います（Web制作・保守運用は税込、SEO / MEO /
+                  LLMO 対策は税別）。
+                </td>
               </tr>
               <tr>
                 <th className="bg-secondary/50 px-6 py-4 text-left font-semibold text-foreground align-top">販売価格以外の必要料金</th>
@@ -74,7 +77,7 @@ export default function LegalPage() {
                   <br />
                   月額プランの解約は各プランの契約期間に準じます。契約期間内の解約には違約金（¥19,800）が発生する場合があります。
                   <br />
-                  エントリープランは契約期間の縛りがなく、いつでも解約可能です。
+                  1ページプランは最低契約期間がなく、いつでも解約可能です。SEO / MEO / LLMO 対策の各プランも契約期間の縛りはありません。
                 </td>
               </tr>
               <tr>
