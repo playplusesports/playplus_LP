@@ -20,7 +20,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "web",
     code: "WEB",
     heroWord: "Webに、",
-    heroScreen: { image: "/works/hu-mam.jpg", caption: "Hu-Mam（中山千佳様）公式サイト" },
+    heroScreen: { image: "/works/hu-mam.jpg", caption: "Hu-Mam 公式サイト" },
     title: "Webサイト制作・集客",
     lead: "お店や会社のサイトを、月額で制作・更新します。",
     description:
@@ -31,7 +31,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
       "MEO・SEO 対策",
       "Googleビジネスプロフィール・Instagram の初期設定",
     ],
-    proofs: ["CAFE MANO様 Googleマップ・検索での集客支援", "鍼灸マッサージ院モーヴ様 公式サイト制作", "Hu-Mam（中山千佳様）公式サイト制作"],
+    proofs: ["CAFE MANO様 Googleマップ・検索での集客支援", "鍼灸マッサージ院モーヴ様 公式サイト制作", "Hu-Mam 公式サイト制作"],
     priceLabel: "個人 月額 ¥5,000〜 / 法人 お見積り",
     detailLinks: [
       { label: "Web制作・保守の料金", href: "/services/web" },
