@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 import { isAuthenticated } from '@/lib/auth'
 import { getWorks, saveWorks, type WorkItem } from '@/lib/works'
 import { codeManagedWorksNotIn } from '@/lib/works-code-managed'
+import { listPublicWorks } from '@/lib/public-works'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const works = await getWorks()
-  return NextResponse.json([...codeManagedWorksNotIn(works), ...works], {
+  return NextResponse.json(await listPublicWorks(), {
     headers: { 'Cache-Control': 'no-store, max-age=0' },
   })
 }

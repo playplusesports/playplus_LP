@@ -1,56 +1,26 @@
 import type { MetadataRoute } from 'next'
+import { COMPANY_PROFILE } from '@/lib/site/company-profile'
+
+const LAST_RENEWED = '2026-10-06'
+
+const PAGES: readonly { path: string; changeFrequency: 'weekly' | 'monthly' | 'yearly'; priority: number }[] = [
+  { path: '', changeFrequency: 'weekly', priority: 1 },
+  { path: '/services', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/web', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/services/meo', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/works', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/about', changeFrequency: 'monthly', priority: 0.6 },
+  { path: '/news', changeFrequency: 'weekly', priority: 0.6 },
+  { path: '/contact', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/privacy', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/legal', changeFrequency: 'yearly', priority: 0.3 },
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://playplus.jp'
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: '2026-04-09',
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/works`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/news`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/services/web`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/meo`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/legal`,
-      lastModified: '2026-04-09',
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+  return PAGES.map((page) => ({
+    url: `${COMPANY_PROFILE.siteUrl}${page.path}`,
+    lastModified: LAST_RENEWED,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }))
 }

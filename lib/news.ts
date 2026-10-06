@@ -14,23 +14,25 @@ const BLOB_PREFIX = 'news-data-'
 export async function getNews(): Promise<NewsItem[]> {
   try {
     const { blobs } = await list({ prefix: BLOB_PREFIX })
-    if (blobs.length === 0) return getDefaultNews()
+    if (blobs.length === 0) return []
 
     // Always use the most recently uploaded blob
     const sorted = blobs.sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
     const response = await fetch(sorted[0].url, { cache: 'no-store' })
+    if (!response.ok) throw new Error(`status ${response.status}`)
     const data = await response.json()
 
     // Clean up old blobs in the background (keep only the latest)
     if (sorted.length > 1) {
       for (let i = 1; i < sorted.length; i++) {
-        del(sorted[i].url).catch(() => {})
+        del(sorted[i].url).catch((error) => console.error('古いnewsデータの削除に失敗しました', error))
       }
     }
 
     return data
-  } catch {
-    return getDefaultNews()
+  } catch (error) {
+    // 読めなかったときに空や既定値で返すと、管理画面の保存で本物のデータを上書きしてしまうので投げる
+    throw new Error('newsデータ（Vercel Blob）の読み込みに失敗しました', { cause: error })
   }
 }
 
@@ -49,30 +51,4 @@ export async function saveNews(news: NewsItem[]): Promise<void> {
   for (const blob of oldBlobs) {
     await del(blob.url)
   }
-}
-
-function getDefaultNews(): NewsItem[] {
-  return [
-    {
-      id: '1',
-      date: '2026.03.28',
-      category: 'お知らせ',
-      title: 'Webサイトをリニューアルしました',
-      content: 'Play+のWebサイトをリニューアルしました。サービス内容や実績をより分かりやすくお伝えできるよう、デザインと構成を一新しています。',
-    },
-    {
-      id: '2',
-      date: '2026.03.15',
-      category: 'イベント',
-      title: '春季オフライン大会の参加受付を開始しました',
-      content: '2026年4月に開催予定のオフライン大会の参加受付を開始しました。詳細はSNSをご確認ください。',
-    },
-    {
-      id: '3',
-      date: '2026.03.01',
-      category: 'お知らせ',
-      title: '新サービス「イベント配信パッケージ」を開始',
-      content: 'オンライン配信のセットアップから運営までをパッケージ化した新サービスの提供を開始しました。',
-    },
-  ]
 }

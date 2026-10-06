@@ -12,6 +12,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'Webサービス / 汎用基盤',
     tags: ['マッチング', 'Next.js', 'プラットフォーム'],
+    imageUrl: '/works/duovc.jpg',
     managedInCode: true,
   },
   {
@@ -23,6 +24,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'Webサービス / 自社運営',
     tags: ['プラットフォーム', 'Next.js', '自社サービス'],
+    imageUrl: '/works/toybox.jpg',
     managedInCode: true,
   },
   {
@@ -34,6 +36,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'Webアプリ',
     tags: ['eスポーツ', 'スマブラ', 'Webアプリ'],
+    imageUrl: '/works/smash-note.jpg',
     managedInCode: true,
   },
   {
@@ -45,6 +48,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'ツールサイト / 毎日更新',
     tags: ['SEO', 'ツール', '自動化'],
+    imageUrl: '/works/tools-seo.jpg',
     managedInCode: true,
   },
   {
@@ -67,6 +71,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: '2サイト / 毎朝自動更新',
     tags: ['自動化', 'ニュース', 'AI'],
+    imageUrl: '/works/daily-topics.jpg',
     managedInCode: true,
   },
   {
@@ -78,6 +83,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'Webゲーム',
     tags: ['教育', 'ゲーム', 'Webアプリ'],
+    imageUrl: '/works/eitango.jpg',
     managedInCode: true,
   },
   {
@@ -89,6 +95,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'Webゲーム / リアルタイム対戦',
     tags: ['AI', '対戦', 'ゲーム'],
+    imageUrl: '/works/resuba-arena.jpg',
     managedInCode: true,
   },
   {
@@ -100,6 +107,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'サブスクリプション / LINE連携',
     tags: ['LINE', 'サブスク', 'AI'],
+    imageUrl: '/works/oyasumi-story.jpg',
     managedInCode: true,
   },
   {
