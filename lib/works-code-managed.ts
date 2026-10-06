@@ -29,7 +29,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
   },
   {
     id: 'apparel-agency-site',
-    title: '中山千佳様 公式サイト制作',
+    title: 'Hu-Mam（中山千佳様）公式サイト制作',
     category: 'Web制作',
     description:
       'アパレル店舗の販売代行を営む個人事業主さまの公式サイトを制作しました。同業11社のサイトを比べたうえで、女性代表がみずから店舗スタッフを管理している点が伝わる構成にしています。',
