@@ -109,14 +109,14 @@ export function DpadHero({ works }: { works: readonly WorkItem[] }) {
 
   return (
     <section className="plus-pattern relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
-      <div className="site-container grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
+      <div className="site-container grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-10">
         <div>
           <h1 className="font-black leading-[1.05] tracking-[-0.02em]">
             <span className="sr-only">遊びに、プラスを。</span>
-            <span aria-hidden="true" className="block text-[clamp(2.9rem,7.6vw,6.6rem)]">
+            <span aria-hidden="true" className="block whitespace-nowrap text-[clamp(2.6rem,6.2vw,5.6rem)]">
               {word}
             </span>
-            <span aria-hidden="true" className="block text-[clamp(2.9rem,7.6vw,6.6rem)]">
+            <span aria-hidden="true" className="block whitespace-nowrap text-[clamp(2.6rem,6.2vw,5.6rem)]">
               プラス<span className="text-signal">を。</span>
             </span>
           </h1>
