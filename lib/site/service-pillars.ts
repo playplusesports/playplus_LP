@@ -29,7 +29,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
       "Googleビジネスプロフィール・Instagram の初期設定",
     ],
     proofs: ["Hu-Mam コーポレートサイト", "CAFEMANO MEO最適化", "mauve サイト制作・集客改善"],
-    priceLabel: "月額 ¥5,000〜",
+    priceLabel: "個人 月額 ¥5,000〜 / 法人 お見積り",
     detailLinks: [
       { label: "Web制作・保守の料金", href: "/services/web" },
       { label: "SEO / MEO / LLMO 対策", href: "/services/meo" },

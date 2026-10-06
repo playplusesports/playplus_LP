@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { AudienceTabs } from "@/components/site/audience-tabs"
 import { BreadcrumbSchema } from "@/components/site/breadcrumb-schema"
 import { ContactBand } from "@/components/site/contact-band"
 import { FaqList, FaqSchema } from "@/components/site/faq-list"
@@ -85,56 +86,82 @@ export default function WebServicePage() {
         <div className="site-container">
           <SectionHeading
             title="料金プラン"
-            lead="個人・個人事業主の方は月額または買い切り、法人のお客様はフルオーダーメイドの法人プランをご用意しています。"
+            lead="個人・個人事業主の方は月額プランか買い切り、法人のお客様は内容に合わせたお見積りです。"
           />
 
-          <h3 className="mb-5 text-lg font-bold">月額プラン</h3>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {WEB_MONTHLY_PLANS.map((plan) => (
-              <PlanCard key={plan.name} plan={plan} />
-            ))}
-          </div>
+          <AudienceTabs
+            tabs={[
+              {
+                id: "personal",
+                label: "個人・個人事業主の方",
+                content: (
+                  <>
+                    <h3 className="mb-5 text-lg font-bold">月額プラン</h3>
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                      {WEB_MONTHLY_PLANS.map((plan) => (
+                        <PlanCard key={plan.name} plan={plan} />
+                      ))}
+                    </div>
 
-          <div className="mt-16 grid gap-10 lg:grid-cols-2">
-            <div>
-              <h3 className="mb-5 text-lg font-bold">買い切り</h3>
-              <PlanCard plan={WEB_ONE_TIME_PLAN} />
-            </div>
-            <div>
-              <h3 className="mb-5 text-lg font-bold">法人プラン（お見積り）</h3>
-              <div className="panel p-7">
-                <p className="font-bold">ご要件に合わせて個別にご提案します</p>
-                <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
-                  {WEB_CORPORATE_PLAN_POINTS.map((point) => (
-                    <li key={point} className="flex gap-2.5 text-sm leading-snug">
-                      <span className="font-display font-bold text-signal" aria-hidden="true">
-                        +
-                      </span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+                    <div className="mt-16 max-w-xl">
+                      <h3 className="mb-5 text-lg font-bold">買い切り</h3>
+                      <PlanCard plan={WEB_ONE_TIME_PLAN} />
+                    </div>
 
-          <div id="options" className="mt-16">
-            <h3 className="mb-5 text-lg font-bold">オプション</h3>
-            <ul className="border-t border-line">
-              {WEB_OPTIONS.map((option) => (
-                <li key={option.name} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-6">
-                  <div>
-                    <p className="font-bold">{option.name}</p>
-                    <p className="mt-1 text-sm text-fg-dim">{option.description}</p>
+                    <div id="options" className="mt-16">
+                      <h3 className="mb-2 text-lg font-bold">オプション</h3>
+                      <p className="mb-5 text-sm text-fg-dim">月額プラン・買い切りのどちらにも追加できます。</p>
+                      <ul className="border-t border-line">
+                        {WEB_OPTIONS.map((option) => (
+                          <li key={option.name} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-6">
+                            <div>
+                              <p className="font-bold">{option.name}</p>
+                              <p className="mt-1 text-sm text-fg-dim">{option.description}</p>
+                            </div>
+                            <p className="text-lg font-bold sm:text-right">{option.price}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                ),
+              },
+              {
+                id: "corporate",
+                label: "法人のお客様",
+                content: (
+                  <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
+                    <div className="panel p-7 md:p-10">
+                      <h3 className="text-2xl font-black">法人プラン</h3>
+                      <p className="mt-2 text-2xl font-bold">お見積り</p>
+                      <p className="mt-2 text-sm text-fg-dim">ご要望を伺ったうえで、内容に合わせて個別にお見積りします。</p>
+                      <ul className="mt-6 list-disc space-y-2.5 border-t border-line pt-6 pl-5 text-sm leading-snug marker:text-signal">
+                        {WEB_CORPORATE_PLAN_POINTS.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="self-end">
+                      <p className="leading-relaxed text-fg-dim">
+                        コーポレートサイト、採用サイト、予約やECの付いたサイトなど、ページ数や機能が決まっていない段階でもご相談いただけます。
+                      </p>
+                      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                        <a href="/contact" className="btn-primary">
+                          お見積りを依頼する
+                        </a>
+                        <a href={CONTACT_CHANNELS.line} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                          LINEで相談する
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <p className="font-mono text-lg font-bold sm:text-right">{option.price}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ),
+              },
+            ]}
+          />
 
           <div className="mt-8 space-y-1 text-xs leading-relaxed text-fg-dim">
-            <p>※ 表示価格はすべて税込です。</p>
+            <p>※ 表示価格はすべて税込です（法人プランはお見積り）。</p>
             <p>※ 独自ドメイン・サーバー費用はプラン料金に含まれています。</p>
             <p>※ 内容によってはお見積りとなる場合があります。</p>
           </div>

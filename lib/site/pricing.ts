@@ -153,7 +153,8 @@ export const MEO_MONTHLY_PLANS: readonly Plan[] = [
 
 // トップと事業一覧に出す目安の料金
 export const PRICE_GUIDE: readonly { service: string; price: string; href: string }[] = [
-  { service: "Web制作・保守運用", price: "¥5,000〜／月", href: "/services/web" },
+  { service: "Web制作・保守運用（個人・個人事業主）", price: "¥5,000〜／月", href: "/services/web#personal" },
+  { service: "Web制作（法人）", price: "お見積り", href: "/services/web#corporate" },
   { service: "SEO / MEO / LLMO 対策", price: "¥15,000〜／月（税別）", href: "/services/meo" },
   { service: "アプリ開発・業務の自動化", price: "お見積り", href: "/services#app" },
   { service: "動画・コンテンツ制作", price: "お見積り", href: "/services#video" },
