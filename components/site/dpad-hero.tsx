@@ -5,8 +5,9 @@ import Link from "next/link"
 import { SERVICE_PILLARS, type ServicePillar } from "@/lib/site/service-pillars"
 
 /*
-  トップの第一画面。ロゴの十字キーを大きく置き、押すと見出しが
-  「遊びに、」→「Webに、」→「アプリに、」… と切り替わる。
+  トップの第一画面。ロゴの十字キーを持つ携帯ゲーム機を置き、
+  十字キーを押すと見出しが「Webに、」「アプリに、」…と切り替わり、
+  画面にはその事業の実物（制作物の画面や現場の写真）が映る。
   触られるまでは自動で順番に切り替え、触ったらその人の操作に任せる。
   十字キーにフォーカスがある間は矢印キーでも操作できる（ページのスクロールは奪わない）。
 */
@@ -31,9 +32,10 @@ const KEY_TO_DIRECTION: Record<string, Direction> = {
 }
 
 const DEFAULT_WORD = "遊びに、"
-const AUTOPLAY_INTERVAL_MS = 2400
+const AUTOPLAY_INTERVAL_MS = 2600
 const AUTOPLAY_SEQUENCE: readonly (Direction | null)[] = [null, "up", "right", "down", "left", "center"]
 const PRESS_FEEDBACK_MS = 160
+const SPEAKER_HOLE_COUNT = 18
 
 function pillarOf(direction: Direction): ServicePillar {
   const pillar = SERVICE_PILLARS.find((candidate) => candidate.slug === DIRECTION_TO_SLUG[direction])
@@ -76,26 +78,24 @@ export function DpadHero() {
 
   return (
     <section className="plus-pattern relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
-      <div className="site-container grid items-center gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-8">
+      <div className="site-container grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
         <div>
-          <h1 className="font-black leading-[1.04] tracking-[-0.02em]">
+          <h1 className="font-black leading-[1.05] tracking-[-0.02em]">
             <span className="sr-only">遊びに、プラスを。</span>
-            <span aria-hidden="true" className="block text-[clamp(2.9rem,8.4vw,7.2rem)]">
-              <span key={word} className="inline-block">
-                {word}
-              </span>
+            <span aria-hidden="true" className="block text-[clamp(2.9rem,7.6vw,6.6rem)]">
+              {word}
             </span>
-            <span aria-hidden="true" className="block text-[clamp(2.9rem,8.4vw,7.2rem)]">
+            <span aria-hidden="true" className="block text-[clamp(2.9rem,7.6vw,6.6rem)]">
               プラス<span className="text-signal">を。</span>
             </span>
           </h1>
 
           <div className="mt-8 min-h-[5.5rem] max-w-xl" aria-live="polite">
             {activePillar ? (
-              <p key={activePillar.slug} className="leading-relaxed text-fg-dim md:text-lg">
+              <p className="leading-relaxed text-fg-dim md:text-lg">
                 <span className="font-bold text-fg">{activePillar.title}</span>：{activePillar.lead}
                 <Link href={`/services#${activePillar.slug}`} className="text-link ml-2 whitespace-nowrap text-sm">
-                  詳しく →
+                  詳しく見る
                 </Link>
               </p>
             ) : (
@@ -115,56 +115,155 @@ export function DpadHero() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center">
+        <GameConsole
+          activePillar={activePillar}
+          active={active}
+          pressed={pressed}
+          isAutoplay={isAutoplay}
+          onPress={press}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+    </section>
+  )
+}
+
+type GameConsoleProps = {
+  activePillar: ServicePillar | null
+  active: Direction | null
+  pressed: Direction | null
+  isAutoplay: boolean
+  onPress: (direction: Direction) => void
+  onKeyDown: (event: React.KeyboardEvent) => void
+}
+
+// ロゴの紺を本体色にした携帯ゲーム機。画面＋十字キー＋A/Bボタン
+function GameConsole({ activePillar, active, pressed, isAutoplay, onPress, onKeyDown }: GameConsoleProps) {
+  return (
+    <div className="mx-auto w-full max-w-[34rem]">
+      <div className="rounded-[2.25rem] border-b-[10px] border-[#07074a] bg-brand p-5 pb-7 shadow-[0_2px_0_#2a2a99_inset] sm:p-7 sm:pb-9">
+        <div className="rounded-2xl bg-[#05051f] p-3 sm:p-4">
+          <div className="flex items-center justify-between px-1 pb-2 text-[10px] text-white/45">
+            <span className="flex items-center gap-1.5">
+              <span className={`h-1.5 w-1.5 rounded-full ${activePillar ? "bg-signal-bright" : "bg-white/30"}`} />
+              {activePillar ? activePillar.title : "Play+"}
+            </span>
+            <span className="font-pixel">Play+</span>
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-[#0d0d3a]">
+            <StartScreen />
+            {/* 切り替えで待たせないよう、全事業の画面を重ねて読み込んでおき、選ばれたものだけを見せる */}
+            {SERVICE_PILLARS.map((pillar) => (
+              // 制作物の画面・写真。サイズがまちまちなので next/image の最適化は使わない
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={pillar.slug}
+                src={pillar.heroScreen.image}
+                alt={pillar === activePillar ? pillar.heroScreen.caption : ""}
+                className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-200 ${
+                  pillar === activePillar ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
+          </div>
+          <p className="truncate px-1 pt-2 text-xs text-white/70">
+            {activePillar ? `▶ ${activePillar.heroScreen.caption}` : isAutoplay ? "十字キーを押してみてください" : ""}
+          </p>
+        </div>
+
+        <div className="mt-6 flex items-center justify-between gap-4 px-1 sm:mt-8 sm:px-3">
           <div
             role="group"
             aria-label="十字キー。押すと事業が切り替わります（矢印キーでも操作できます）"
-            onKeyDown={handleKeyDown}
-            className="relative grid aspect-square w-[min(66vw,340px)] grid-cols-3 grid-rows-3 drop-shadow-[0_7px_0_#07074a]"
+            onKeyDown={onKeyDown}
+            className="relative grid aspect-square w-[min(38vw,9.5rem)] grid-cols-3 grid-rows-3 drop-shadow-[0_5px_0_#05053a]"
           >
             {/* 十字の地は1枚で描き、ボタンの継ぎ目を見せない */}
-            <span aria-hidden="true" className="absolute inset-y-0 left-1/3 w-1/3 rounded-2xl bg-brand" />
-            <span aria-hidden="true" className="absolute inset-x-0 top-1/3 h-1/3 rounded-2xl bg-brand" />
+            <span aria-hidden="true" className="absolute inset-y-0 left-1/3 w-1/3 rounded-lg bg-[#e9e9f2]" />
+            <span aria-hidden="true" className="absolute inset-x-0 top-1/3 h-1/3 rounded-lg bg-[#e9e9f2]" />
             <DpadArm
               direction="up"
               label="Web"
-              area="col-start-2 row-start-1 rounded-t-2xl"
+              area="col-start-2 row-start-1 rounded-t-lg"
               active={active}
               pressed={pressed}
-              onPress={press}
+              onPress={onPress}
             />
             <DpadArm
               direction="left"
               label="動画"
-              area="col-start-1 row-start-2 rounded-l-2xl"
+              area="col-start-1 row-start-2 rounded-l-lg"
               active={active}
               pressed={pressed}
-              onPress={press}
+              onPress={onPress}
             />
-            <DpadArm direction="center" label="イベント" area="col-start-2 row-start-2" active={active} pressed={pressed} onPress={press} />
+            <DpadArm
+              direction="center"
+              label="イベント"
+              area="col-start-2 row-start-2"
+              active={active}
+              pressed={pressed}
+              onPress={onPress}
+            />
             <DpadArm
               direction="right"
               label="アプリ"
-              area="col-start-3 row-start-2 rounded-r-2xl"
+              area="col-start-3 row-start-2 rounded-r-lg"
               active={active}
               pressed={pressed}
-              onPress={press}
+              onPress={onPress}
             />
             <DpadArm
               direction="down"
-              label="仕組み"
-              area="col-start-2 row-start-3 rounded-b-2xl"
+              label="仕組み化"
+              area="col-start-2 row-start-3 rounded-b-lg"
               active={active}
               pressed={pressed}
-              onPress={press}
+              onPress={onPress}
             />
           </div>
-          <p className="mt-8 text-sm text-fg-dim">
-            {isAutoplay ? "十字キーを押すと切り替わります" : `${activePillar?.title ?? "Play+"} を表示中`}
-          </p>
+
+          <div className="flex flex-col items-end gap-5">
+            <div className="flex -rotate-[18deg] items-end gap-4 sm:gap-5">
+              <RoundButton href="/works" letter="B" caption="実績" tone="light" />
+              <RoundButton href="/contact" letter="A" caption="相談" tone="signal" />
+            </div>
+            <div aria-hidden="true" className="mr-1 grid grid-cols-6 gap-1.5 opacity-40">
+              {Array.from({ length: SPEAKER_HOLE_COUNT }, (_, index) => (
+                <span key={index} className="h-1.5 w-1.5 rounded-full bg-black/60" />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+      <p className="mt-4 text-center text-xs text-fg-dim">十字キーで事業が切り替わります。Aで相談、Bで実績へ。</p>
+    </div>
+  )
+}
+
+function StartScreen() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-3 text-white">
+      <p className="font-pixel text-5xl sm:text-6xl">
+        Play<span className="text-signal-bright">+</span>
+      </p>
+      <p className="animate-pulse font-pixel text-xs text-white/70 sm:text-sm">PUSH ▲ ▼ ◀ ▶</p>
+    </div>
+  )
+}
+
+function RoundButton({ href, letter, caption, tone }: { href: string; letter: string; caption: string; tone: "signal" | "light" }) {
+  return (
+    <Link href={href} className="group flex flex-col items-center gap-1.5" aria-label={`${letter}ボタン：${caption}`}>
+      <span
+        className={`flex h-14 w-14 items-center justify-center rounded-full font-display text-lg font-extrabold shadow-[0_5px_0_#05053a] transition-transform group-active:translate-y-[3px] group-active:shadow-[0_2px_0_#05053a] sm:h-16 sm:w-16 ${
+          tone === "signal" ? "bg-signal text-white group-hover:bg-signal-bright" : "bg-[#e9e9f2] text-brand group-hover:bg-white"
+        }`}
+      >
+        {letter}
+      </span>
+      <span className="text-[11px] font-bold text-white/70">{caption}</span>
+    </Link>
   )
 }
 
@@ -193,29 +292,19 @@ function DpadArm({ direction, label, area, active, pressed, onPress }: DpadArmPr
       aria-pressed={isActive}
       aria-label={`${label}を表示する`}
       onClick={() => onPress(direction)}
-      className={`group relative flex items-center justify-center transition-[transform,background-color] duration-150 outline-none focus-visible:z-10 focus-visible:ring-4 focus-visible:ring-play/50 ${area} ${
-        isPressed ? "translate-y-[3px] bg-black/25" : "hover:bg-white/[0.06]"
+      className={`group relative flex items-center justify-center transition-[transform,background-color] duration-150 outline-none focus-visible:z-10 focus-visible:ring-4 focus-visible:ring-signal/60 ${area} ${
+        isPressed ? "translate-y-[2px] bg-black/15" : "hover:bg-black/[0.05]"
       }`}
     >
       {direction === "center" ? (
         <span
-          className={`h-[34%] w-[34%] rounded-full transition-colors ${isActive ? "bg-signal" : "bg-white/12 group-hover:bg-white/25"}`}
+          className={`h-[38%] w-[38%] rounded-full transition-colors ${isActive ? "bg-signal" : "bg-brand/15 group-hover:bg-brand/30"}`}
         />
       ) : (
-        <svg viewBox="0 0 20 20" className={`h-[38%] w-[38%] ${ARROW_ROTATION[direction]}`} aria-hidden="true">
-          <path
-            d="M10 3 18 16H2Z"
-            className={`transition-colors ${isActive ? "fill-signal-bright" : "fill-signal group-hover:fill-signal-bright"}`}
-          />
+        <svg viewBox="0 0 20 20" className={`h-[46%] w-[46%] ${ARROW_ROTATION[direction]}`} aria-hidden="true">
+          <path d="M10 3 18 16H2Z" className={`transition-colors ${isActive ? "fill-signal" : "fill-signal/70 group-hover:fill-signal"}`} />
         </svg>
       )}
-      <span
-        className={`pointer-events-none absolute text-[11px] font-bold transition-colors ${
-          isActive ? "text-white" : "text-white/45"
-        } ${direction === "center" ? "bottom-2" : direction === "down" ? "bottom-2" : "top-2"}`}
-      >
-        {label}
-      </span>
     </button>
   )
 }

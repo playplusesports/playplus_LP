@@ -4,6 +4,8 @@ export type ServicePillar = {
   code: string
   // トップの見出し「◯◯に、プラスを。」の◯◯
   heroWord: string
+  // トップのゲーム機の画面に映す、その事業の実物（制作物の画面や現場の写真）
+  heroScreen: { image: string; caption: string }
   title: string
   lead: string
   description: string
@@ -18,6 +20,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "web",
     code: "WEB",
     heroWord: "Webに、",
+    heroScreen: { image: "/works/hu-mam.jpg", caption: "Hu-Mam コーポレートサイト" },
     title: "Webサイト制作・集客",
     lead: "お店や会社のサイトを、月額で制作・更新します。",
     description:
@@ -39,6 +42,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "app",
     code: "APP",
     heroWord: "アプリに、",
+    heroScreen: { image: "/works/duovc.jpg", caption: "マッチングサービス DuoVC" },
     title: "Webアプリ・サービス開発",
     lead: "予約、会員、決済、マッチングなどの仕組みをつくります。",
     description:
@@ -57,6 +61,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "automation",
     code: "AUTO",
     heroWord: "仕組みに、",
+    heroScreen: { image: "/works/daily-topics.jpg", caption: "毎朝自動で更新されるトピック日報" },
     title: "業務の仕組み化・自動化",
     lead: "毎日の手作業を、自動で回る仕組みに置き換えます。",
     description:
@@ -70,6 +75,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "video",
     code: "VIDEO",
     heroWord: "動画に、",
+    heroScreen: { image: "/works/video-kaisetsu.jpg", caption: "YouTube の図解解説動画" },
     title: "動画制作",
     lead: "YouTube向けの動画を、企画から投稿まで引き受けます。",
     description:
@@ -83,6 +89,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     slug: "event",
     code: "EVENT",
     heroWord: "イベントに、",
+    heroScreen: { image: "/works/event-venue.jpg", caption: "毎月のeスポーツ大会の会場" },
     title: "イベント・eスポーツ・デザイン",
     lead: "ゲーム大会の運営が、Play+ の出発点です。",
     description:
