@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/web" },
 }
 
+// 業種別の見本サイトを並べた展示場（playplus/web-tenjijo）
+const WEB_SHOWROOM_URL = "https://mihonichi.playplus.jp/"
+
 const WEB_FEATURES: readonly { title: string; description: string }[] = [
   { title: "短い期間で制作", description: "1ページのサイトから複数ページのサイトまで、相談から最短1週間ほどで公開します。" },
   { title: "スマホ・タブレット対応", description: "どの端末でも見やすいレスポンシブデザインで仕上げます。" },
@@ -79,6 +82,19 @@ export default function WebServicePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-line py-20 md:py-28">
+        <div className="site-container">
+          <SectionHeading
+            align="split"
+            title="見本サイトの展示場"
+            lead="業種別に作った見本サイトを、実際に触って見られるページを用意しています。メニューを開いたり、スマホの幅で見たりできます。「この見本の感じで」と指さしてもらえると、打ち合わせが早く進みます。"
+          />
+          <a href={WEB_SHOWROOM_URL} target="_blank" rel="noopener" className="btn-secondary">
+            展示場を見る（別サイトが開きます）
+          </a>
         </div>
       </section>
 
