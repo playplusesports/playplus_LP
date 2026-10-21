@@ -98,8 +98,15 @@ const OFFERED_SERVICES: readonly { name: string; description: string; path: stri
     unitText: "件〜",
   },
   {
-    name: "デザイン制作",
-    description: "ロゴ・ポスター・バナー・SNS投稿画像の制作",
+    name: "名刺などのデザイン",
+    description: "名刺などの小さな印刷物のデザイン",
+    path: "/services#event",
+    price: 3000,
+    unitText: "件〜",
+  },
+  {
+    name: "チラシ・ポスター・バナーなどのデザイン",
+    description: "チラシ・ポスター・バナー・SNS投稿画像のデザイン",
     path: "/services#event",
     price: 5000,
     unitText: "件〜",
