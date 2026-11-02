@@ -27,19 +27,6 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     tags: ['Webサイト制作', 'MEO', '治療院'],
     managedInCode: true,
   },
-  {
-    id: 'apparel-agency-site',
-    title: 'Hu-Mam 公式サイト制作',
-    category: 'Web制作',
-    description:
-      'アパレル店舗の販売代行を営む個人事業主さまの公式サイトを制作しました。同業11社のサイトを比べたうえで、女性代表がみずから店舗スタッフを管理している点が伝わる構成にしています。',
-    period: '2026/04',
-    location: '大阪府',
-    scale: '5ページ構成',
-    tags: ['Webサイト制作', 'コーポレートサイト', '競合調査'],
-    imageUrl: '/works/hu-mam.jpg',
-    managedInCode: true,
-  },
   // 自社で開発・運営しているサービスと動画
   {
     id: 'duovc',
