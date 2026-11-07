@@ -29,6 +29,19 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
   },
   // 自社で開発・運営しているサービスと動画
   {
+    id: 'hito-meishi',
+    title: '名刺QRの担当者紹介ページ「ひと名刺」',
+    category: 'Web制作',
+    description:
+      '名刺の裏のQRコードから開く、営業担当者ひとりずつの紹介ページを制作するサービスを始めました。顔写真・実績・人柄・本日の出勤状況などを載せ、名刺をもらった側が「この人だれだっけ」とならないようにします。不動産・保険・自動車販売・BtoB・工務店向けのデザインの型を用意し、サービス紹介サイトを公開しています。',
+    period: '2026/11〜',
+    location: 'オンライン',
+    scale: 'サービス紹介サイト / デザインの型5種',
+    tags: ['Webサイト制作', '名刺', '営業支援'],
+    imageUrl: '/works/hito-meishi.jpg',
+    managedInCode: true,
+  },
+  {
     id: 'duovc',
     title: 'マッチングサービス DuoVC',
     category: 'アプリ開発',
