@@ -159,6 +159,7 @@ export const PRICE_GUIDE: readonly { service: string; price: string; href: strin
   { service: "アプリ開発・業務の自動化", price: "お見積り", href: "/services#app" },
   { service: "動画・コンテンツ制作", price: "お見積り", href: "/services#video" },
   { service: "イベントプロデュース", price: "¥50,000〜", href: "/services#event" },
+  { service: "名刺QRの営業担当者ページ「ひと名刺」", price: "初期¥30,000＋1人¥500／月", href: "https://meishi.playplus.jp/" },
   { service: "名刺などのデザイン", price: "¥3,000〜", href: "/services#event" },
   { service: "チラシ・ポスター・バナーなどのデザイン", price: "¥5,000〜", href: "/services#event" },
   { service: "Googleビジネスプロフィール設定", price: "¥9,800", href: "/services/web#options" },
