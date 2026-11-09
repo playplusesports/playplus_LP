@@ -88,6 +88,17 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     managedInCode: true,
   },
   {
+    id: 'hito-meishi',
+    title: '営業担当者の紹介ページ「ひと名刺」',
+    category: 'Web制作',
+    description: '名刺のQRコードから開く、営業担当者ひとりひとりの紹介ページ。顔写真・得意分野・連絡先をまとめ、名刺を受け取った人が後から「誰だったか」を思い出せるようにします。業種に合わせた型を用意し、サービスとして提供しています。',
+    period: '2026/11〜',
+    location: 'オンライン',
+    scale: 'Webサービス / 自社運営',
+    tags: ['名刺', 'QRコード', '営業支援'],
+    managedInCode: true,
+  },
+  {
     id: 'daily-topics',
     title: 'トピック日報サイト（AI・金融）',
     category: 'アプリ開発',

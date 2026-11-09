@@ -1,3 +1,6 @@
+// 名刺のQRから開く営業担当者ページのサービスサイト（playplus/hito-meishi）
+export const HITO_MEISHI_URL = "https://meishi.playplus.jp/"
+
 // Play+ の5つの事業。トップの事業一覧・サービスページ・問い合わせ種別はこの並びを使う。
 export type ServicePillar = {
   slug: string
@@ -30,12 +33,14 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
       "月額の更新・保守",
       "MEO・SEO 対策",
       "Googleビジネスプロフィール・Instagram の初期設定",
+      "名刺のQRから開く営業担当者の紹介ページ（ひと名刺）",
     ],
     proofs: ["CAFE MANO様 Googleマップ・検索での集客支援", "鍼灸マッサージ院モーヴ様 公式サイト制作"],
     priceLabel: "個人 月額 ¥5,000〜 / 法人 お見積り",
     detailLinks: [
       { label: "Web制作・保守の料金", href: "/services/web" },
       { label: "SEO / MEO / LLMO 対策", href: "/services/meo" },
+      { label: "営業担当者ページ「ひと名刺」", href: HITO_MEISHI_URL },
     ],
   },
   {

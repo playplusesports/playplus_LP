@@ -7,6 +7,7 @@ import { PageIntro } from "@/components/site/page-intro"
 import { PlanCard } from "@/components/site/plan-card"
 import { SectionHeading } from "@/components/site/section-heading"
 import { CONTACT_CHANNELS } from "@/lib/site/company-profile"
+import { HITO_MEISHI_URL } from "@/lib/site/service-pillars"
 import { WEB_FAQS } from "@/lib/site/faqs"
 import { WEB_CORPORATE_PLAN_POINTS, WEB_MONTHLY_PLANS, WEB_ONE_TIME_PLAN, WEB_OPTIONS } from "@/lib/site/pricing"
 
@@ -94,6 +95,19 @@ export default function WebServicePage() {
           />
           <a href={WEB_SHOWROOM_URL} target="_blank" rel="noopener" className="btn-secondary">
             展示場を見る（別サイトが開きます）
+          </a>
+        </div>
+      </section>
+
+      <section className="border-t border-line py-20 md:py-28">
+        <div className="site-container">
+          <SectionHeading
+            align="split"
+            title="名刺から開く、営業担当者のページ"
+            lead="名刺にQRコードを載せて、担当者ひとりひとりの紹介ページにつなげます。顔写真や得意なこと、連絡先をまとめておくので、名刺を受け取った方が後から「誰だったか」を思い出せます。サービスの詳しい内容と見本は専用サイトにまとめています。"
+          />
+          <a href={HITO_MEISHI_URL} target="_blank" rel="noopener" className="btn-secondary">
+            ひと名刺のサイトを見る（別サイトが開きます）
           </a>
         </div>
       </section>
