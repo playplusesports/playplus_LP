@@ -14,6 +14,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: '大阪府和泉市',
     scale: '反応数 前年同期比+50.7%（2026年5〜9月）',
     tags: ['MEO', 'LLMO', 'Googleビジネスプロフィール'],
+    imageUrl: '/works/cafe-meo-llmo.jpg',
     managedInCode: true,
   },
   {
@@ -25,6 +26,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: '大阪府和泉市',
     scale: '公式サイト / Googleビジネスプロフィールの整備',
     tags: ['Webサイト制作', 'MEO', '治療院'],
+    imageUrl: '/works/acupuncture-clinic-site.jpg',
     managedInCode: true,
   },
   // 業務向けに提供している自社サービス
@@ -37,6 +39,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'Webサービス / 自社運営',
     tags: ['名刺', 'QRコード', '営業支援'],
+    imageUrl: '/works/hito-meishi.jpg',
     managedInCode: true,
   },
   {
@@ -48,6 +51,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: 'オンライン',
     scale: 'ギャラリーサイト / 毎日更新',
     tags: ['デザイン見本', 'ギャラリー', '自動化'],
+    imageUrl: '/works/web-tenjijo.jpg',
     managedInCode: true,
   },
   // 研修・セミナーの講師（代表個人の活動。研修先の名前は出さない）
@@ -61,6 +65,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: '企業研修',
     scale: '90分 / ワーク2本',
     tags: ['SNS運用', 'セミナー', '講師'],
+    imageUrl: '/works/sns-strategy-seminar.jpg',
     managedInCode: true,
   },
   {
@@ -73,6 +78,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: '企業研修',
     scale: '90分',
     tags: ['研修', '講師', '業務効率化'],
+    imageUrl: '/works/genai-training.jpg',
     managedInCode: true,
   },
   // 自社で運営している自動更新のサイト
@@ -123,6 +129,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
     location: '-',
     scale: 'フライヤー / 紹介サイト',
     tags: ['フライヤー', 'Webサイト制作', 'eスポーツ'],
+    imageUrl: '/works/tournament-promo-design.jpg',
     managedInCode: true,
   },
   // 動画
