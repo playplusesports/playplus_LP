@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/site/section-heading"
 import { CONTACT_CHANNELS } from "@/lib/site/company-profile"
 import { HITO_MEISHI_URL } from "@/lib/site/service-pillars"
 import { WEB_FAQS } from "@/lib/site/faqs"
-import { WEB_CORPORATE_PLAN_POINTS, WEB_MONTHLY_PLANS, WEB_ONE_TIME_PLAN, WEB_OPTIONS } from "@/lib/site/pricing"
+import { WEB_CORPORATE_PLAN_POINTS, WEB_CORPORATE_PLANS, WEB_MONTHLY_PLANS, WEB_ONE_TIME_PLAN, WEB_OPTIONS } from "@/lib/site/pricing"
 
 export const metadata: Metadata = {
   title: "Webサイト制作・保守運用 月額5,000円〜",
@@ -116,7 +116,7 @@ export default function WebServicePage() {
         <div className="site-container">
           <SectionHeading
             title="料金プラン"
-            lead="個人・個人事業主の方は月額プランか買い切り、法人のお客様は内容に合わせたお見積りです。"
+            lead="個人・個人事業主の方は月額プランか買い切り、法人のお客様は一括・分割・月額の3つからお選びいただけます。"
           />
 
           <AudienceTabs
@@ -160,24 +160,25 @@ export default function WebServicePage() {
                 id: "corporate",
                 label: "法人のお客様",
                 content: (
-                  <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
-                    <div className="panel p-7 md:p-10">
-                      <h3 className="text-2xl font-black">法人プラン</h3>
-                      <p className="mt-2 text-2xl font-bold">お見積り</p>
-                      <p className="mt-2 text-sm text-fg-dim">ご要望を伺ったうえで、内容に合わせて個別にお見積りします。</p>
-                      <ul className="mt-6 list-disc space-y-2.5 border-t border-line pt-6 pl-5 text-sm leading-snug marker:text-signal">
-                        {WEB_CORPORATE_PLAN_POINTS.map((point) => (
-                          <li key={point}>{point}</li>
-                        ))}
-                      </ul>
+                  <div>
+                    <h3 className="mb-5 text-lg font-bold">法人プラン</h3>
+                    <div className="grid gap-5 md:grid-cols-3">
+                      {WEB_CORPORATE_PLANS.map((plan) => (
+                        <PlanCard key={plan.name} plan={plan} />
+                      ))}
                     </div>
-                    <div className="self-end">
+                    <ul className="mt-8 list-disc space-y-2 pl-5 text-sm leading-relaxed text-fg-dim marker:text-signal">
+                      {WEB_CORPORATE_PLAN_POINTS.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                    <div className="mt-10">
                       <p className="leading-relaxed text-fg-dim">
                         コーポレートサイト、採用サイト、予約やECの付いたサイトなど、ページ数や機能が決まっていない段階でもご相談いただけます。
                       </p>
                       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                         <a href="/contact" className="btn-primary">
-                          お見積りを依頼する
+                          法人プランを相談する
                         </a>
                         <a href={CONTACT_CHANNELS.line} target="_blank" rel="noopener noreferrer" className="btn-secondary">
                           LINEで相談する
@@ -191,7 +192,7 @@ export default function WebServicePage() {
           />
 
           <div className="mt-8 space-y-1 text-xs leading-relaxed text-fg-dim">
-            <p>※ 表示価格はすべて税込です（法人プランはお見積り）。</p>
+            <p>※ 個人・個人事業主向けの価格は税込、法人プランの価格は税別です。</p>
             <p>※ 独自ドメイン・サーバー費用はプラン料金に含まれています。</p>
             <p>※ 内容によってはお見積りとなる場合があります。</p>
           </div>

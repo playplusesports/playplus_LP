@@ -92,12 +92,56 @@ export const WEB_OPTIONS: readonly PricedOption[] = [
   { name: "Instagram初期設定＋投稿5本", price: "¥14,800", description: "プロフィール整備＋最初の投稿5本の作成・代行投稿" },
 ]
 
+// 法人プランは税別表記。買い切り（一括・分割）の保守期間が終わったあとは、買い切りの加入者だけが使える保守プランを案内する。
+const CORPORATE_AFTERCARE_NOTE = "保守期間の終了後は、加入者限定の保守 ¥6,600／月（税別）をご案内"
+
+export const WEB_CORPORATE_PLANS: readonly Plan[] = [
+  {
+    name: "一括プラン",
+    price: "¥500,000〜",
+    unit: "（一括・税別）",
+    initialFee: "買い切り・サイトはお客様のものに",
+    contract: "公開から1年間の保守つき",
+    features: [
+      "フルオーダーメイドで制作",
+      "予約・EC・会員・多言語などのシステム連携",
+      "1年間の保守・更新対応",
+      CORPORATE_AFTERCARE_NOTE,
+    ],
+    isRecommended: true,
+  },
+  {
+    name: "分割プラン",
+    price: "¥22,000",
+    unit: "／月 × 36回（税別）",
+    initialFee: "買い切り・完済後サイトはお客様のものに",
+    contract: "お支払い期間の3年間は保守つき",
+    features: [
+      "一括プランと同じ内容で制作",
+      "まとまった初期費用なしで始められます",
+      "3年間の保守・更新対応",
+      CORPORATE_AFTERCARE_NOTE,
+    ],
+    isRecommended: false,
+  },
+  {
+    name: "月額プラン",
+    price: "¥16,000",
+    unit: "／月（税別）",
+    initialFee: "初期費用 ¥11,000（税別）",
+    contract: "最低契約期間 6ヶ月",
+    features: [
+      "制作・保守・更新を月額でまとめて",
+      "まずは小さく始めたい法人の方に",
+      "ページ数・機能はご相談のうえ決定",
+    ],
+    isRecommended: false,
+  },
+]
+
 export const WEB_CORPORATE_PLAN_POINTS: readonly string[] = [
-  "フルオーダーメイドで制作（デザイン・機能を自由に設計）",
-  "料金はご要望をヒアリングの上でお見積り",
-  "まず制作物をご確認いただいてから契約をご判断いただけます",
-  "予約・EC・会員・多言語など各種システム連携に対応",
-  "公開後の運用・保守までまとめてサポート",
+  "制作内容はヒアリングのうえ決めます。ページ数や機能によって金額が変わる場合は、事前にお見積りをお出しします",
+  "独自ドメイン・サーバー費用は、保守期間中はプラン料金に含まれます",
 ]
 
 export const MEO_MONTHLY_PLANS: readonly Plan[] = [
@@ -154,7 +198,7 @@ export const MEO_MONTHLY_PLANS: readonly Plan[] = [
 // トップと事業一覧に出す目安の料金
 export const PRICE_GUIDE: readonly { service: string; price: string; href: string }[] = [
   { service: "Web制作・保守運用（個人・個人事業主）", price: "¥5,000〜／月", href: "/services/web#personal" },
-  { service: "Web制作（法人）", price: "お見積り", href: "/services/web#corporate" },
+  { service: "Web制作（法人）", price: "¥16,000〜／月・一括¥500,000〜（税別）", href: "/services/web#corporate" },
   { service: "SEO / MEO / LLMO 対策", price: "¥15,000〜／月（税別）", href: "/services/meo" },
   { service: "アプリ開発・業務の自動化", price: "お見積り", href: "/services#app" },
   { service: "動画・コンテンツ制作", price: "お見積り", href: "/services#video" },

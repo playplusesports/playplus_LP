@@ -36,7 +36,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
       "名刺のQRから開く営業担当者の紹介ページ（ひと名刺）",
     ],
     proofs: ["CAFE MANO様 Googleマップ・検索での集客支援", "鍼灸マッサージ院モーヴ様 公式サイト制作"],
-    priceLabel: "個人 月額 ¥5,000〜 / 法人 お見積り",
+    priceLabel: "個人 月額 ¥5,000〜 / 法人 月額 ¥16,000〜（税別）",
     detailLinks: [
       { label: "Web制作・保守の料金", href: "/services/web" },
       { label: "SEO / MEO / LLMO 対策", href: "/services/meo" },
