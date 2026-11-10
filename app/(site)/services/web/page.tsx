@@ -90,11 +90,11 @@ export default function WebServicePage() {
         <div className="site-container">
           <SectionHeading
             align="split"
-            title="見本サイトの展示場"
-            lead="業種別に作った見本サイトを、実際に触って見られるページを用意しています。メニューを開いたり、スマホの幅で見たりできます。「この見本の感じで」と指さしてもらえると、打ち合わせが早く進みます。"
+            title="見本サイトの展示場「モデルルーム.web」"
+            lead="業種別に作った見本サイトを、実際に触って見られる「モデルルーム.web」を用意しています。メニューを開いたり、スマホの幅で見たりできます。「この見本の感じで」と指さしてもらえると、打ち合わせが早く進みます。"
           />
           <a href={WEB_SHOWROOM_URL} target="_blank" rel="noopener" className="btn-secondary">
-            展示場を見る（別サイトが開きます）
+            モデルルーム.webを見る（別サイトが開きます）
           </a>
         </div>
       </section>
