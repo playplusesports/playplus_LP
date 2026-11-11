@@ -110,7 +110,7 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
   {
     id: 'local-esports-tournament',
     title: '地域のeスポーツ大会の企画・運営',
-    category: '大会運営',
+    category: 'イベント運営',
     description:
       '代表が個人で主催し、2023年から毎月続けている地域のeスポーツ大会です。1回あたり20〜100名ほどが参加しています。企画、当日の運営、告知用のデザイン、SNSでの告知までを一人で担当しています。',
     period: '2023/03〜',
