@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <>
       <PageIntro
         title="プライバシーポリシー"
-        lead="最終更新日: 2026年3月31日"
+        lead="最終更新日: 2026年11月12日"
         crumbs={[{ label: "プライバシーポリシー", href: "/privacy" }]}
       />
       <div className="site-container max-w-3xl py-16 md:py-24">
@@ -66,28 +66,40 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground mb-3">6. 個人情報の管理</h2>
+            <h2 className="text-lg font-semibold text-foreground mb-3">6. 営業用のリンク・QRコードの計測</h2>
+            <p>
+              当団体がチラシ・メール・名刺などでお渡しするURLやQRコードには、配布先ごとに異なる番号を付けている場合があります。これらが開かれたときは、番号・日時・自動的なアクセスかどうかを記録し、営業施策の効果測定にのみ利用します。
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>IPアドレスや端末を識別する情報は記録しません。</li>
+              <li>記録は当団体の担当者のみが閲覧でき、第三者に提供しません。</li>
+              <li>記録は効果測定に必要な期間が過ぎたら削除します。</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-foreground mb-3">7. 個人情報の管理</h2>
             <p>
               当団体は、お客様の個人情報を正確かつ最新の状態に保ち、不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、適切なセキュリティ対策を講じます。
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground mb-3">7. 個人情報の開示・訂正・削除</h2>
+            <h2 className="text-lg font-semibold text-foreground mb-3">8. 個人情報の開示・訂正・削除</h2>
             <p>
               お客様ご自身の個人情報について、開示・訂正・削除をご希望の場合は、下記のお問い合わせ先までご連絡ください。本人確認のうえ、速やかに対応いたします。
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground mb-3">8. ポリシーの変更</h2>
+            <h2 className="text-lg font-semibold text-foreground mb-3">9. ポリシーの変更</h2>
             <p>
               当団体は、必要に応じて本ポリシーの内容を変更することがあります。変更後のポリシーは、本ページに掲載した時点から効力を生じるものとします。
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground mb-3">9. お問い合わせ</h2>
+            <h2 className="text-lg font-semibold text-foreground mb-3">10. お問い合わせ</h2>
             <p>個人情報の取り扱いに関するお問い合わせは、以下までご連絡ください。</p>
             <div className="mt-3 p-4 rounded-lg bg-secondary/50">
               <p className="font-medium text-foreground">Play+</p>
