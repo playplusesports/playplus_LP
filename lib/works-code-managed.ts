@@ -31,6 +31,18 @@ export const CODE_MANAGED_WORKS: WorkItem[] = [
   },
   // 業務向けに提供している自社サービス
   {
+    id: 'web-sales',
+    title: 'ホームページ制作・保守の案内サイト',
+    category: 'Web制作',
+    description:
+      'ホームページの制作と、公開後の更新を引き受ける保守サービスの案内サイトを制作・公開しました。個人・法人別の料金表、条件を選ぶと費用の目安が出る料金シミュレーション、いまのサイトの状態を確かめる8問の診断、資料請求・相談・見積りの問い合わせ窓口をまとめています。',
+    period: '2026/11〜',
+    location: 'オンライン',
+    scale: 'Webサイト / 自社運営',
+    tags: ['Webサイト制作', '保守運用', '料金シミュレーション'],
+    managedInCode: true,
+  },
+  {
     id: 'hito-meishi',
     title: '営業担当者の紹介ページ「ひと名刺」',
     category: 'Web制作',
