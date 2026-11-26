@@ -7,7 +7,7 @@ import { SERVICE_PILLARS } from "@/lib/site/service-pillars"
 export const metadata: Metadata = {
   title: "事業内容",
   description:
-    "Play+ の事業内容。Webサイト制作・集客、Webアプリ・サービス開発、業務の仕組み化・自動化、動画制作、イベント・eスポーツ・デザインを、ひとつの窓口で受けています。",
+    "プレイプラスの事業内容。Webサイト制作・集客、Webアプリ・サービス開発、業務の仕組み化・自動化、動画制作、イベント・eスポーツ・デザインを、ひとつの窓口で受けています。",
   alternates: { canonical: "/services" },
 }
 

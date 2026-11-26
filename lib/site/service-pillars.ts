@@ -1,7 +1,7 @@
 // 名刺のQRから開く営業担当者ページのサービスサイト（playplus/hito-meishi）
 export const HITO_MEISHI_URL = "https://meishi.playplus.jp/"
 
-// Play+ の5つの事業。トップの事業一覧・サービスページ・問い合わせ種別はこの並びを使う。
+// プレイプラスの5つの事業。トップの事業一覧・サービスページ・問い合わせ種別はこの並びを使う。
 export type ServicePillar = {
   slug: string
   code: string
@@ -96,7 +96,7 @@ export const SERVICE_PILLARS: readonly ServicePillar[] = [
     heroWord: "イベントに、",
     heroWorkIds: ["sns-strategy-seminar", "genai-training", "local-esports-tournament", "tournament-promo-design"],
     title: "イベント・eスポーツ・デザイン",
-    lead: "ゲーム大会の運営が、Play+ の出発点です。",
+    lead: "ゲーム大会の運営が、プレイプラスの出発点です。",
     description:
       "2023年から、毎月1回のeスポーツ大会を企画・運営しています。大会やイベントの企画・運営・配信に加えて、ロゴやポスター、SNS用の画像などのデザインも引き受けます。",
     offerings: ["イベント・大会の企画運営", "配信", "名刺などのデザイン（¥3,000〜）", "チラシ・ポスター・バナー・SNS用画像のデザイン（¥5,000〜）", "ロゴ（¥10,000〜）"],

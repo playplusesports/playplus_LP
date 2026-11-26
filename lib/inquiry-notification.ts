@@ -3,7 +3,7 @@
 // 返信ボタンでそのまま相手に返せるよう、Reply-To に問い合わせた人のアドレスを入れる。
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails"
-const SENDER = "Play+ お問い合わせ <noreply@playplus.jp>"
+const SENDER = "プレイプラス お問い合わせ <noreply@playplus.jp>"
 const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1FEAIu_zH2dO1vqnI5fF4WExqllXMCX-C9gmFMyq1A7s/edit"
 
 export type Inquiry = {

@@ -3,7 +3,7 @@ import { PageIntro } from "@/components/site/page-intro"
 
 export const metadata: Metadata = {
   title: "特定商取引法に基づく表記",
-  description: "Play+の特定商取引法に基づく表記。",
+  description: "プレイプラスの特定商取引法に基づく表記。",
 }
 
 export default function LegalPage() {
@@ -20,7 +20,7 @@ export default function LegalPage() {
             <tbody className="divide-y divide-border">
               <tr>
                 <th className="bg-secondary/50 px-6 py-4 text-left font-semibold text-foreground w-1/3 align-top">事業者名</th>
-                <td className="px-6 py-4 text-muted-foreground">Play+</td>
+                <td className="px-6 py-4 text-muted-foreground">プレイプラス</td>
               </tr>
               <tr>
                 <th className="bg-secondary/50 px-6 py-4 text-left font-semibold text-foreground align-top">代表者名</th>

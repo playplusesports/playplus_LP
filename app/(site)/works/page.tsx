@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic"
 export const metadata: Metadata = {
   title: "実績",
   description:
-    "Play+ の実績。Webサイト制作、Webアプリ・サービス開発、業務の自動化、動画制作、イベント・eスポーツ・デザインの事例を紹介します。",
+    "プレイプラスの実績。Webサイト制作、Webアプリ・サービス開発、業務の自動化、動画制作、イベント・eスポーツ・デザインの事例を紹介します。",
   alternates: { canonical: "/works" },
 }
 

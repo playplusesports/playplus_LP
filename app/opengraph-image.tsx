@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'nodejs'
-export const alt = 'Play+ — 遊びに、プラスを。Web・アプリ・AI・動画・イベント'
+export const alt = 'プレイプラス — 遊びに、プラスを。Web・アプリ・AI・動画・イベント'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -28,7 +28,7 @@ export default async function Image() {
           ))}
         </div>
         <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 90px', width: '100%' }}>
-          <div style={{ display: 'flex', color: '#6d76ff', fontSize: 26, letterSpacing: 6 }}>PLAY+ / CREATIVE TECH STUDIO</div>
+          <div style={{ display: 'flex', color: '#6d76ff', fontSize: 26, letterSpacing: 6 }}>プレイプラス ／ 大阪のWeb・アプリ・動画制作</div>
           <div style={{ display: 'flex', flexDirection: 'column', marginTop: 28, color: '#ffffff', fontSize: 124, lineHeight: 1.08 }}>
             <span>遊びに、</span>
             <span style={{ display: 'flex' }}>

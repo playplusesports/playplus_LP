@@ -1,6 +1,6 @@
 // 会社情報と連絡先。ヘッダー・フッター・会社概要・構造化データはすべてここを参照する。
 export const COMPANY_PROFILE = {
-  name: "Play+",
+  name: "プレイプラス",
   alternateName: "PlayPlus",
   concept: "遊びに、プラスを。",
   representative: "杉原 大誠",

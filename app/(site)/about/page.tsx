@@ -7,8 +7,8 @@ import { COMPANY_PROFILE, CONTACT_CHANNELS } from "@/lib/site/company-profile"
 import { SERVICE_PILLARS } from "@/lib/site/service-pillars"
 
 export const metadata: Metadata = {
-  title: "Play+について",
-  description: "Play+（プレイプラス）の名前の由来と、これまでの活動、事業者情報です。",
+  title: "プレイプラスについて",
+  description: "プレイプラスの名前の由来と、これまでの活動、事業者情報です。",
   alternates: { canonical: "/about" },
 }
 
@@ -50,7 +50,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageIntro title="Play+について" crumbs={[{ label: "Play+について", href: "/about" }]} />
+      <PageIntro title="プレイプラスについて" crumbs={[{ label: "プレイプラスについて", href: "/about" }]} />
 
       <section className="py-20 md:py-28">
         <div className="site-container grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
@@ -58,7 +58,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-black leading-tight tracking-tight md:text-4xl">{COMPANY_PROFILE.concept}</h2>
             <Image
               src="/brand/mark.png"
-              alt="Play+ のロゴ。Pの文字と、ゲームの十字キーの形をした「＋」"
+              alt="プレイプラスのロゴ。Pの文字と、ゲームの十字キーの形をした「＋」"
               width={LOGO_SIZE_PX}
               height={LOGO_SIZE_PX}
               className="mt-10 rounded-full"
@@ -66,8 +66,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-6 leading-[1.9] text-fg/90 md:text-lg md:leading-[1.9]">
             <p>
-              Play+
-              という名前は、Play（遊び）に＋（プラス）を足したものです。ロゴの「＋」は、ゲームのコントローラーの十字キーをかたどっています。
+              プレイプラスという名前は、Play（遊び）に＋（プラス）を足したものです。ロゴの「＋」は、ゲームのコントローラーの十字キーをかたどっています。2026年11月までは「Play+」と表記していました。
             </p>
             <p>
               はじまりは、2023年に始めた毎月のeスポーツ大会でした。いまも大会の運営を続けながら、お店や会社のWebサイト、Webアプリ、YouTube向けの動画をつくっています。

@@ -3,7 +3,7 @@ import { PageIntro } from "@/components/site/page-intro"
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
-  description: "Play+のプライバシーポリシー。個人情報の取り扱いについて。",
+  description: "プレイプラスのプライバシーポリシー。個人情報の取り扱いについて。",
 }
 
 export default function PrivacyPage() {
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-semibold text-foreground mb-3">1. はじめに</h2>
             <p>
-              Play+（以下「当団体」）は、お客様の個人情報の保護を重要な責務と考え、以下のとおりプライバシーポリシーを定め、個人情報の適切な取り扱いに努めます。
+              プレイプラス（以下「当団体」）は、お客様の個人情報の保護を重要な責務と考え、以下のとおりプライバシーポリシーを定め、個人情報の適切な取り扱いに努めます。
             </p>
           </section>
 
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
             <h2 className="text-lg font-semibold text-foreground mb-3">10. お問い合わせ</h2>
             <p>個人情報の取り扱いに関するお問い合わせは、以下までご連絡ください。</p>
             <div className="mt-3 p-4 rounded-lg bg-secondary/50">
-              <p className="font-medium text-foreground">Play+</p>
+              <p className="font-medium text-foreground">プレイプラス</p>
               <p className="mt-1">メール: company@playplus.jp</p>
             </div>
           </section>

@@ -131,7 +131,7 @@ export function DpadHero({ works }: { works: readonly WorkItem[] }) {
               </p>
             ) : (
               <p className="leading-relaxed text-fg-dim md:text-lg">
-                Play+ は大阪を拠点に、Webサイトやアプリ、動画の制作と、eスポーツ大会などのイベント運営をしています。
+                プレイプラスは大阪を拠点に、Webサイトやアプリ、動画の制作と、eスポーツ大会などのイベント運営をしています。
               </p>
             )}
           </div>
@@ -193,9 +193,9 @@ function GameConsole({
           <div className="flex items-center justify-between px-1 pb-2 text-[10px] text-white/45">
             <span className="flex items-center gap-1.5">
               <span className={`h-1.5 w-1.5 rounded-full ${activePillar ? "bg-signal-bright" : "bg-white/30"}`} />
-              {activePillar ? activePillar.title : "Play+"}
+              {activePillar ? activePillar.title : "プレイプラス"}
             </span>
-            <span className="font-pixel">Play+</span>
+            <span className="font-pixel">プレイプラス</span>
           </div>
           <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-[#0d0d3a]">
             <StartScreen />
@@ -295,8 +295,8 @@ function GameConsole({
 function StartScreen() {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-3 text-white">
-      <p className="font-pixel text-5xl sm:text-6xl">
-        Play<span className="text-signal-bright">+</span>
+      <p className="whitespace-nowrap font-pixel text-3xl sm:text-5xl">
+        プレイ<span className="text-signal-bright">プラス</span>
       </p>
       <p className="animate-pulse font-pixel text-xs text-white/70 sm:text-sm">PUSH ▲ ▼ ◀ ▶</p>
     </div>

@@ -14,7 +14,7 @@ import { WEB_CORPORATE_PLAN_POINTS, WEB_CORPORATE_PLANS, WEB_MONTHLY_PLANS, WEB_
 export const metadata: Metadata = {
   title: "Webサイト制作・保守運用 月額5,000円〜",
   description:
-    "Play+ のWebサイト制作・保守運用。初期費用0円・月額5,000円から、制作・更新・集客までLINEでまるごとお任せいただけます。買い切りプラン・法人向けオーダーメイドにも対応。",
+    "プレイプラスのWebサイト制作・保守運用。初期費用0円・月額5,000円から、制作・更新・集客までLINEでまるごとお任せいただけます。買い切りプラン・法人向けオーダーメイドにも対応。",
   alternates: { canonical: "/services/web" },
 }
 

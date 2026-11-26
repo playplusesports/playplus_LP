@@ -32,14 +32,14 @@ const codeFont = JetBrains_Mono({
   display: "swap",
 })
 
-const SITE_TITLE = "Play+ | Webサイト・アプリ・動画制作とイベント運営（大阪）"
+const SITE_TITLE = "プレイプラス | Webサイト・アプリ・動画制作とイベント運営（大阪）"
 const SITE_DESCRIPTION =
-  "Play+（プレイプラス）は大阪を拠点に、Webサイト制作、Webアプリ開発、業務の自動化、動画制作、eスポーツ大会などのイベント運営を手がけています。"
+  "プレイプラスは大阪を拠点に、Webサイト制作、Webアプリ開発、業務の自動化、動画制作、eスポーツ大会などのイベント運営を手がけています。"
 
 export const metadata: Metadata = {
   title: {
     default: SITE_TITLE,
-    template: "%s | Play+",
+    template: "%s | プレイプラス",
   },
   description: SITE_DESCRIPTION,
   metadataBase: new URL(COMPANY_PROFILE.siteUrl),

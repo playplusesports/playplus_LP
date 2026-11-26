@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "お知らせ",
-  description: "Play+ からのお知らせ・イベント・メディア掲載・実績の情報です。",
+  description: "プレイプラスからのお知らせ・イベント・メディア掲載・実績の情報です。",
   alternates: { canonical: "/news" },
 }
 

@@ -12,7 +12,7 @@ import { MEO_MONTHLY_PLANS } from "@/lib/site/pricing"
 export const metadata: Metadata = {
   title: "SEO / MEO / LLMO対策 月額15,000円〜",
   description:
-    "Play+ のSEO・MEO・LLMO対策。Googleマップの上位表示（MEO）と、ChatGPTやGeminiなどのAI検索での推薦（LLMO）で、地域の集客を強化します。初期費用0円・契約期間の縛りなし。",
+    "プレイプラスのSEO・MEO・LLMO対策。Googleマップの上位表示（MEO）と、ChatGPTやGeminiなどのAI検索での推薦（LLMO）で、地域の集客を強化します。初期費用0円・契約期間の縛りなし。",
   alternates: { canonical: "/services/meo" },
 }
 

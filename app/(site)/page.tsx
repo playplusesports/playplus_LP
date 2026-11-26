@@ -141,7 +141,7 @@ function Introduction() {
       <div className="site-container">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
           <div>
-            <p className="eyebrow">Play+ について</p>
+            <p className="eyebrow">プレイプラスについて</p>
             <h2 className="mt-4 text-3xl font-black leading-snug tracking-tight md:text-4xl md:leading-snug">
               好きを、もっと面白く。
             </h2>
@@ -152,7 +152,7 @@ function Introduction() {
               自社でもWebサービスを公開・運営しているので、つくったあとの運用までまとめてご相談いただけます。
             </p>
             <Link href="/about" className="btn-secondary mt-8">
-              Play+ について詳しく
+              プレイプラスについて詳しく
             </Link>
           </div>
           <figure>

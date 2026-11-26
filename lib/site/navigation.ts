@@ -5,5 +5,5 @@ export const PRIMARY_NAVIGATION: readonly NavigationLink[] = [
   { label: "実績", code: "WORKS", href: "/works" },
   { label: "料金", code: "PRICING", href: "/#pricing" },
   { label: "ニュース", code: "NEWS", href: "/news" },
-  { label: "Play+について", code: "ABOUT", href: "/about" },
+  { label: "プレイプラスについて", code: "ABOUT", href: "/about" },
 ]

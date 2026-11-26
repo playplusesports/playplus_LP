@@ -5,7 +5,7 @@ import { COMPANY_PROFILE, CONTACT_CHANNELS } from "@/lib/site/company-profile"
 
 export const metadata: Metadata = {
   title: "お問い合わせ",
-  description: "Play+ へのお問い合わせ。Webサイト制作、アプリ開発、業務の自動化、動画制作、イベントのご相談を無料で承ります。",
+  description: "プレイプラスへのお問い合わせ。Webサイト制作、アプリ開発、業務の自動化、動画制作、イベントのご相談を無料で承ります。",
   alternates: { canonical: "/contact" },
 }
 
